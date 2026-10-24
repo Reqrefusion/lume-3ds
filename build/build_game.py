@@ -13,8 +13,10 @@ def sdk_tools(root):
  result={'base':base,'arm':arm,'gcc':arm/'bin'/('arm-none-eabi-gcc'+ext),'ctru':base/'libctru','port':base/'portlibs/3ds','pack':base/'tools/bin'/('3dsxtool'+ext),'smdh':base/'tools/bin'/('smdhtool'+ext)}
  for name in ['gcc','pack','smdh']:
   if not result[name].is_file():raise ValueError('Missing SDK tool: '+str(result[name])+'. Pass your existing SDK directory with --sdk.')
- for name,path in [('libctru',result['ctru']/'lib/libctru.a'),*[(n,result['port']/'lib'/('lib'+n+'.a')) for n in ['mpg123','jpeg','lz4','z','citro2d','citro3d']]]:
-  if not path.is_file():raise ValueError('Missing SDK library: '+str(path))
+ libraries={'ctru':[result['ctru']],**{name:[result['port']] for name in ['mpg123','jpeg','lz4','z']},**{name:[result['port'],result['ctru']] for name in ['citro2d','citro3d']}}
+ for name,folders in libraries.items():
+  candidates=[folder/'lib'/('lib'+name+'.a') for folder in folders]
+  if not any(path.is_file() for path in candidates):raise ValueError('Missing SDK library lib'+name+'.a; searched: '+', '.join(map(str,candidates)))
  return result
 
 def run(cmd,env,cwd):
