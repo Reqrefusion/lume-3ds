@@ -69,6 +69,12 @@ def tools(cache,args,need_ffmpeg=True):
  # Explicit command-line tools support an existing offline installation and
  # the Linux verification harness. Default Windows tools are portable.
  downloads=cache/'downloads'
+ installed_java=shutil.which('java')
+ installed_ffmpeg=shutil.which('ffmpeg')
+ installed_jar=Path(os.environ.get('LOCALAPPDATA',''))/'Programs/FFDec/ffdec.jar'
+ if not args.java and installed_java:args.java=installed_java
+ if not args.ffmpeg and installed_ffmpeg:args.ffmpeg=installed_ffmpeg
+ if not args.ffdec and installed_jar.is_file() and digest(installed_jar)==FFDEC_JAR_SHA:args.ffdec=str(installed_jar)
  if args.java:java=Path(args.java).resolve()
  else:
   folder=cache/'java';hits=list(folder.rglob('java.exe'))

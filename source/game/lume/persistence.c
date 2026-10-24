@@ -1,3 +1,4 @@
+#include "storage.h"
 #include "persistence.h"
 #include "audio.h"
 #include "../../engine/core/log_io.h"
@@ -50,7 +51,7 @@ static void *perform(void *unused) {
 #ifdef __3DS__
   uint64_t started=osGetTime();
 #endif
-  bool ok=lume_game_save(&snapshot,"sdmc:/3ds/lume_puzzles/save.lum");
+  bool ok=lume_game_save(&snapshot,LUME_DATA_FILE("save.lum"));
   LOCK();active=false;done=ticket;
   if(ok){lume_game_snapshot(&snapshot,committed);valid=true;written=ticket;}
   bool more=queued||stopping;UNLOCK();

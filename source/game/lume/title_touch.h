@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_TITLE_TOUCH_H
 #define LUME_TITLE_TOUCH_H
 #include "title_menu.h"
@@ -15,7 +16,7 @@ static inline void lume_title_layout(LumeTitleLayout *l) {
  *l=(LumeTitleLayout){{{24,38,272,44},{24,94,272,44},{24,150,272,44},
  {24,76,272,44},{24,136,272,44},{69,117,74,40},{170,117,74,40},
  {127,178,64,29},{8,200,40,40}}};
- FILE *f=fopen("romfs:/detail/title_touch.layout","rb");if(!f)return;
+ FILE *f=fopen(LUME_DATA_FILE("detail/title_touch.layout"),"rb");if(!f)return;
  uint8_t b[76];bool ok=fread(b,1,sizeof b,f)==sizeof b&&!memcmp(b,"LTT1",4);fclose(f);
  LumeTitleLayout v=*l;
  for(unsigned i=0;ok&&i<9;i++){

@@ -10,8 +10,6 @@ def run(game,private,root):
  game,private,root=Path(game).resolve(),Path(private).resolve(),Path(root).resolve()
  target=root/'romfs'
  if target.exists():raise ValueError('RomFS already exists; use a new source checkout.')
- for name in ['original_font.h','icon.png']:
-  if not (private/name).is_file():raise ValueError('Missing developer data: '+name)
  expected=inventory(game);base,start,_,files=read_index(game)
  target.parent.mkdir(parents=True,exist_ok=True)
  with tempfile.TemporaryDirectory(prefix='ready-assets-',dir=target.parent) as temp:
@@ -29,9 +27,9 @@ def run(game,private,root):
   import hashlib
   actual={p.relative_to(stage).as_posix():{'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in stage.rglob('*') if p.is_file()}
   if actual!=expected:raise ValueError('Asset extraction mismatch')
-  shutil.copyfile(private/'original_font.h',root/'source/game/lume/original_font.h')
-  (root/'resources/icon.png').parent.mkdir(parents=True,exist_ok=True)
-  shutil.copyfile(private/'icon.png',root/'resources/icon.png')
+  if (private/'icon.png').is_file():
+   (root/'resources/icon.png').parent.mkdir(parents=True,exist_ok=True)
+   shutil.copyfile(private/'icon.png',root/'resources/icon.png')
   if (private/'languages').is_dir():shutil.copytree(private/'languages',root/'languages',dirs_exist_ok=True)
   if (private/'actionscript').is_dir():shutil.copytree(private/'actionscript',root/'docs/actionscript',dirs_exist_ok=True)
   if (private/'Lume.swf').is_file():

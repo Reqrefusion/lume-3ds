@@ -53,7 +53,7 @@ def icon(produced,target):
  if box:rgb=rgb.crop(box)
  rgb.thumbnail((44,44),Image.Resampling.LANCZOS);result=Image.new('RGB',(48,48));result.paste(rgb,((48-rgb.width)//2,(48-rgb.height)//2));target.parent.mkdir(parents=True,exist_ok=True);result.save(target)
 
-def produce(tasks,root,recovered,swf,java,jar,ffmpeg,model):
+def produce(tasks,root,recovered,swf,java,jar,ffmpeg,model,prepared=None):
  root=Path(root);cache=root/'tools/exe-production';cp=os.pathsep.join([str(root/'scripts/java'),str(jar),str(jar.parent/'lib/*')]);classes=tree(root/'scripts/java')
  def motion(stage):
   requests=stage/'requests';make(swf,requests);render=stage/'render';(render/'project/romfs').mkdir(parents=True)
@@ -69,31 +69,45 @@ def produce(tasks,root,recovered,swf,java,jar,ffmpeg,model):
  title_dir=tasks.run('game-title',{'swf':sha(swf),'classes':classes},cache/'title',title)
  # Source video conversion has its own per-movie checkpoints and raw-payload
  # verification. All inputs originate in this extraction tree.
- from video import produce as videos,MODEL_SHA,MODEL_URL
- model=Path(model).resolve() if model else cv.download(MODEL_URL,cache/'model/depth-small.onnx',MODEL_SHA)
- from production_previews import capture_video,export_all
- with capture_video(root,model):videos(tasks,root,recovered,ffmpeg,model)
+ if prepared:
+  import prepared_maps
+  prepared=prepared_maps.validate(root,prepared);model=prepared/'manifest.json'
+  video_root=prepared_maps.videos(tasks,root,recovered,ffmpeg,prepared)
+ else:
+  from video import produce as videos,MODEL_SHA,MODEL_URL
+  model=Path(model).resolve() if model else cv.download(MODEL_URL,cache/'model/depth-small.onnx',MODEL_SHA)
+  from production_previews import capture_video
+  with capture_video(root,model):videos(tasks,root,recovered,ffmpeg,model)
+  video_root=cache/'video'
  pages=cache/'pages/detail';ui=cache/'ui/romfs';audio=cache/'audio'
- inputs={'close_controls':sha(Path(__file__).with_name('close_controls.py')),'producer':sha(Path(__file__)),'title_stereo':sha(Path(__file__).with_name('title_stereo.py')),'logo_depth':sha(Path(__file__).with_name('logo_depth.py')),'logo_policy':sha(root/'source/game/lume/logo_depth.h'),'motion':tree(motion_dir),'title':tree(title_dir),'pages':tree(pages),'ui':tree(ui),'audio':tree(audio),'videos':{p.relative_to(cache/'video').as_posix():sha(p) for p in (cache/'video').rglob('*.lvs')},'stereo_fields':sha(Path(__file__).with_name('stereo_fields.py')),'assembly':sha(Path(__file__).with_name('assemble.py')),'contract':sha(Path(__file__).with_name('contract.py')),'fast_assets':sha(Path(__file__).with_name('fast_assets.py')),'compress':sha(Path(__file__).with_name('compress.py')),'lan_codec':sha(Path(__file__).with_name('lan_codec.py')),'model':sha(model),'ffmpeg':sha(ffmpeg)}
+ inputs={'close_controls':sha(Path(__file__).with_name('close_controls.py')),'producer':sha(Path(__file__)),'title_stereo':sha(Path(__file__).with_name('title_stereo.py')),'logo_depth':sha(Path(__file__).with_name('logo_depth.py')),'logo_policy':sha(root/'source/game/lume/logo_depth.h'),'motion':tree(motion_dir),'title':tree(title_dir),'pages':tree(pages),'ui':tree(ui),'audio':tree(audio),'videos':{p.relative_to(video_root).as_posix():sha(p) for p in video_root.rglob('*.lvs')},'stereo_fields':sha(Path(__file__).with_name('stereo_fields.py')),'assembly':sha(Path(__file__).with_name('assemble.py')),'contract':sha(Path(__file__).with_name('contract.py')),'fast_assets':sha(Path(__file__).with_name('fast_assets.py')),'compress':sha(Path(__file__).with_name('compress.py')),'lan_codec':sha(Path(__file__).with_name('lan_codec.py')),'model':sha(model),'prepared_geometry':bool(prepared),'prepared_code':sha(Path(__file__).with_name('prepared_maps.py')),'ffmpeg':sha(ffmpeg)}
  def assemble(stage):
   rom=stage/'romfs';normal_and_detail(pages,title_dir/'detail',motion_dir/'romfs',ui,rom)
   shutil.copytree(audio,rom,dirs_exist_ok=True)
-  for p in (cache/'video').rglob('*.lvs'):shutil.copyfile(p,rom/p.name)
+  for p in video_root.rglob('*.lvs'):shutil.copyfile(p,rom/p.name)
   fallback_atlases(motion_dir/'romfs',pages,recovered,rom)
   digits(swf,java,jar,stage/'digits-work',rom)
-  world(swf,recovered,cache/'video',motion_dir/'romfs',rom,ffmpeg,java,jar)
-  still_stereo(rom,model,root)
-  from stereo_fields import run as stereo_fields
-  field_report=stereo_fields(rom);write_json(stage/'stereo_fields.json',field_report)
+  world(swf,recovered,video_root,motion_dir/'romfs',rom,ffmpeg,java,jar)
+  if prepared:
+   field_report=prepared_maps.stills(rom,prepared)
+  else:
+   still_stereo(rom,model,root)
+   from stereo_fields import run as stereo_fields
+   field_report=stereo_fields(rom)
+  write_json(stage/'stereo_fields.json',field_report)
   from compress import run as compress_assets
   compression=compress_assets(rom)
   from fast_assets import run as fast_assets
   compression['fast_lossless']=fast_assets(rom)
-  from logo_depth import ending as promote_ending
-  promote_ending(rom)
-  from title_stereo import produce as title_depth
-  depth_model=model if model.suffix.lower()=='.onnx' else cv.download(MODEL_URL,cache/'model/depth-small.onnx',MODEL_SHA)
-  write_json(stage/'title_stereo.json',title_depth(rom,depth_model))
+  if prepared:
+   write_json(stage/'title_stereo.json',prepared_maps.title_metadata(rom,prepared))
+  else:
+   from logo_depth import ending as promote_ending
+   promote_ending(rom)
+   from title_stereo import produce as title_depth
+   from video import MODEL_URL,MODEL_SHA
+   depth_model=model if model.suffix.lower()=='.onnx' else cv.download(MODEL_URL,cache/'model/depth-small.onnx',MODEL_SHA)
+   write_json(stage/'title_stereo.json',title_depth(rom,depth_model))
   compression['after_bytes']=sum(p.stat().st_size for p in output_files(rom))
   compression['asset_groups_bytes']={}
   for p in output_files(rom):
@@ -110,6 +124,8 @@ def produce(tasks,root,recovered,swf,java,jar,ffmpeg,model):
  publish(root,result/'romfs')
  icon(result/'romfs',root/'resources/icon.png')
  write_json(root/'logs/production-status.json',report)
- export_all(tasks,root,result/'romfs',model,ffmpeg)
+ if not prepared:
+  from production_previews import export_all
+  export_all(tasks,root,result/'romfs',model,ffmpeg)
  print('Complete game assets generated from EXE and verified:',report['total_files'],'files.',flush=True)
  return report

@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_MEDIA_TOP
 #define LUME_MEDIA_TOP 13
 #define LUME_MEDIA_BOTTOM 226
@@ -45,7 +46,7 @@ static void load_effects(void) {
   unsigned loaded = 0, bytes = 0;
   for (unsigned i = 0; i < sizeof(samples) / sizeof(samples[0]); i++) {
     char path[64];
-    snprintf(path, sizeof(path), "romfs:/sfx_%04u.pcm", samples[i].id);
+    snprintf(path, sizeof(path), LUME_DATA_FILE("sfx_%04u.pcm"), samples[i].id);
     FILE *f = fopen(path, "rb");
     if (!f) { lume_log("SFX missing: %s", path); continue; }
     fseek(f, 0, SEEK_END);
@@ -184,7 +185,7 @@ bool lume_audio_init(void) {
   ndspSetOutputMode(NDSP_OUTPUT_STEREO);
   for (int i = 0; i < 8; i++) {
     char path[64];
-    snprintf(path, sizeof(path), "romfs:/piano%d.pcm", i + 1);
+    snprintf(path, sizeof(path), LUME_DATA_FILE("piano%d.pcm"), i + 1);
     FILE *f = fopen(path, "rb");
     if (!f)
       continue;
@@ -236,7 +237,7 @@ static void music_open(bool ending) {
     music = NULL;
   }
   music_drop_ram();
-  snprintf(music_path, sizeof(music_path), "romfs:/media_%s.mp3",
+  snprintf(music_path, sizeof(music_path), LUME_DATA_FILE("media_%s.mp3"),
            ending ? "0946" : "0006");
   int err;
   music = mpg123_new(NULL, &err);

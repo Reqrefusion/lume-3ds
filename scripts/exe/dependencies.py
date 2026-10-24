@@ -41,7 +41,7 @@ def runtime_libraries(root):
    if hashlib.sha256(data).hexdigest()!=lock['files'][name]:raise ValueError('Microsoft DLL SHA256 mismatch: '+name)
    temp=folder/(name+'.part');temp.write_bytes(data);os.replace(temp,folder/name)
 
-def install(root):
+def install(root,player=False):
  if os.name!='nt':raise ValueError('Automatic wheel setup requires Windows x64/Python 3.12; use --host-python on Linux.')
  if sys.version_info[:2]!=(3,12):raise ValueError('Python 3.12 is required.')
  root=Path(root);base=(root/'tools/exe-python').resolve();base.mkdir(parents=True,exist_ok=True)
@@ -49,7 +49,8 @@ def install(root):
  locked=json.loads(Path(__file__).with_name('windows-wheels.json').read_text(encoding="utf-8"))
  if {p['name']:p['version'] for p in locked}!=PINS:raise ValueError('Wheel lock does not match package versions.')
  locked={p['name']:p for p in locked}
- for package,version in PINS.items():
+ selected={k:v for k,v in PINS.items() if not player or k in {'numpy','pillow','opencv-python-headless','lz4'}}
+ for package,version in selected.items():
   item=locked[package]
   if wheel_score(item['wheel'])<0 or not item['url'].startswith('https://files.pythonhosted.org/'):raise ValueError('Invalid wheel lock: '+package)
   dest=base/package;stamp=dest/'installed.json';wanted={'filename':item['wheel'],'sha256':item['sha256'],'version':version}
@@ -60,7 +61,7 @@ def install(root):
    path=cv.download(item['url'],base/'downloads'/item['wheel'],wanted['sha256']);cv.unzip(path,dest)
    write_json(stamp,{'package':wanted,'files':{p.relative_to(dest).as_posix():sha(p) for p in dest.rglob('*') if p.is_file() and p.name!='installed.json'}})
   records.append(wanted)
- paths=[str(base/p) for p in PINS]
+ paths=[str(base/p) for p in selected]
  runtime_libraries(root)
  python_folder=Path(sys.executable).resolve().parent
  pth=python_folder/'python312._pth'
@@ -79,4 +80,6 @@ def install(root):
  write_json(base/'resolved.json',records)
  print('Python conversion dependencies are ready. Start a new Python process.')
 
-if __name__=='__main__':install(Path(__file__).resolve().parents[2])
+if __name__=='__main__':
+ import argparse
+ parser=argparse.ArgumentParser();parser.add_argument('--player',action='store_true');args=parser.parse_args();install(Path(__file__).resolve().parents[2],args.player)

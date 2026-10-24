@@ -1,3 +1,4 @@
+#include "game/lume/storage.h"
 #include "game/lume/close_controls.h"
 #include "platform/3ds/video_present.h"
 #include "engine/assets/movie_pool.h"
@@ -6,7 +7,7 @@
 #define LUME_MEDIA_TOP 13
 #define LUME_MEDIA_BOTTOM 226
 #endif
-#include "game/lume/original_font.h"
+#include "game/lume/fallback_font.h"
 #include "engine/assets/raster.h"
 #include "game/lume/actor_pose.h"
 #include "adapters/flash/timeline.h"
@@ -94,7 +95,7 @@ static unsigned manual_save_ticket,ending_save_ticket;
 static bool manual_save_quit;
 static void ending_cues_load(void) {
  ending_cue_count=0;ending_cue_current=-1;
- FILE *f=fopen("romfs:/ending_reading.tsv","rb");if(!f)return;
+ FILE *f=fopen(LUME_DATA_FILE("ending_reading.tsv"),"rb");if(!f)return;
  unsigned a,b;char label[64];
  while(ending_cue_count<7&&fscanf(f,"%u%u%63s",&a,&b,label)==3) {
   if(a>b||b>=1908||(ending_cue_count&&a<=ending_cues[ending_cue_count-1].last)||strncmp(label,"ending_",7)){ending_cue_count=0;break;}
@@ -206,7 +207,7 @@ static void draw_gramophone(uint8_t *rgb,int eye) {
 static void gramophone_actor_frame(unsigned frame,uint64_t now) {
   if(gramophone_pending && frame>=41) {
     gramophone_pending=false;lume_animation_close(&gramophone_effect);
-    if(!lume_animation_open(&gramophone_effect,"romfs:/fx_gramophone.lan"))
+    if(!lume_animation_open(&gramophone_effect,LUME_DATA_FILE("fx_gramophone.lan")))
       lume_log("Gramophone child overlay missing");
     /* Called only once the actor's photographed frame can be composed.
        Cache pauses shift clip_start; the independent child follows it. */
@@ -216,7 +217,7 @@ static void gramophone_actor_frame(unsigned frame,uint64_t now) {
 }
 static void piano_press(unsigned key,uint64_t now) {
   if(key>=9)return;
-  if(!piano_effect.file && !lume_animation_open(&piano_effect,"romfs:/ui_piano_keys.lan")) {
+  if(!piano_effect.file && !lume_animation_open(&piano_effect,LUME_DATA_FILE("ui_piano_keys.lan"))) {
     lume_log("Piano press overlay missing");return;
   }
   lume_child_start(&piano_clocks[key],now);visual_epoch++;
@@ -244,7 +245,7 @@ static void load_puzzle_art(int mode) {
   lume_detail_puzzle_cache_close();lume_detail_close(&detail);
   detail_mode=-1;detail_state=NULL;detail_reference_ready=false;
   visual_epoch++;puzzle_art_serial++;
-  const char *path=mode==LUME_WIRES?"romfs:/art_wires.lan":mode==LUME_KEYS?"romfs:/art_keys.lan":mode==LUME_DOOR?"romfs:/digits_door.lan":mode==LUME_CUPBOARD?"romfs:/digits_cupboard.lan":NULL;
+  const char *path=mode==LUME_WIRES?LUME_DATA_FILE("art_wires.lan"):mode==LUME_KEYS?LUME_DATA_FILE("art_keys.lan"):mode==LUME_DOOR?LUME_DATA_FILE("digits_door.lan"):mode==LUME_CUPBOARD?LUME_DATA_FILE("digits_cupboard.lan"):NULL;
   if(path && !lume_animation_open(&puzzle_art,path))lume_log("Source puzzle state art missing: %s",path);
 }
 static void draw_puzzle_art(uint8_t *rgb,const LumePuzzles *p,int mode) {
@@ -306,7 +307,7 @@ static void load_clue_images(const LumeGame *g) {
                 char variant[32];
                 const char *name = lume_clue_asset(g,variant,sizeof variant);
                 if (!name) name="missing";
-                snprintf(path, sizeof(path), "romfs:/clue_%s.rgb", name);
+                snprintf(path, sizeof(path), LUME_DATA_FILE("clue_%s.rgb"), name);
                 bool clue_ok=read_file(path, clue_images[0], LUME_FRAME_BYTES);
                 if(!clue_ok) {
                   /* Never display a previous clue after an absent/truncated read. */
@@ -316,12 +317,12 @@ static void load_clue_images(const LumeGame *g) {
                 }
                 for (int eye = 1; eye < 3; eye++) {
                   memcpy(clue_images[eye], clue_images[0], LUME_FRAME_BYTES);
-                  snprintf(path, sizeof(path), "romfs:/stereo/%s_%c.rgb", name,
+                  snprintf(path, sizeof(path), LUME_DATA_FILE("stereo/%s_%c.rgb"), name,
                            eye == 2 ? 'R' : 'L');
                   if(clue_ok && !read_file(path, clue_images[eye], LUME_FRAME_BYTES))
                     memcpy(clue_images[eye],clue_images[0],LUME_FRAME_BYTES);
                 }
-                snprintf(path,sizeof path,"romfs:/clue_%s.rgb",name);
+                snprintf(path,sizeof path,LUME_DATA_FILE("clue_%s.rgb"),name);
                 lume_field_load(&clue_field,path,320,240);
                 cached_clue = key;
               }
@@ -624,7 +625,7 @@ static int show_title_loop(bool has_save) {
   LumeDepthStream title_depth={0};
   LumeAnimation studio_clip={0};
   static uint8_t studio_bottom[LUME_FRAME_BYTES];
-  bool studio_ok=lume_animation_open(&studio_clip,"romfs:/studio_intro.lan");
+  bool studio_ok=lume_animation_open(&studio_clip,LUME_DATA_FILE("studio_intro.lan"));
   lume_log("STUDIO_BOTTOM ready=%d frames=%u",studio_ok,studio_clip.frames);
   LumeAnimation title_clip={0},exit_cover={0},title_corner={0},exit_corner={0};
   uint64_t started=osGetTime(),exit_started=0;
@@ -690,20 +691,20 @@ static int show_title_loop(bool has_save) {
     unsigned under_phase=pending!=TITLE_NONE ? lume_title_phase(exit_ticks) : phase;
     unsigned under_frame=pending!=TITLE_NONE && exit_ticks<736 ? (unsigned)exit_ticks : lume_title_frame(ticks);
     if(motion_ok && (int)under_phase!=opened_phase) {
-      const char *paths[]={"romfs:/title_entry.lan","romfs:/title_idle.lan"};
+      const char *paths[]={LUME_DATA_FILE("title_entry.lan"),LUME_DATA_FILE("title_idle.lan")};
       lume_animation_close(&title_clip);
       motion_ok=lume_animation_open(&title_clip,paths[under_phase]);
       if(!motion_ok)lume_log("Title animation unavailable: %s",paths[under_phase]);
-      const char *corners[]={"romfs:/detail/title_touch_entry.lta","romfs:/detail/title_touch_idle.lta"};
+      const char *corners[]={LUME_DATA_FILE("detail/title_touch_entry.lta"),LUME_DATA_FILE("detail/title_touch_idle.lta")};
       lume_animation_close(&title_corner);lume_animation_open(&title_corner,corners[under_phase]);
-      const char *depth_paths[]={"romfs:/title_entry.tsf","romfs:/title_idle.tsf"};
+      const char *depth_paths[]={LUME_DATA_FILE("title_entry.tsf"),LUME_DATA_FILE("title_idle.tsf")};
       bool depth_ok=lume_depth_open(&title_depth,depth_paths[under_phase],title_clip.frames);
       lume_log("TITLE_STEREO phase=%u ready=%d frames=%u",under_phase,depth_ok,title_depth.frames);
       opened_phase=(int)under_phase;last_frame=~0u;cue_next=0;
     }
     if(motion_ok && pending!=TITLE_NONE && !exit_cover.file) {
-      motion_ok=lume_animation_open(&exit_cover,"romfs:/title_exit.lan");
-      lume_animation_open(&exit_corner,"romfs:/detail/title_touch_exit.lta");
+      motion_ok=lume_animation_open(&exit_cover,LUME_DATA_FILE("title_exit.lan"));
+      lume_animation_open(&exit_corner,LUME_DATA_FILE("detail/title_touch_exit.lta"));
       if(!motion_ok)lume_log("Title exit cover unavailable");
     }
     if(!motion_ok && pending!=TITLE_NONE){lume_animation_close(&title_clip);lume_animation_close(&exit_cover);
@@ -832,10 +833,10 @@ static bool camera_open_file(LumeMovie *target,unsigned id) {
  if(id>=4)return false;
  char path[128];const char *extensions[]={"lvs","lvb","ljv"};
  for(unsigned i=0;i<3;i++){
-  snprintf(path,sizeof path,"romfs:/media_%s.%s",movie_names[id],extensions[i]);
+  snprintf(path,sizeof path,LUME_DATA_FILE("media_%s.%s"),movie_names[id],extensions[i]);
   if(lume_movie_open(target,path))return true;
  }
- snprintf(path,sizeof path,"sdmc:/3ds/lume_puzzles/media/%s.ljv",movie_names[id]);
+ snprintf(path,sizeof path,LUME_DATA_FILE("media/%s.ljv"),movie_names[id]);
  return lume_movie_open(target,path);
 }
 static bool open_movie(int id) {
@@ -877,7 +878,7 @@ static bool play_clip(const char *name, int kind) {
   snprintf(detail_clip_name,sizeof detail_clip_name,"%s",name);
   close_clip();
   char path[128];
-  snprintf(path, sizeof(path), "romfs:/%s.lan", name);
+  snprintf(path, sizeof(path), LUME_DATA_FILE("%s.lan"), name);
   if (!lume_animation_open(&animation, path)) {
     lume_log("Animation missing: %s", name);
     return false;
@@ -908,7 +909,7 @@ static bool play_clip(const char *name, int kind) {
     lume_log("Prop transforms missing: %s", name);
   unsigned mid, first, last;
   uint32_t meta[5] = {0};
-  snprintf(path, sizeof(path), "romfs:/%s.nav", name);
+  snprintf(path, sizeof(path), LUME_DATA_FILE("%s.nav"), name);
   bool known = read_file(path, meta, sizeof(meta)) &&
                !memcmp(meta, "NAV2", 4) && meta[1] < 4 && meta[2] <= meta[3];
   if (known) {
@@ -965,7 +966,7 @@ static void load_world(const LumeGame *g) {
   if((g->scene==ROOF || g->scene==GARDEN) && g->turbine<LUME_TURBINE_BLADES &&
      (g->inventory & (1u<<BLADES)))
     strncat(name,"_bare",sizeof(name)-strlen(name)-1);
-  snprintf(path, sizeof(path), "romfs:/world_%s.rgb", name);
+  snprintf(path, sizeof(path), LUME_DATA_FILE("world_%s.rgb"), name);
   if (!read_file(path, world[0], LUME_FRAME_BYTES))
     memset(world[0], 0, LUME_FRAME_BYTES);
   lume_field_load(&world_field,path,320,240);
@@ -973,11 +974,11 @@ static void load_world(const LumeGame *g) {
   if(g->scene==GARDEN||g->scene==ROOF) {
     /* Variant plates can contain newly assembled objects. Compare against
        the clean photographic plate so those pixels survive native zoom. */
-    snprintf(path,sizeof path,"romfs:/world_clean_%s.rgb",lume_scene_assets[g->scene]);
+    snprintf(path,sizeof path,LUME_DATA_FILE("world_clean_%s.rgb"),lume_scene_assets[g->scene]);
     if(!read_file(path,detail_world_base,LUME_FRAME_BYTES))detail_world_mid=4;
   }
   for (int i = 2; i < 3; i++) {
-    snprintf(path, sizeof(path), "romfs:/stereo/%s_%c.rgb", name,
+    snprintf(path, sizeof(path), LUME_DATA_FILE("stereo/%s_%c.rgb"), name,
              i == 1 ? 'L' : 'R');
     if (!read_file(path, world[i], LUME_FRAME_BYTES))
       memcpy(world[i], world[0], LUME_FRAME_BYTES);
@@ -995,7 +996,7 @@ static void load_world(const LumeGame *g) {
       else memcpy(world[2],world[0],LUME_FRAME_BYTES);
     }
   }
-  snprintf(path, sizeof(path), "romfs:/props_%s_%d.rgba",
+  snprintf(path, sizeof(path), LUME_DATA_FILE("props_%s_%d.rgba"),
            lume_scene_assets[g->scene],
            (g->inventory & (1u << BLADES)) || g->turbine >= LUME_TURBINE_BLADES ? 0 : 1);
   props_ready = read_file(path, props, sizeof(props));
@@ -1015,7 +1016,7 @@ static void say(const char *label) {
   speech_ready = reading_replace;
   if (label&&!reading_replace) {
     char path[128];
-    snprintf(path, sizeof(path), "romfs:/speech_%s.rgba", label);
+    snprintf(path, sizeof(path), LUME_DATA_FILE("speech_%s.rgba"), label);
     speech_ready = read_file(path, speech, sizeof(speech));
     if(!speech_ready) {
       memset(speech,0,sizeof speech);speech_missing=true;speech_ready=true;
@@ -1045,7 +1046,7 @@ static void popup_say(const char *asset,const char *fallback) {
     !strcmp(asset,"map_correct")||!strcmp(asset,"power_fade");
   if(reading_replace&&!speech_visual_feedback)return;
   if(fallback)lume_log("DIALOGUE_LEGACY asset=%s label=%s",asset,fallback);
-  char path[128];snprintf(path,sizeof path,"romfs:/ui_%s.lan",asset);
+  char path[128];snprintf(path,sizeof path,LUME_DATA_FILE("ui_%s.lan"),asset);
   if(lume_animation_open(&speech_clip,path) && clip_has_art(&speech_clip)) {
     speech_started=osGetTime();speech_frame=0;speech_ready=true;
     snprintf(detail_paper_name,sizeof detail_paper_name,"ui_%s",asset);
@@ -1289,25 +1290,19 @@ static bool scene_needs_redraw(const LumeGame *g,
 }
 static void load_puzzle_stereo(int p) {
   char path[128];
-  snprintf(path,sizeof path,"romfs:/stereo/%s.depth",lume_asset_names[p]);
+  snprintf(path,sizeof path,LUME_DATA_FILE("stereo/%s.depth"),lume_asset_names[p]);
   puzzle_depth_ready=read_file(path,puzzle_depth,sizeof puzzle_depth) &&
     !memcmp(puzzle_depth,"PDP1",4) && puzzle_depth[4]==64 && puzzle_depth[5]==1 &&
     puzzle_depth[6]==240 && puzzle_depth[7]==0;
   if(!puzzle_depth_ready && (p==LUME_WIRES||p==LUME_KEYS||p==LUME_DOOR||p==LUME_CUPBOARD))
     lume_log("Puzzle depth missing; regenerate EXE assets: %s",path);
-  snprintf(path,sizeof path,"romfs:/stereo/%s_L.rgb",lume_asset_names[p]);
+  snprintf(path,sizeof path,LUME_DATA_FILE("stereo/%s_L.rgb"),lume_asset_names[p]);
   lume_field_load(&puzzle_field,path,320,240);
-  lume_field_load(&pattern_field,"romfs:/stereo/solar_pattern_L.rgb",160,160);
+  lume_field_load(&pattern_field,LUME_DATA_FILE("stereo/solar_pattern_L.rgb"),160,160);
   for (int i = 0; i < 2; i++) {
-    snprintf(path, sizeof(path), "sdmc:/3ds/lume_puzzles/stereo/%s_%c.rgb",
-             lume_asset_names[p], i ? 'R' : 'L');
-    if (!read_file(path, stereo[i], LUME_FRAME_BYTES)) {
-      snprintf(path, sizeof(path), "romfs:/stereo/%s_%c.rgb",
-               lume_asset_names[p], i ? 'R' : 'L');
-      if (!read_file(path, stereo[i], LUME_FRAME_BYTES))
-        memcpy(stereo[i], backgrounds[p], LUME_FRAME_BYTES);
-    }
-    snprintf(path, sizeof(path), "romfs:/stereo/solar_pattern_%c.rgb",
+    snprintf(path,sizeof path,LUME_DATA_FILE("stereo/%s_%c.rgb"),lume_asset_names[p],i?'R':'L');
+    if(!read_file(path,stereo[i],LUME_FRAME_BYTES))memcpy(stereo[i],backgrounds[p],LUME_FRAME_BYTES);
+    snprintf(path, sizeof(path), LUME_DATA_FILE("stereo/solar_pattern_%c.rgb"),
              i ? 'R' : 'L');
     if (!read_file(path, stereo_pattern[i], LUME_PATTERN_BYTES))
       memcpy(stereo_pattern[i], pattern, LUME_PATTERN_BYTES);
@@ -1569,7 +1564,7 @@ static void begin_puzzle_result(LumeGame *g,int mode,uint64_t now) {
   if(mode==LUME_SOLAR) {
     if(puzzle_flow.power_preview) {
       unsigned level=lume_game_power_level(g);
-      const char *path=level==2?"romfs:/ui_meter_half_full.lan":"romfs:/ui_meter_zero_half.lan";
+      const char *path=level==2?LUME_DATA_FILE("ui_meter_half_full.lan"):LUME_DATA_FILE("ui_meter_zero_half.lan");
       lume_animation_close(&meter_transition);
       if(!lume_animation_open(&meter_transition,path))lume_log("Meter animation missing: %s",path);
       popup_say("power_fade",level==2?"fullPower":"halfPower");
@@ -1580,7 +1575,7 @@ static void begin_puzzle_result(LumeGame *g,int mode,uint64_t now) {
   else if(mode==LUME_MAP)popup_say("map_correct",NULL);
   if(mode==LUME_WIRES)puzzle_flow.ticks=58;
   if(mode!=LUME_SOLAR && mode!=LUME_DOOR && mode!=LUME_CUPBOARD)
-    if(!lume_animation_open(&result_timer,"romfs:/ui_result_timer.lan"))
+    if(!lume_animation_open(&result_timer,LUME_DATA_FILE("ui_result_timer.lan")))
       lume_log("Result timer overlay missing; retain authored duration");
   // The source timer can contain only invisible input covers; do not retain
   // its decode buffer when timing/input state already represents that layer.
@@ -1904,10 +1899,11 @@ static bool native_menu_controls(LumeGame *g,u32 *down,u32 *held,bool stable,boo
  *down=0;*held=0;return true;
 }
 int main(void) {
-  lume_log_io_init("sdmc:/3ds/lume_puzzles/runtime.log");
-  lume_runtime_set_flags_directory("sdmc:/3ds/lume_puzzles");
-  lume_runtime_set_asset_directory("romfs:");
-  lume_ui_set_user_directory("sdmc:/3ds/lume_puzzles");
+  lume_storage_init();
+  lume_log_io_init(LUME_DATA_FILE("runtime.log"));
+  lume_runtime_set_flags_directory(LUME_DATA_DIRECTORY);
+  lume_runtime_set_asset_directory(LUME_DATA_DIRECTORY);
+  lume_ui_set_user_directory(LUME_DATA_DIRECTORY);
   lume_ui_set_fallback(lume_font_alpha,lume_draw_text);
   if (!vfp_set_fz_dn())
     return 1;
@@ -1915,18 +1911,16 @@ int main(void) {
   avatar_scales_init();
   gfxInitDefault();
   gfxSet3D(true);
-  bool romfs_ready = R_SUCCEEDED(romfsInit());
-  if (romfs_ready) {
+  bool content_ready = lume_storage_content_ready();
+  if (content_ready) {
     lume_actor_init();
-    map_ink_ready = read_file("romfs:/map_ink.bin", map_ink, sizeof(map_ink)) &&
+    map_ink_ready = read_file(LUME_DATA_FILE("map_ink.bin"), map_ink, sizeof(map_ink)) &&
                     !memcmp(map_ink, "INK2", 4);
   }
-  mkdir("sdmc:/3ds", 0777);
-  mkdir("sdmc:/3ds/lume_puzzles", 0777);
   if(!lume_persist_start())lume_log("SAVE worker unavailable");
   /* Old hardware keeps its normal clock. New hardware can use the official
      speedup; an empty compat_cpu.flag keeps a comparable baseline if needed. */
-  FILE *compat_cpu=fopen("sdmc:/3ds/lume_puzzles/compat_cpu.flag","rb");
+  FILE *compat_cpu=fopen(LUME_DATA_FILE("compat_cpu.flag"),"rb");
   bool speedup_requested=compat_cpu==NULL,new_hardware=false;
   if(compat_cpu)fclose(compat_cpu);
   osSetSpeedupEnable(speedup_requested);
@@ -1945,9 +1939,9 @@ int main(void) {
            (unsigned long)model_result,speedup_requested,build_optimized,build_cache_worker);
   lume_log(
       "Lume startup; authored scene motion and original presentation; video_fix=gpu_video_stage_v6_tiles");
-  if (!romfs_ready) {
+  if (!content_ready) {
     consoleInit(GFX_BOTTOM, NULL);
-    printf("Lume: RomFS could not be opened.\n");
+    printf("Lume: game content is missing.\nRun SETUP.cmd on your PC and copy\nthe 3ds folder to your SD card.\nExpected: /3ds/lume/\n");
     while (aptMainLoop()) {
       hidScanInput();
       if (hidKeysDown() & KEY_START)
@@ -1960,18 +1954,18 @@ int main(void) {
   }
   char path[128];
   for (int i = 0; i < 7; i++) {
-    snprintf(path, sizeof(path), "romfs:/%s.rgb", lume_asset_names[i]);
+    snprintf(path, sizeof(path), LUME_DATA_FILE("%s.rgb"), lume_asset_names[i]);
     read_file(path, backgrounds[i], LUME_FRAME_BYTES);
   }
-  solar_completed_ready=read_file("romfs:/solar_completed.rgb",solar_completed,sizeof solar_completed);
-  read_file("romfs:/solar_pattern.rgb", pattern, sizeof(pattern));
-  solar_tiles_ready = read_file("romfs:/solar_tiles.bin", solar_tiles,
+  solar_completed_ready=read_file(LUME_DATA_FILE("solar_completed.rgb"),solar_completed,sizeof solar_completed);
+  read_file(LUME_DATA_FILE("solar_pattern.rgb"), pattern, sizeof(pattern));
+  solar_tiles_ready = read_file(LUME_DATA_FILE("solar_tiles.bin"), solar_tiles,
                                  sizeof(solar_tiles)) &&
                       !memcmp(solar_tiles, "SLR1", 4);
   lume_log("Original solar atlas: %s", solar_tiles_ready ? "ready" : "missing");
-  read_file("romfs:/digits_door.alpha", digits[0], sizeof(digits[0]));
-  read_file("romfs:/digits_cupboard.alpha", digits[1], sizeof(digits[1]));
-  avatar_ready = read_file("romfs:/avatar.rgba", avatar, sizeof(avatar));
+  read_file(LUME_DATA_FILE("digits_door.alpha"), digits[0], sizeof(digits[0]));
+  read_file(LUME_DATA_FILE("digits_cupboard.alpha"), digits[1], sizeof(digits[1]));
+  avatar_ready = read_file(LUME_DATA_FILE("avatar.rgba"), avatar, sizeof(avatar));
   if(!lume_close_load())lume_log("Close-control UI unavailable");
   lume_locale_init();
   if (!lume_audio_init())
@@ -1981,7 +1975,7 @@ int main(void) {
     lume_log("Some prop textures could not be loaded");
   restart_title:;
   LumeGame game, saved_game;
-  bool has_save = lume_game_load(&saved_game, "sdmc:/3ds/lume_puzzles/save.lum");
+  bool has_save = lume_game_load(&saved_game, LUME_DATA_FILE("save.lum"));
   int choice = show_title(has_save);
   if (choice == TITLE_QUIT) {
     lume_jobs_close(clip_jobs);clip_jobs=NULL;
@@ -1989,7 +1983,7 @@ int main(void) {
     lume_props_quit();
     lume_audio_quit();lume_read_release(&reading);
     lume_persist_stop();lume_log_io_drain();
-    romfsExit();
+
     lume_gpu_video_close();gfxExit();
     return 0;
   }
@@ -2217,7 +2211,7 @@ int main(void) {
             say(NULL);
           else if (game.clue >= 0) {
             close_clue(&game);
-            
+
           } else if (game.scene == PANTRY || game.scene == POWER)
             dispatch(&game, GO_HALL);
         }
@@ -2274,7 +2268,7 @@ int main(void) {
         if (ending_hold) {
           if (!credits_loaded)
             for (int i = 0; i < 3; i += 2) {
-              snprintf(path, sizeof(path), "romfs:/ending_%c.rgb",
+              snprintf(path, sizeof(path), LUME_DATA_FILE("ending_%c.rgb"),
                        i == 2 ? 'R' : 'L');
               if (!read_file(path, rendered[i], LUME_FRAME_BYTES)) {
                 open_movie(3);
@@ -2286,7 +2280,7 @@ int main(void) {
               }
             }
           if(!credits_loaded) {
-            lume_field_load(&ending_field,"romfs:/ending_L.rgb",320,240);
+            lume_field_load(&ending_field,LUME_DATA_FILE("ending_L.rgb"),320,240);
             ending_field.image=malloc(LUME_FRAME_BYTES);
             if(ending_field.image)memcpy(ending_field.image,rendered[2],LUME_FRAME_BYTES);
           }
@@ -2298,7 +2292,7 @@ int main(void) {
           if (loaded_mode != mode) {
             load_puzzle_stereo(mode);
             lume_animation_close(&lock_progress);
-            if(mode==LUME_CUPBOARD && !lume_animation_open(&lock_progress,"romfs:/ui_cupboard_progress.lan"))
+            if(mode==LUME_CUPBOARD && !lume_animation_open(&lock_progress,LUME_DATA_FILE("ui_cupboard_progress.lan")))
               lume_log("Cupboard progress overlay missing");
 
             loaded_mode = mode;
@@ -2425,7 +2419,7 @@ int main(void) {
   lume_menu_art_close(&native_menu_art);
   lume_audio_quit();lume_read_release(&reading);
   lume_persist_stop();lume_log_io_drain();
-  romfsExit();
+
   lume_gpu_video_close();gfxExit();
   return 0;
 }

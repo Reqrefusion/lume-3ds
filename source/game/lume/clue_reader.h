@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_CLUE_READER_H
 #define LUME_CLUE_READER_H
 #include "clue_views.h"
@@ -20,7 +21,7 @@ static inline bool lume_reader_load(LumeClueReader *r,const LumeGame *g) {
   if(r->key==key)return r->valid;
   r->valid=false; r->key=key;
   char variant[32],path[128];const char *name=lume_clue_asset(g,variant,sizeof variant);
-  snprintf(path,sizeof path,"romfs:/read_%s.rgb",name);
+  snprintf(path,sizeof path,LUME_DATA_FILE("read_%s.rgb"),name);
   FILE *f=fopen(path,"rb");if(!f)return false;
   if(!r->rgb)r->rgb=malloc(LUME_READ_BYTES);
   if(r->rgb)r->valid=lume_pixel_image(f,r->rgb,LUME_READ_WIDTH,LUME_READ_HEIGHT);

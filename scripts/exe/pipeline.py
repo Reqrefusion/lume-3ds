@@ -116,14 +116,14 @@ def main(argv=None):
  p=argparse.ArgumentParser(description=__doc__)
  p.add_argument('--root',default=str(ROOT));p.add_argument('--stage',choices=['extract','audio','ui','pages','video','base','all','audit'],default='base')
  for n in ['exe','java','ffdec','ffmpeg','model']:p.add_argument('--'+n)
- p.add_argument('--force',action='store_true');a=p.parse_args(argv);root=Path(a.root).resolve();cache=root/'tools/exe-production'
+ p.add_argument('--prepared-maps');p.add_argument('--force',action='store_true');a=p.parse_args(argv);root=Path(a.root).resolve();cache=root/'tools/exe-production'
  (root/'logs').mkdir(parents=True,exist_ok=True);tasks=Tasks(cache/'state',a.force)
  if a.stage=='audit':
   report=audit(root,cache);print(json.dumps(report,ensure_ascii=False,indent=2));return 0 if report['complete_game_assets'] else 2
  swf=cv.source_swf(root,root/'tools/detail',a)
  base_inputs={'swf':cv.SWF_SHA,'recover':sha(HERE/'recover.py'),'extract_function':hashlib.sha256(inspect.getsource(recover_source).encode()).hexdigest()}
  recovered=tasks.run('extract',base_inputs,cache/'recovered',lambda dest:recover_source(swf,dest))
- if a.stage in ['all','video']:
+ if a.stage in ['all','video'] and not a.prepared_maps:
   sys.path.insert(0,str(HERE.parent/'iw3_profile'))
   from iw3_bridge import active as iw3_active
   if a.model:raise ValueError('The iw3 profile does not accept --model ONNX; use scripts/iw3_profile/profile.json')
@@ -143,13 +143,13 @@ def main(argv=None):
     # RomFS is already at the canonical staging location.
     for name in ['tools','source','resources','build','backups','languages']:shutil.rmtree(dest/name,ignore_errors=True)
     for n in ['assets.sha256.json','source-manifest.json']:(dest/n).unlink(missing_ok=True)
-   tasks.run('ui',{**inputs,'languages':{p.name:sha(p) for p in (root/'languages').glob('*.json')},'exporters':{p.name:sha(p) for p in (HERE.parent/'java').glob('*.class')},'generate':sha(HERE.parent/'generate.py')},cache/'ui',ui)
+   tasks.run('ui',{**inputs,'languages':{p.name:sha(p) for p in (root/'languages').glob('*') if p.is_file()},'language_checker':sha(HERE.parent/'check_languages.py'),'exporters':{p.name:sha(p) for p in (HERE.parent/'java').glob('*.class')},'generate':sha(HERE.parent/'generate.py')},cache/'ui',ui)
   if a.stage in ['pages','base','all']:
    classes=['NativePages','ExportPuzzleArt','ExportPianoEffects','ExportLockProgress','ExportPuzzleFeedback']
    tasks.run('pages',{**inputs,'classes':{p.name:sha(p) for p in (HERE.parent/'java').glob('*.class') if p.stem.split('$')[0] in classes},'producer':hashlib.sha256(inspect.getsource(java_export).encode()).hexdigest()},cache/'pages',lambda dest:java_export(dest,swf,java,jar,classes))
   if a.stage=='all':
    from full import produce as complete
-   report=complete(tasks,root,recovered,swf,java,jar,ffmpeg,a.model)
+   report=complete(tasks,root,recovered,swf,java,jar,ffmpeg,a.model,prepared=a.prepared_maps)
    return 0
   if a.stage=='video':
    from video import produce,MODEL_URL,MODEL_SHA

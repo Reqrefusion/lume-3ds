@@ -138,15 +138,17 @@ def depth_packet(raw,previous):
  return mode,body
 
 
-def encode(src,stereo_path,dest,ffmpeg,cfg,cuts):
+def encode(src,stereo_path,dest,ffmpeg,cfg,cuts,depth_source=None):
  from video import read_exact
- from stereo_resample import StereoSource
+ if depth_source is None:
+  from stereo_resample import StereoSource
  dest=Path(dest);work=Path(tempfile.mkdtemp(prefix='mpeg-work-',dir=dest.parent));processes=[];logs=[]
- stereo=StereoSource(stereo_path);offsets=[];records=[];mode_counts={};fallback_frames=0;colour_bytes=0;depth_bytes=0
+ stereo=depth_source if depth_source is not None else StereoSource(stereo_path);offsets=[];records=[];mode_counts={};fallback_frames=0;colour_bytes=0;depth_bytes=0
  try:
   stream=work/'colour.m1v';force='expr:'+ '+'.join('eq(n,%d)'%n for n in sorted(set(cuts)|{0}))
   subprocess.run([str(ffmpeg),'-v','error','-nostdin','-y','-i',str(src),'-vf',FILTER+',format=yuv420p','-fps_mode','passthrough',*colour_args(cfg,cfg['quantizer']),'-force_key_frames',force,str(stream)],check=True)
   groups,total=split_groups(stream.read_bytes())
+  if depth_source is not None and total!=stereo.n:raise ValueError('Original video/prepared map frame count mismatch')
   starts={g['first'] for g in groups}
   if any(c<total and c not in starts for c in cuts):raise ValueError('An authored cut did not receive an independent I picture')
   if any(g['count']>cfg['gop_frames'] for g in groups):raise ValueError('Unbounded MPEG seek group')
@@ -186,7 +188,7 @@ def encode(src,stereo_path,dest,ffmpeg,cfg,cuts):
     previous=None
     for local,original in enumerate(originals):
      frame=first+local;pos=frame*stereo.fps/FPS;low=int(pos);fraction=pos-low
-     flow=stereo.flow(low)*(1-fraction)+stereo.flow(low+1)*fraction
+     flow=stereo.flow(low) if fraction==0 else stereo.flow(low)*(1-fraction)+stereo.flow(low+1)*fraction
      raw=np.rint(flow*4).clip(-128,127).astype(np.int8).tobytes()
      if lossless:previous=None
      mode,depth=depth_packet(raw,previous);previous=raw;mode_counts[str(mode)]=mode_counts.get(str(mode),0)+1

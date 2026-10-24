@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_CLOSE_CONTROLS_H
 #define LUME_CLOSE_CONTROLS_H
 #include "game.h"
@@ -17,7 +18,7 @@ static unsigned lume_close_x,lume_close_y,lume_close_w,lume_close_h;
 static bool lume_close_ready;
 static inline bool lume_close_load(void){
  lume_close_ready=false;
- FILE *f=fopen("romfs:/ui_close.bin","rb");if(!f)return false;
+ FILE *f=fopen(LUME_DATA_FILE("ui_close.bin"),"rb");if(!f)return false;
  uint8_t h[12]={0};bool ok=fread(h,1,12,f)==12&&!memcmp(h,"XUI1",4);
  unsigned x=h[4]|(unsigned)h[5]<<8,y=h[6]|(unsigned)h[7]<<8,w=h[8]|(unsigned)h[9]<<8,ht=h[10]|(unsigned)h[11]<<8;
  ok=ok&&w&&w<=32&&ht&&ht<=32&&x+w<=29&&y>=13&&y+ht<=44;

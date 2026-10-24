@@ -40,6 +40,8 @@ public class SettingsAssets {
      var path=new java.awt.geom.Path2D.Double();path.moveTo(center-2,0.7);path.quadTo(center,3.3,center+2,0.7);g.draw(path);break;}
     case '\u0302':{
      var path=new java.awt.geom.Path2D.Double();double c=Math.max(2,center);path.moveTo(c-2,2);path.lineTo(c,0.4);path.lineTo(c+2,2);g.draw(path);break;}
+    case '\u0303':{
+     var path=new java.awt.geom.Path2D.Double();path.moveTo(middle-3,2);path.curveTo(middle-1,-1,middle+1,4,middle+3,1);g.draw(path);break;}
     case '\u0301':g.drawLine(middle-1,2,middle+1,0);break;
     case '\u0300':g.drawLine(middle-1,0,middle+1,2);break;
     case '\u0327':{

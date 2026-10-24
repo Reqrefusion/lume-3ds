@@ -24,7 +24,20 @@ previews/
 *.part
 release/dist/
 release/private/
-resources/icon.png
 source/game/lume/original_font.h
 docs/actionscript/
 file-inventory.sha256.json
+
+# Track the reviewed geometry under maps/; ignore other generated maps.
+*.sdf
+*.depth
+*.tsf
+*.ldp
+
+!/maps/**/*.sdf
+!/maps/**/*.depth
+!/maps/**/*.tsf
+!/maps/**/*.ldp
+
+# The fixed, media-free application is distributed with the sources.
+!/player/lume.3dsx

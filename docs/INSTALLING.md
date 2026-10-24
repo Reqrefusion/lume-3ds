@@ -1,39 +1,47 @@
-# Installation
+# Player setup
 
-## Nintendo 3DS (recommended)
+## Requirements
 
-Extract Lume3DS-SDCard.zip to the SD card root. The layout is:
+- 64-bit Windows for local media conversion.
+- Your own supported original Lume.exe (21,695,462 bytes).
+- An Old or New Nintendo 3DS with Homebrew Launcher.
+
+Supported EXE SHA256: `ba7a947b9a501a1723508e388764113e27b85db7bc14f52b613473373cad0089`.
+
+## Steps
+
+1. Extract Lume3DS-Player-Setup.zip into a writable folder.
+2. Run SETUP.cmd. It checks `C:/Program Files (x86)/Steam/steamapps/common/Lume/Lume.exe` and the setup folder, then offers a file picker if needed.
+3. Wait for conversion of your original media. Ready 3D maps are reused. No depth model, stereo matching, devkitARM or Citro installation is required for players.
+4. Copy the entire `out/3ds/` folder to `SD:/3ds/`.
+5. Launch Lume from Homebrew Launcher.
 
 ```text
-SD:/
-  3ds/
-    lume-setup/
-      lume-setup.3dsx
-      lume-setup.smdh
-      Lume3DS.l3dp
-      Lume.exe             <-- add your own original file
-    lume/
-      lume.3dsx            <-- created by setup
+SD:/3ds/lume.3dsx          Fixed application; distributed precompiled
+SD:/3ds/lume/             Locally converted images, videos, audio and languages
+SD:/3ds/lume/save.lum     Save file, created by the game
+SD:/3ds/lume/settings.cfg Language, sound and stereo settings
+SD:/3ds/lume/runtime.log  Runtime diagnostics
 ```
 
-Launch Lume Setup in Homebrew Launcher, then press A. Setup verifies the original file and package before opening the ready assets. Press B to cancel during processing. Keep at least 400 MiB free before starting and avoid interrupting SD writes. The same setup binary targets Old and New 3DS; New 3DS can use its faster CPU. Actual setup timing has not been measured on hardware.
+The output is `out/3ds/lume.3dsx` plus `out/3ds/lume/`. Setup copies the same application unchanged: it never builds or appends a filesystem to the 3DSX. You can also download Lume3DS-App.zip separately, but you still need to prepare your own original content.
 
-After setup completes, return to Homebrew Launcher and start Lume. You may remove the lume-setup folder afterwards. Keep existing game save data: the current game uses `/3ds/lume_puzzles/` for runtime data, retained for compatibility.
+The first conversion can take several minutes. Successful stages are verified and cached. Existing compatible conversion tools are reused; missing tools are downloaded with integrity checks. Detailed diagnostics go to `logs/player-setup.log`. The original EXE is never executed or uploaded. Do not redistribute converted original media.
 
-Setup refuses to replace an existing `3ds/lume/lume.3dsx`. To reinstall, back up that file and remove only that executable first. Saves are not touched. After an interrupted setup, remove only `3ds/lume-setup/ready.zip.part` and `3ds/lume/lume.3dsx.part` if present, then retry. Never delete the whole game data folder for setup recovery.
+## Saves and updates
 
-## Optional Windows installation
+All active game data uses `/3ds/lume/`. No data is read or imported from the former storage directory.
 
-Extract Lume3DS-Windows.zip and run Install.cmd. Select your own original Lume.exe. Copy the generated `sdmc/3ds` folder to the SD card root. The generated `sdmc/developer` folder is optional private development data and does not need to be copied to the console.
+Repeat setup safely into the same PC output folder. Known local save, settings, log and flag files are preserved; previous content is backed up in `out/.setup-backups/`. On the SD card, copy updated content without deleting your existing saves/settings. Setup does not create initial save files.
 
-## Required original version
+## Languages
 
-Windows Lume.exe, exactly 21,695,462 bytes.
+English, Turkish, German and Spanish include menus, dialogue, puzzle hints, letters, books and ending text. For an existing local preparation, run `UPDATE_LANGUAGES.cmd` to regenerate language/UI assets without converting videos or animations. Select the language in the game settings. The selection is saved in `/3ds/lume/settings.cfg`.
 
-SHA256: `ba7a947b9a501a1723508e388764113e27b85db7bc14f52b613473373cad0089`.
+## Custom paths
 
-Other editions are not currently accepted. The EXE is read locally, never executed or uploaded. No model, compiler, FFmpeg or 3D generation is needed to play.
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File release/setup_player.ps1 -OriginalExe "D:/Games/Lume/Lume.exe" -OutputDirectory "D:/Lume-Output"
+```
 
-## Verification status
-
-The 3DS setup binary compiles with devkitARM. Its common decoder opens the existing package and reproduces the current game exactly in PC tests. Physical console installation testing remains outstanding.
+Conversion runs on the PC; the console loads external prepared content. Direct EXE conversion on the console is not implemented. Prepared disparity is reused exactly; reconstructed right-eye occlusion pixels can differ from earlier neural-rendered reference images. PC verification does not replace physical Old/New 3DS play testing.

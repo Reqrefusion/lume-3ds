@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_MEDIA_TOP
 #define LUME_MEDIA_TOP 13
 #define LUME_MEDIA_BOTTOM 226
@@ -22,7 +23,7 @@ static bool world_ready,show_turbine=true,show_solar=true;
 void lume_props_set_visibility(bool turbine,bool solar){show_turbine=turbine;show_solar=solar;}
 static bool image_open(Prop *p, const char *name) {
   char path[96];
-  snprintf(path, sizeof(path), "romfs:/prop_%s.bin", name);
+  snprintf(path, sizeof(path), LUME_DATA_FILE("prop_%s.bin"), name);
   FILE *f = fopen(path, "rb");
   if (!f)
     return false;
@@ -58,7 +59,7 @@ bool lume_props_init(void) {
     if (!image_open(&images[i], name))
       ok = false;
   }
-  FILE *f=fopen("romfs:/world_props.trf","rb");unsigned h[3];
+  FILE *f=fopen(LUME_DATA_FILE("world_props.trf"),"rb");unsigned h[3];
   world_ready=f&&fread(h,4,3,f)==3&&!memcmp(h,"TRF1",4)&&h[1]==2&&h[2]==3&&
    fread(world_transforms,4,36,f)==36&&fgetc(f)==EOF&&!ferror(f);
   if(f)fclose(f);
@@ -82,7 +83,7 @@ bool lume_props_open(const char *name, unsigned frames) {
   if (frames > 5000)
     return false;
   char path[128];
-  snprintf(path, sizeof(path), "romfs:/%s.trf", name);
+  snprintf(path, sizeof(path), LUME_DATA_FILE("%s.trf"), name);
   FILE *f = fopen(path, "rb");
   if (!f)
     return false;

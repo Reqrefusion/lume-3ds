@@ -97,7 +97,9 @@ static inline void lume_locale_init(void){
   }fclose(f);
  }
  if(!lume_locale.count){strcpy(lume_locale.languages[0].id,"en");strcpy(lume_locale.languages[0].name,"English");lume_locale.count=1;}
- lume_locale.selected=0;lume_locale.music=lume_locale.effects=lume_locale.stereo_percent=100;
+ lume_locale.selected=0;
+ for(unsigned i=0;i<lume_locale.count;i++)if(!strcmp(lume_locale.languages[i].id,"en")){lume_locale.selected=i;break;}
+ lume_locale.music=lume_locale.effects=lume_locale.stereo_percent=100;
  char setting[300],backup[300];if(!lume_ui_user_path(setting,sizeof setting,"settings.cfg"))setting[0]=0;
  if(!lume_ui_user_path(backup,sizeof backup,"settings.bak"))backup[0]=0;
  const char *paths[]={setting,backup};

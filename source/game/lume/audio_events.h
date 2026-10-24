@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_AUDIO_EVENTS_H
 #define LUME_AUDIO_EVENTS_H
 /* SFE1 is an offline-prepared bank. Keep effects resident so an authored
@@ -12,7 +13,7 @@ static void free_authored_events(void) {
  free(authored_samples);authored_samples=NULL;authored_count=0;
 }
 static void load_authored_events(void) {
- FILE *index=fopen("romfs:/sfx_events.bin","rb");
+ FILE *index=fopen(LUME_DATA_FILE("sfx_events.bin"),"rb");
  if(!index)return; /* Old SFX2 media remains playable without the new bank. */
  uint8_t head[8],row[8];unsigned bytes=0;
  if(fread(head,1,8,index)!=8||memcmp(head,"SFE1",4))goto fail;
@@ -27,7 +28,7 @@ static void load_authored_events(void) {
   for(unsigned j=0;j<i;j++)if(authored_samples[j].id==id)goto fail;
   unsigned size=frames*channels*2;
   if(size>16*1024*1024-bytes)goto fail;
-  char path[64];snprintf(path,sizeof path,"romfs:/sfx_%04u.pcm",id);
+  char path[64];snprintf(path,sizeof path,LUME_DATA_FILE("sfx_%04u.pcm"),id);
   FILE *f=fopen(path,"rb");if(!f)goto fail;
   void *data=linearAlloc(size);
   bool ok=data&&fread(data,1,size,f)==size&&fgetc(f)==EOF;fclose(f);

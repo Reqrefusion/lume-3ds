@@ -1,22 +1,23 @@
 # Publishing
 
-Use only the clean source tree for the GitHub repository. Do not initialize Git in a production workspace containing the original EXE, private game data or historical work.
+Publish this repository as the complete development project: game source, reusable engine, production/conversion tools, build scripts, tests and English documentation all belong in GitHub.
 
-The source tree includes adaptation/engine code, production tools, setup tools and third-party notices. Original EXE/SWF files, RomFS media, font glyph data, model weights, SDK binaries, caches, logs and backups are excluded. Public language files contain interface translations with an empty game-dialogue section.
+The **prepared player content** is a separate release asset containing only existing 3D maps. This does not restrict which original development tools can be published.
 
-With a verified current game, original EXE and built setup binary, run:
+## Source package
 
-    python release/build_release.py --dest NEW_OUTPUT_DIRECTORY
+    python release/build_release.py --dest NEW_DIRECTORY --source-only
 
-The output contains:
+This exports a clean source tree and Lume3DS-Source.zip, including the committed maps/ and fixed media-free player/lume.3dsx, without requiring local game assets. Third-party notices are retained. Do not commit your original EXE/SWF, rendered artwork, video/audio, font glyph data, private ActionScript snapshots, model weights or SDK binaries. The Build 3DSX workflow prepares reviewable downloads as Actions artifacts; see SYSTEM_SETUP.md.
 
-- Lume3DS-Source.zip: clean source tree for GitHub.
-- Lume3DS-SDCard.zip: copy-to-SD homebrew setup and owner-unlocked ready package.
-- Lume3DS-Windows.zip: optional Windows setup for the same ready game.
-- SHA256SUMS.txt and RELEASE_CHECKS.json.
+## Source and prepared maps
 
-Attach the ready ZIPs and checksums to a GitHub Release. The source ZIP can also be attached for convenience. Do not upload an unlocked game file or private developer data to the source repository. Packaging does not publish or contact GitHub.
+Using the prepared geometry already included in this repository:
 
-GPL-3.0-only covers the original adaptation and tools, not original Lume content. Preserve COPYRIGHT.md and all third-party notices. The supported original-file check is a local compatibility gate, not a purchase-validation service. It does not grant additional redistribution rights.
+    python release/build_release.py --dest NEW_DIRECTORY
 
-Before claiming hardware support has been tested, verify installation, cancellation, recovery and launching on both Old and New 3DS.
+Output includes Lume3DS-Source.zip, Lume3DS-Player-Setup.zip , Lume3DS-Maps-Only.zip and Lume3DS-App.zip. The player setup ZIP includes the same complete source for license compliance and is entered through SETUP.cmd. The geometry archive contains existing disparity/depth data; it does not contain original media or a playable game. No original EXE, local RomFS or neural generation is needed for release packaging. To refresh maps after private development, use `release/export_maps.py` with your local RomFS, then review the geometry and update maps/ plus its manifest.
+
+The prepared maps contain geometry only. The separate App ZIP contains the fixed, media-free `3ds/lume.3dsx`, which loads owner-converted content from `SD:/3ds/lume/`. Never bundle original media or a complete playable game. Source/player ZIPs include this same fixed app and corresponding source.
+
+The source/tool license is GPL-3.0-only; original Lume content is outside it. Packaging does not commit, push or upload anything automatically.

@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_HOVER_HINTS_H
 #define LUME_HOVER_HINTS_H
 #include "../../engine/render/colour.h"
@@ -15,7 +16,7 @@ static void lume_hover_load(void) {
  static bool attempted;
  if(attempted)return;
  attempted=true;
- FILE *f=fopen("romfs:/hover.bin","rb");if(!f)return;
+ FILE *f=fopen(LUME_DATA_FILE("hover.bin"),"rb");if(!f)return;
  uint32_t h[2];bool ok=fread(h,4,2,f)==2&&!memcmp(h,"LHV1",4)&&h[1]==2;
  for(unsigned i=0;i<2&&ok;i++) {
   LumeHover *p=&lume_hover[i];uint32_t b[5];

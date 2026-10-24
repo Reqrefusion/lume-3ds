@@ -9,7 +9,9 @@ HERE=Path(__file__).resolve().parent
 
 def run(args):
  root=Path(args.root).resolve()
- inputs=[HERE/'generate.py',HERE/'toolchain.py',*sorted((HERE/'java').glob('*.class')),*sorted((root/'languages').glob('*.json'))]
+ from check_languages import check
+ check(root/'languages')
+ inputs=[HERE/'generate.py',HERE/'toolchain.py',*sorted((HERE/'java').glob('*.class')),*sorted(p for p in (root/'languages').glob('*') if p.is_file()),HERE/'check_languages.py']
  signature=hashlib.sha256((''.join(sha(p) for p in inputs)+cv.SWF_SHA).encode()).hexdigest()
  state=root/'tools/ui-state.json'
  if state.is_file() and not getattr(args,'force',False):
@@ -40,6 +42,8 @@ def run(args):
  print('Generating original text, font, paper, inventory, buttons and language packs. Video is not converted.',flush=True)
  cv.run_logged([str(java),'-Xmx768m','-Djava.awt.headless=true','-cp',cp,'SettingsAssets',str(swf),str(chars)],work)
  raw=work/'project/romfs';original={p.stem:p.read_text(encoding='utf-8').rstrip('\n') for p in (raw/'reading').glob('*.txt')}
+ catalog=set((root/'languages/text-keys.txt').read_text(encoding='utf-8').splitlines())
+ if set(original)!=catalog:raise ValueError('Original text catalogue changed; update every full translation before generating assets.')
  for pack in packs:
   unknown=set(pack['text'])-set(original)
   if unknown:raise ValueError('Original text key not found: '+','.join(sorted(unknown)))

@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_PLATE_CACHE_H
 #define LUME_PLATE_CACHE_H
 #include <stdint.h>
@@ -42,7 +43,7 @@ static inline bool lume_plate_cache_frame(LumePlateCache *c,unsigned id,bool ste
  char path[80];
  if(!hit) {
   c->slots[slot].valid=false;c->slots[slot].right=false;
-  snprintf(path,sizeof path,"romfs:/cinema_bg%u.rgb",id);c->reads++;
+  snprintf(path,sizeof path,LUME_DATA_FILE("cinema_bg%u.rgb"),id);c->reads++;
   if(!read(path,pixels?pixels:left,LUME_PLATE_BYTES))return false;
   lume_field_load(&c->slots[slot].field,path,320,240);
   if(pixels){c->slots[slot].id=id;c->slots[slot].valid=true;}
@@ -51,7 +52,7 @@ static inline bool lume_plate_cache_frame(LumePlateCache *c,unsigned id,bool ste
  if(stereo) {
   if(!hit||!c->slots[slot].right) {
    uint8_t *out=pixels?pixels+LUME_PLATE_BYTES:right;
-   snprintf(path,sizeof path,"romfs:/cinema_bg%u_R.rgb",id);c->reads++;
+   snprintf(path,sizeof path,LUME_DATA_FILE("cinema_bg%u_R.rgb"),id);c->reads++;
    if(!read(path,out,LUME_PLATE_BYTES))memcpy(out,left,LUME_PLATE_BYTES);
    if(pixels)c->slots[slot].right=true;
   }

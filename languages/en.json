@@ -48,5 +48,6 @@
     "stereo_high": "High",
     "stereo_very_high": "Very high"
   },
-  "text": {}
+  "text": {},
+  "translation_scope": "full"
 }

@@ -1,3 +1,4 @@
+#include "storage.h"
 #ifndef LUME_MEDIA_TOP
 #define LUME_MEDIA_TOP 13
 #define LUME_MEDIA_BOTTOM 226
@@ -50,7 +51,7 @@ void lume_actor_restore(int i) {
     if (i < 0 || i >= 6) return;
     poses[i].ready = false;
     char path[80];
-    snprintf(path, sizeof(path), "romfs:/actor_idle_%d.bin", i);
+    snprintf(path, sizeof(path), LUME_DATA_FILE("actor_idle_%d.bin"), i);
     FILE *f = fopen(path, "rb");
     if (!f)
       return;
