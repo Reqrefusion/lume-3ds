@@ -1,0 +1,9 @@
+{
+  "profile": "balanced",
+  "gop_frames": 12,
+  "quantizer": 3,
+  "retry_quantizer": 1,
+  "min_luma_ssim": 0.95,
+  "max_rgb_mae": 4.5,
+  "preserve_failed_groups_losslessly": false
+}

@@ -1,0 +1,43 @@
+tools/
+out/
+logs/
+backups/
+romfs/
+build/obj/
+build/publish/
+build/objects.json
+build/local-state.json
+assets.sha256.json
+source-manifest.json
+Lume.exe
+Lume.swf
+__pycache__/
+*.pyc
+
+# Public distribution boundaries
+work/
+previews/
+*.class
+*.3dsx
+*.l3dp
+*.partial
+*.part
+release/dist/
+release/private/
+source/game/lume/original_font.h
+docs/actionscript/
+file-inventory.sha256.json
+
+# Track the reviewed geometry under maps/; ignore other generated maps.
+*.sdf
+*.depth
+*.tsf
+*.ldp
+
+!/maps/**/*.sdf
+!/maps/**/*.depth
+!/maps/**/*.tsf
+!/maps/**/*.ldp
+
+# The fixed, media-free application is distributed with the sources.
+!/player/lume.3dsx

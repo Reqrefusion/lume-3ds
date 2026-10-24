@@ -1,0 +1,14 @@
+{
+  "url": "https://download.microsoft.com/download/4/7/c/47c6134b-d61f-4024-83bd-b9c9ea951c25/Microsoft.VCLibs.x64.14.00.Desktop.appx",
+  "sha256": "b56a9101f706f9d95f815f5b7fa6efbac972e86573d378b96a07cff5540c5961",
+  "files": {
+    "concrt140.dll": "6926ddade5b6e67f1f8b2923d3cea8c2c49a0242144c02e05cc5dd0b42468b7d",
+    "msvcp140.dll": "6fdc2c6fc1362c317ed65ae331dda329d4d03826feb8d79d635eaf8ba49764bc",
+    "msvcp140_1.dll": "6284349a2262b2329aa75aa8559980f9b2775dc5ec3a9e9ecdf55648ac7f625a",
+    "msvcp140_2.dll": "340e8e397ba46769d61384329ec611b7d96e1efb8de2f2d04941e3802a7db784",
+    "msvcp140_atomic_wait.dll": "cfb61860c4949dee0d295b0156da77278dc676cc4dd820f71fd663c6390db070",
+    "msvcp140_codecvt_ids.dll": "aa7f11d6b613705c561c6e2ec9cdbe61c339bb2380268da337593c37e1f39d89",
+    "vccorlib140.dll": "30951eea089a38b405dd0e41a6ad47564911ca9418549f9a609129d6b4b0a497",
+    "vcomp140.dll": "2500c03a3a53baa26a441bbd4e3dfee77a512eafa6061f3dfdd1cfd8afd1ec94"
+  }
+}

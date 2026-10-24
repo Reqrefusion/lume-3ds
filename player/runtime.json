@@ -1,0 +1,430 @@
+{
+  "format": 2,
+  "storage": "external_sd",
+  "sha256": "c574a084e2af06c384c06e6dce180cf6c7131457df16ff7e62e4ca428ec0549d",
+  "bytes": 1156500,
+  "original_media_included": true,
+  "original_game_content_embedded": false,
+  "original_logo_included": true,
+  "original_font_included": false,
+  "icon": "resources/icon.png",
+  "icon_sha256": "c4abc9b0c665e92eeccb6f1c133262ab8d094c10df18d4b4a283ace75ff71675",
+  "source": {
+    "adapters/flash/timeline.c": {
+      "sha256": "0baab4039b6e5fbd43cb0161f281c1c695ee72954bb40a78faa1654e2c718ba5",
+      "bytes": 7474
+    },
+    "adapters/flash/timeline.h": {
+      "sha256": "c2963a2c347a38839f3011a689b3603d85aaaea67e51f8d09ef52128522e9568",
+      "bytes": 1211
+    },
+    "engine/assets/depth_stream.h": {
+      "sha256": "c0f8a178bb211217636af3520d4d8441010b2eb56af3ccd202a0c00bcfd3a595",
+      "bytes": 2649
+    },
+    "engine/assets/detail.h": {
+      "sha256": "05eecac0c46e8bb446e8cea39ae692a99409eaf188eeb3b257972546259dce51",
+      "bytes": 11405
+    },
+    "engine/assets/file_cache.c": {
+      "sha256": "d1d86f9a1c6437e315d46a441abba428dec4581116cb54b28acd813410bb0428",
+      "bytes": 2236
+    },
+    "engine/assets/file_cache.h": {
+      "sha256": "e03155302c93ea70497cdc2e5a32e7ae5b110c1710d9980330de713316a9df36",
+      "bytes": 676
+    },
+    "engine/assets/movie_pool.h": {
+      "sha256": "0f6cc88c71cf712fe01f395b62f5431ba53a10d60cb27793e283c63573365432",
+      "bytes": 1467
+    },
+    "engine/assets/raster.h": {
+      "sha256": "11f68cbc9b190884df5f4773516a543ba24a827a2a649b3b140826875330f6ee",
+      "bytes": 1227
+    },
+    "engine/assets/stereo_field.h": {
+      "sha256": "a1846dbd7ef6e6d330a1ddf5dd7f490b26788a80a6529e56e5417b5c2928f3e3",
+      "bytes": 3788
+    },
+    "engine/codecs/blocks.c": {
+      "sha256": "7f4d4fbf7b7e9a1dce64110b6a0e3909f2e9b9720e36186136ab081e02a1ba08",
+      "bytes": 1435
+    },
+    "engine/codecs/blocks.h": {
+      "sha256": "363c89409e6d05b07ce536ec236a32937145e8a173b50ff7f74d2571450f9fea",
+      "bytes": 148
+    },
+    "engine/codecs/lan.h": {
+      "sha256": "642e7f3b24bc41d9f754b7e433c06e12c047de6e3d6f1c548bb55d839205a651",
+      "bytes": 6392
+    },
+    "engine/codecs/movie.c": {
+      "sha256": "6a6d913c9a3d0a2e52c19d8f8565292800362a933c8cf1ce43c44ab47f65fa68",
+      "bytes": 12870
+    },
+    "engine/codecs/movie.h": {
+      "sha256": "49515542132e19cf174fc89acb198df0f363553643bd757383709f61c300fa93",
+      "bytes": 2246
+    },
+    "engine/codecs/mpeg_colour_tables.h": {
+      "sha256": "57d037ad78c4ee3342bb42166509d7aabf9040774bc8317ee86afb887f06fd12",
+      "bytes": 7936
+    },
+    "engine/codecs/mpeg_reader.h": {
+      "sha256": "300366c45658421fc3e7bfc16dc323410e884e2455b0bf81c7f3c69453c0c2db",
+      "bytes": 14477
+    },
+    "engine/codecs/mpeg_vlc_tables.h": {
+      "sha256": "1bdd99ca72a601625ac51d3cef8137278a3739e9d0a92b771f736cb5bd53ba46",
+      "bytes": 7351
+    },
+    "engine/codecs/pixel_image.h": {
+      "sha256": "faba9f2ca07cdaadcad0530bcee880f1f819cd6251f00d8068fcdb6ff77c896b",
+      "bytes": 2956
+    },
+    "engine/codecs/pixel_predict.h": {
+      "sha256": "bf38d23df7bec9239efb93fed66c6d28ce574c500d5395d579fb374da20ae715",
+      "bytes": 795
+    },
+    "engine/codecs/pl_mpeg.h": {
+      "sha256": "405ba5ff7858c95b8bf520471a3cd3cdcc9dfbe1e661082de74a693da774ed5e",
+      "bytes": 149310
+    },
+    "engine/core/jobs.h": {
+      "sha256": "cf41e330f855bef84ceb2e8fa6e05274282c916206a2205b9bec1f6b301ae2a2",
+      "bytes": 191
+    },
+    "engine/core/jobs_state.c": {
+      "sha256": "791668229ad0650ab05b21267d1dc305da0ecab26041b9b54e3bbf20185a7db7",
+      "bytes": 1840
+    },
+    "engine/core/jobs_state.h": {
+      "sha256": "eaedbcffd8afac956295a17c9cd38189ce1c47966ad8c2dd4009aefb14103ad0",
+      "bytes": 703
+    },
+    "engine/core/layout.h": {
+      "sha256": "9e6ad9fa50615a160f9b0dc6af8bc81ded79912681877ad629826b74c1dc6147",
+      "bytes": 484
+    },
+    "engine/core/log_io.c": {
+      "sha256": "3fea2101b24370e5c29ebf418b389febdcc71f5fdca7127e715033c7a9cb7bee",
+      "bytes": 1952
+    },
+    "engine/core/log_io.h": {
+      "sha256": "55beeafed3c5c0de90d6cf26be8901bcb17f1df1452796bb3bfd7f42af24ef06",
+      "bytes": 334
+    },
+    "engine/core/timeline_clock.h": {
+      "sha256": "2d51265b3f93ff843908c22f508b55076c2493173cb4f526b6138f89f047e334",
+      "bytes": 1766
+    },
+    "engine/README.md": {
+      "sha256": "fb1bda07afc52dbd402ef15d39e42bc3a4f735cd28ce9c83bc0a1426514dff39",
+      "bytes": 4973
+    },
+    "engine/render/blit.c": {
+      "sha256": "0f9397b57143cae9564e024b11545b5c51204aff8a01dd282ee0b750b518da14",
+      "bytes": 6384
+    },
+    "engine/render/blit.h": {
+      "sha256": "2ec2fa0e988f3e2db13620ca7c56d426b7afb3e65b30c25cb413a2be48a7323e",
+      "bytes": 2163
+    },
+    "engine/render/colour.h": {
+      "sha256": "4ae1b8bb2f978dc6d8f261b62283c0d57c71bcdaf187b25681e7ffff6e6d5944",
+      "bytes": 1008
+    },
+    "engine/render/depth_anchor.h": {
+      "sha256": "511eb136a0725052a23776934278efc99ef8cb0ad0f24b61b16ed246e6ba3616",
+      "bytes": 2736
+    },
+    "engine/render/disparity.h": {
+      "sha256": "bb58c8c71e9fce8d59928ef8499c71523d1066f9601b1218faac079a9ea117e1",
+      "bytes": 3213
+    },
+    "engine/render/stereo_video.c": {
+      "sha256": "dfd470414698a0ac92d5fe6156b95ee69492a3d0173baf4aa9c0628cfa3d346b",
+      "bytes": 3106
+    },
+    "engine/render/stereo_video.h": {
+      "sha256": "6fbafce05ee905b77ed35bb153f663b9934bc4afeaf014297cf1e88ea8a97ad8",
+      "bytes": 555
+    },
+    "engine/render/viewport.h": {
+      "sha256": "361477f7860a9681637a9c821da9d0d6371aea7a27b84ef87ef17a2ce87502e1",
+      "bytes": 9267
+    },
+    "features/locale/locale.h": {
+      "sha256": "3cc51805531e917dd6f20b9c1d6b9dcb4e3878277797dd65febdb4cc6e7db91d",
+      "bytes": 7878
+    },
+    "features/reading/bubble.h": {
+      "sha256": "41226188b0d8a180c673927917eb2efb171b065cc417cdd263a4bd8f03792243",
+      "bytes": 10264
+    },
+    "features/reading/timeline.h": {
+      "sha256": "978b831fa1616ff16db7b8f5f9d09cfa4ac943886e70832ea9632f49a7265ce2",
+      "bytes": 802
+    },
+    "features/settings/stereo_strength.h": {
+      "sha256": "8bd4cf3f5084e3eb11374c880999dc51169ccc3c87791c241a96b04042c4d05a",
+      "bytes": 513
+    },
+    "features/ui/backend.c": {
+      "sha256": "15b0f138da67affd5f46d9f8648382725fe126839dfb7f2d7939ad36e210ba99",
+      "bytes": 1328
+    },
+    "features/ui/backend.h": {
+      "sha256": "cee230cc56251630c67d5ccd8cf1ebd2e298ca918dac4393fb4f37d46208b9b7",
+      "bytes": 615
+    },
+    "features/ui/menu_art.h": {
+      "sha256": "33556ba28bc292b2c707429b883ec880416cb5479e60ae4c79deb3a051f7e77b",
+      "bytes": 3612
+    },
+    "features/ui/skip.h": {
+      "sha256": "46d4bc0fe07bedb8ff70970073e7b3ddfc8eddb85f0324d38f387244598b15da",
+      "bytes": 1806
+    },
+    "features/zoom/hud.h": {
+      "sha256": "cdd0b418a5d743f79cada2c75cac9b03b7c45a1011f3ecf8cca3d1300a9e29a9",
+      "bytes": 2051
+    },
+    "game/lume/actor_pose.c": {
+      "sha256": "44d87ba1aa45ec4f5ce1d8d5317bdd9a6a6db89756a3b3e07b6d71391c7e4f9c",
+      "bytes": 4250
+    },
+    "game/lume/actor_pose.h": {
+      "sha256": "607e6622f06702fd6342b8a6f10f06e27876e51fc6952739c5d00b9480b4e3b8",
+      "bytes": 1075
+    },
+    "game/lume/audio.c": {
+      "sha256": "2b520dd92a7af396f4745438066e43f99c7585552f47d5ec4c838ba2537b6b5a",
+      "bytes": 14929
+    },
+    "game/lume/audio.h": {
+      "sha256": "fd0484e9275366863c7625900085b81700a531bc6430558565001de4b5ed43b9",
+      "bytes": 599
+    },
+    "game/lume/audio_events.h": {
+      "sha256": "87985093f39297118de9324eecc602251787c8aff6b0111edbeca70c016505a8",
+      "bytes": 2182
+    },
+    "game/lume/child_effects.h": {
+      "sha256": "a76f83e26874ca6520eff808ab71cc829f20393b63f0df5af57e6b16572b7f60",
+      "bytes": 1344
+    },
+    "game/lume/clip_compose.h": {
+      "sha256": "8e00c59bb627dbe803612fbdda85e79875b91c4ceda850cafd5ed1e4803126e7",
+      "bytes": 2293
+    },
+    "game/lume/close_controls.h": {
+      "sha256": "61517e2704124292c010ee1d0fee55132dcb2dfb58e1a1ed907ffb8aef9c4b4d",
+      "bytes": 1757
+    },
+    "game/lume/clue_reader.h": {
+      "sha256": "1208fbc00ddfaa10fdb1c1e13711826b7485d5bd4af3f10f82a219804e2d911d",
+      "bytes": 2715
+    },
+    "game/lume/clue_views.h": {
+      "sha256": "1fbe2e24a5c4a9709ca7613542ff0dade433e2c4d22c215fed2c25159dbdb450",
+      "bytes": 1222
+    },
+    "game/lume/detail_puzzles.h": {
+      "sha256": "33a0598ea208b8f05248f820b7d5f9dd9bb8d5c87b7345d7ef974711c1efc39e",
+      "bytes": 5932
+    },
+    "game/lume/document_reading.h": {
+      "sha256": "cdba82634b2c956bb8e688c15a5320aa3f8dc7414f94bfb7dccce39a2d0cf9d2",
+      "bytes": 1682
+    },
+    "game/lume/exterior_motion.h": {
+      "sha256": "b87c233f02c53e9696a81991ab6fbccfc3b5d1fd7063b705417af9c534b73fc3",
+      "bytes": 2109
+    },
+    "game/lume/fallback_font.h": {
+      "sha256": "70ec3e0b85c49b146e91129ae23dfc9218dcfba4cb976e604e9119ed314b2814",
+      "bytes": 16285
+    },
+    "game/lume/game.c": {
+      "sha256": "e338031a1d46a93fad140bc9a4b9f2b8db9eb1000371cd0d34ad22ebfa64f58d",
+      "bytes": 16907
+    },
+    "game/lume/game.h": {
+      "sha256": "ae2ad97abe56aa5765feb39e76a28d2fc14b0120855fa0113d26cd501908c46b",
+      "bytes": 2675
+    },
+    "game/lume/game_render.c": {
+      "sha256": "75fcb9a1aed2faed31faf98675bfd2a1eacf680e089e9cc1f2ae42aad2b65d35",
+      "bytes": 505
+    },
+    "game/lume/game_render.h": {
+      "sha256": "637e43fde39ceac82bd35035df4b0db8fdb5120ba2e0918d2136169a431b89c2",
+      "bytes": 211
+    },
+    "game/lume/hover_hints.h": {
+      "sha256": "f08dee00b182b5f09bb8d1844527dc01042e7191cb217533953c22e33ddedb60",
+      "bytes": 2819
+    },
+    "game/lume/interaction_flow.h": {
+      "sha256": "4fb133cf00077a2407fc00282339956ab461b549ec3eea5d689bfbc8fe08f5b8",
+      "bytes": 2764
+    },
+    "game/lume/key_points.h": {
+      "sha256": "53c9896e0ee581ecfc68ad7a47942682bacb369e3e29d617ba7a8eba3d91573c",
+      "bytes": 780
+    },
+    "game/lume/led.h": {
+      "sha256": "f1ff296f4423e79659dc9c9e79f21154ac312ae4bb5d5aa28092f334e1ffdeac",
+      "bytes": 4631
+    },
+    "game/lume/logo_depth.h": {
+      "sha256": "7819ff6ac127afd061c02b35907f4fad9d0e0214e43e8a23593fd40893f2c281",
+      "bytes": 1158
+    },
+    "game/lume/native_menu.h": {
+      "sha256": "a4bfca9034ce825676512a503104d06c9d112ff69bde886c947a79aee74f75ce",
+      "bytes": 6190
+    },
+    "game/lume/original_hotspots.h": {
+      "sha256": "97a53c506fd43ad8fa5e5edc62f6b6820d71394073634189740d14b46bf6e75b",
+      "bytes": 4535
+    },
+    "game/lume/persistence.c": {
+      "sha256": "0bb6e7c9777ca50122fa8207cd076dc645fbede895f62f8b349a639a53f2d2ad",
+      "bytes": 4112
+    },
+    "game/lume/persistence.h": {
+      "sha256": "78f6bda6864e3e5b87258674145af37e062d129150642607aed2ee920c2b6721",
+      "bytes": 450
+    },
+    "game/lume/plate_cache.h": {
+      "sha256": "13d87ce473830abcc5fe7aa20e9b912c4b0f843fbfffa079fa2d7aaa9a27d692",
+      "bytes": 2929
+    },
+    "game/lume/profile.c": {
+      "sha256": "bd003cdaae26669f5a7b2a4e2d75b38f0a0141198c391f44eede34907a94a84a",
+      "bytes": 1937
+    },
+    "game/lume/profile.h": {
+      "sha256": "fda58cf13312e79577b34758b166f4c76fd7608483fa2386f1898a33efff93db",
+      "bytes": 212
+    },
+    "game/lume/props.c": {
+      "sha256": "c4349d8fca5fa7a9996bcade5092f922af85d68411055fca8025d60c95492fe8",
+      "bytes": 4662
+    },
+    "game/lume/props.h": {
+      "sha256": "73fa7b49c9165a847fb081ed4386c570cff17f39597103f4ca35d57c38d86c01",
+      "bytes": 536
+    },
+    "game/lume/puzzle_flow.h": {
+      "sha256": "14761e5bf2c9b342be498953a41141fc30b5034df90d0c1777777a71428741a0",
+      "bytes": 1367
+    },
+    "game/lume/puzzle_help.h": {
+      "sha256": "434147b01e672d5a9f6c120a84725ae83f41f4b913f70304522baaa9e3ef82b7",
+      "bytes": 662
+    },
+    "game/lume/puzzles.c": {
+      "sha256": "38a018f106ebc7dc0f4714ad3e1c760188b501229c1919b7eaef4f5798a83277",
+      "bytes": 4959
+    },
+    "game/lume/puzzles.h": {
+      "sha256": "bd9a3016bf9916353e692f9f8963f83cc4b9c4518c891c0cc2f7773ca2ac9965",
+      "bytes": 2185
+    },
+    "game/lume/render.c": {
+      "sha256": "3d916a4142f79c5a3b9fa627dfc5c06e9139c0bdbc6ca3bd5554b35942bc8ba8",
+      "bytes": 17003
+    },
+    "game/lume/render.h": {
+      "sha256": "f02c3dca23ad18f959148e4412ca03a3b6ffd3454892c2d53113af460af3ab22",
+      "bytes": 1545
+    },
+    "game/lume/settings_ui.h": {
+      "sha256": "3ed8bfc2f950d1580cbb482bdaf89422b226458ef8e6b92809293d2368ef663d",
+      "bytes": 5161
+    },
+    "game/lume/skip_policy.h": {
+      "sha256": "a94fca5d22ea095413d18005da62144c5cf3944fd6121f5ba5b6b2c0266da47d",
+      "bytes": 376
+    },
+    "game/lume/source_hit_regions.h": {
+      "sha256": "e8e81383b4385d9f2d170d3b863b6ebf1a51a5978f49a02f0ad6f5e04b04ee87",
+      "bytes": 233397
+    },
+    "game/lume/storage.h": {
+      "sha256": "630ce48d90f57db86e6486448620206495e4203eb499145083c3c4a5eddefe2f",
+      "bytes": 714
+    },
+    "game/lume/title_animation.h": {
+      "sha256": "5bfaf3bd6aed4adc577b6948a9f50bcadcbdd5f448dc1e05a96e13ed69775764",
+      "bytes": 2004
+    },
+    "game/lume/title_menu.h": {
+      "sha256": "293c5cfa4886b11139c2f0cfd73f4b837bdc9be876312d3d74588491c005e9ff",
+      "bytes": 2473
+    },
+    "game/lume/title_touch.h": {
+      "sha256": "79ee73bccf207cc6be64c2cee6173aa3746edf13757e82a969ef0b67d4274599",
+      "bytes": 3916
+    },
+    "main.c": {
+      "sha256": "f189a8835b863e0c36811f9d009e5cecf1c2c0a4ae5fe32ae658411699cba5ea",
+      "bytes": 116834
+    },
+    "platform/3ds/audio_worker.h": {
+      "sha256": "e2a88e1ac329afd586de84e3f94546768a413eb5ecb5d0fe54eab9b30c145267",
+      "bytes": 495
+    },
+    "platform/3ds/dma_cache.h": {
+      "sha256": "72c6a3d483d1dbdbfc9baacf05732df2a6b8eac5add5eee82e822d126af065be",
+      "bytes": 685
+    },
+    "platform/3ds/frame_flush.h": {
+      "sha256": "7bffe1f89a41b0fb42d6fe8b2477630f85c1845f98929f37dd62702c063f62e5",
+      "bytes": 605
+    },
+    "platform/3ds/math.h": {
+      "sha256": "3a169add9ed9e3986f8fdc926978081b3560ff8961f7e9e8475c05fdf744019f",
+      "bytes": 591
+    },
+    "platform/3ds/present.inc": {
+      "sha256": "629d4a080b3e7c783d46536b1132c6664a3ac8219f2dcdaa2472f3100d509943",
+      "bytes": 10275
+    },
+    "platform/3ds/video_cache.h": {
+      "sha256": "3e40396c36a1749cf34649969df44aeee83fc33ec5a8ef76bb8eda1191528fee",
+      "bytes": 1373
+    },
+    "platform/3ds/video_present.c": {
+      "sha256": "158007ce9a975132f56ffec10e7b49f88e4907ec20fb1b128254b8b2caa9309d",
+      "bytes": 6966
+    },
+    "platform/3ds/video_present.h": {
+      "sha256": "2467de5d71370a794b586b77fcbdbd8be31d8928d3c6b404c10b325a2756cc02",
+      "bytes": 859
+    },
+    "platform/3ds/video_texture.h": {
+      "sha256": "cb344fc5e77a4625a4d36dd87b0829c1cfbc5beffbd68d8d6d623c649aef8f33",
+      "bytes": 2042
+    },
+    "platform/3ds/y2r.h": {
+      "sha256": "55e9ffe5f3e5a7583472f70c14e2018165bc2946a4b7a3407aa4f66bbe6529a2",
+      "bytes": 6006
+    },
+    "platform/clock.h": {
+      "sha256": "3ccb420978bb44b7864980def64a0879acfd3102ff55eb5e0a1c0a70972224d2",
+      "bytes": 444
+    },
+    "platform/file_prefetch.h": {
+      "sha256": "931867ef3f55567bbb629d61572ee79fca648ca1a5b97a47dce662aa8e6dd7e0",
+      "bytes": 3708
+    },
+    "platform/jobs_backend.h": {
+      "sha256": "228fc15c5e48d15d4beb4a7decd3e3c0048c42b3859301b97cd6969f3bb9cc1b",
+      "bytes": 4654
+    }
+  }
+}

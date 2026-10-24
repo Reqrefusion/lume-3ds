@@ -1,0 +1,79 @@
+{
+  "clue_reader.h": [
+    "romfs:/read_%s.rgb"
+  ],
+  "detail.h": [
+    "romfs:/detail/%s.dzp",
+    "romfs:/detail/%s.lan"
+  ],
+  "audio.c": [
+    "romfs:/media_%s.mp3",
+    "romfs:/piano%d.pcm",
+    "romfs:/sfx_%04u.pcm"
+  ],
+  "props.c": [
+    "romfs:/%s.trf",
+    "romfs:/prop_%s.bin"
+  ],
+  "localization.h": [
+    "romfs:/lang/%s/%s",
+    "romfs:/lang/languages.txt"
+  ],
+  "hover_hints.h": [
+    "romfs:/hover.bin"
+  ],
+  "reading_bubble.h": [
+    "romfs:/detail/reading/%s.txt",
+    "romfs:/detail/reading/font.bin",
+    "romfs:/detail/reading/paper%u.bin",
+    "romfs:/lang/en/%s"
+  ],
+  "title_touch.h": [
+    "romfs:/detail/title_touch.layout"
+  ],
+  "actor_pose.c": [
+    "romfs:/actor_idle_%d.bin"
+  ],
+  "native_menu_art.h": [
+    "romfs:/detail/native_menu/art.bin",
+    "romfs:/detail/native_menu/font.bin"
+  ],
+  "main.c": [
+    "romfs:/%s.lan",
+    "romfs:/%s.nav",
+    "romfs:/%s.rgb",
+    "romfs:/art_keys.lan",
+    "romfs:/art_wires.lan",
+    "romfs:/avatar.rgba",
+    "romfs:/cinema_bg%u.rgb",
+    "romfs:/cinema_bg%u_R.rgb",
+    "romfs:/clue_%s.rgb",
+    "romfs:/detail/title_touch_entry.lta",
+    "romfs:/detail/title_touch_exit.lta",
+    "romfs:/detail/title_touch_idle.lta",
+    "romfs:/digits_cupboard.alpha",
+    "romfs:/digits_door.alpha",
+    "romfs:/ending_%c.rgb",
+    "romfs:/fx_gramophone.lan",
+    "romfs:/map_ink.bin",
+    "romfs:/media_%s.ljv",
+    "romfs:/media_%s.lvb",
+    "romfs:/media_%s.lvs",
+    "romfs:/props_%s_%d.rgba",
+    "romfs:/solar_completed.rgb",
+    "romfs:/solar_pattern.rgb",
+    "romfs:/solar_tiles.bin",
+    "romfs:/speech_%s.rgba",
+    "romfs:/stereo/%s_%c.rgb",
+    "romfs:/stereo/solar_pattern_%c.rgb",
+    "romfs:/title_entry.lan",
+    "romfs:/title_exit.lan",
+    "romfs:/title_idle.lan",
+    "romfs:/ui_%s.lan",
+    "romfs:/ui_close.rgba",
+    "romfs:/ui_cupboard_progress.lan",
+    "romfs:/ui_piano_keys.lan",
+    "romfs:/ui_result_timer.lan",
+    "romfs:/world_%s.rgb"
+  ]
+}
