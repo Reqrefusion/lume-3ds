@@ -1,0 +1,16 @@
+{
+  "depth_model": "Any_V2_L",
+  "method": "row_flow_v3",
+  "divergence": 1.7,
+  "convergence": 0.7,
+  "foreground_scale": -0.3,
+  "edge_dilation": 2,
+  "ema_decay": 0.99,
+  "ema_buffer": 30,
+  "fps": 25,
+  "synthetic_view": "right",
+  "device": "auto",
+  "depth_resolution": null,
+  "stereo_width": null,
+  "own_size": 0
+}

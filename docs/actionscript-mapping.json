@@ -1,0 +1,1340 @@
+{
+  "format": 1,
+  "description": "FFDec inspection snapshot; not runtime source. Bindings locate evidence, not automatic proof of equivalent behavior.",
+  "original_swf": {
+    "path": "tools/detail/Lume.swf",
+    "sha256": "b09230e556b7b101170c168e18d4e86c8b5219e4daeb0c34a94acd98b3ae9bd4"
+  },
+  "snapshot": [
+    {
+      "path": "docs/actionscript/DefineSprite_1022/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1029/frame_1/DoAction.as",
+      "sha256": "d327d248cb5463eb8370286810a03be8d783f44146a127f06e38a0d512109ef2"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1029/frame_109/DoAction.as",
+      "sha256": "28801104ddb16375106a355bc3cd52ad8069c8d420a3110577bebc21a8d70213"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1029/frame_11/DoAction.as",
+      "sha256": "cda4f54348a15da6c32351de2f4f1840d2a9bc9af59e71e6e16e4840a1aaaaca"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1029/frame_22/DoAction.as",
+      "sha256": "478e13ce71b55ec1e41f678479f026d84f605523f10ead6e1edc67586be76940"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1029/frame_46/DoAction.as",
+      "sha256": "28801104ddb16375106a355bc3cd52ad8069c8d420a3110577bebc21a8d70213"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1029/frame_98/DoAction.as",
+      "sha256": "28801104ddb16375106a355bc3cd52ad8069c8d420a3110577bebc21a8d70213"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1037/frame_1/DoAction.as",
+      "sha256": "2e006182bf2df8742319e46635005bf09c2432b808acd728a3f773dd92f83435"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1038/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1038/frame_11/DoAction.as",
+      "sha256": "3f114867c0121536cff8281d36b5b50af3ebca1043bd3815f9a28daf3344779b"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_1038/frame_12/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_119/frame_335/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_127/frame_71/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_128/frame_733/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_128/frame_776/DoAction.as",
+      "sha256": "441f90e3b95d0b70caf8edbd2fc1573d598020937368ae1c82e15f1110695586"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_142/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_142/frame_10/DoAction.as",
+      "sha256": "294182729c162fd7b19a1128fcf0941b73901e37ce7f2cd076cfb3e1a797c594"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_169/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_169/frame_10/DoAction.as",
+      "sha256": "27b069212659eee9282f238ee82e10908a8e7e3060e26683c75bb349fcf4c7d3"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_170/frame_1/DoAction.as",
+      "sha256": "27d6b9244bc1a16fe2311ca2b7bc9256aa6bf918f21c2d66a52a59ed0e8f7c4c"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_173/frame_1/DoAction.as",
+      "sha256": "70bc9de81a499cdeaa6aec34df1d9ab7c1bbbf58392159abf36b91ca2389a211"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_173/frame_5/DoAction.as",
+      "sha256": "df186a0a620e0b258e053e98bcbb1f1d6c3ce3b4bcc832ea003e2ac928d09548"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_185/frame_1/DoAction.as",
+      "sha256": "549a38b132523536e748d01b01cb919cc34d3e55870d3d243c2ed13c1f9ecab5"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_20/frame_1/DoAction.as",
+      "sha256": "2a1bafc861ed456f1a07637b592d23399772196a061122c36a810df22b35856e"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_208/frame_1/DoAction.as",
+      "sha256": "0508b65f670d8fef298becf53c7f8e700986f77766a345592e448fb2271e37d0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_208/frame_11/DoAction.as",
+      "sha256": "0508b65f670d8fef298becf53c7f8e700986f77766a345592e448fb2271e37d0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_208/frame_21/DoAction.as",
+      "sha256": "0508b65f670d8fef298becf53c7f8e700986f77766a345592e448fb2271e37d0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_208/frame_31/DoAction.as",
+      "sha256": "0508b65f670d8fef298becf53c7f8e700986f77766a345592e448fb2271e37d0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_208/frame_42/DoAction.as",
+      "sha256": "0508b65f670d8fef298becf53c7f8e700986f77766a345592e448fb2271e37d0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_21_gridSquare/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_225/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_225/frame_23/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_229/frame_1/DoAction.as",
+      "sha256": "f48351e6db2510284df37e3db6d83cd64552989212317299d7647a124a7d0313"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_232/frame_2/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_239/frame_149/DoAction.as",
+      "sha256": "c41bd627cfc91aa9b30c79882c1311e5c0fca1a7bfda432d0f431d6645325ea7"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_242/frame_136/DoAction.as",
+      "sha256": "a71d43092769a121296b4bc479bc93c42a8584803018faa1ce158a2675ee3e73"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_255/frame_91/DoAction.as",
+      "sha256": "2990ef733c503ff8bb5dfa56189225779dad423baaf781a7a275c2f0bb530f0a"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_263/frame_149/DoAction.as",
+      "sha256": "9bdbec8b1a3bc6e2afcd2b9a7d8aba0257494308a8d993a9904a4235543efb73"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_296/frame_91/DoAction.as",
+      "sha256": "ed63c2baf92ab232e3b9d9e78259e0aa620dea22cfce81177036845018e244e6"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_300/frame_91/DoAction.as",
+      "sha256": "580b8e0e0de25944afe3cf9d89d1b88e600844b6093c668f743bb0e5d8cc595b"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_309/frame_115/DoAction.as",
+      "sha256": "55a5edc4e426bf44a332beeeb4e68ae71764426be69fcc324ac9a4e9b5bbb2cf"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_110/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_111/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_122/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_123/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_134/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_135/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_146/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_147/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_158/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_159/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_170/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_171/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_182/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_183/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_194/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_195/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_206/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_207/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_218/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_219/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_230/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_231/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_242/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_243/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_254/DoAction.as",
+      "sha256": "6397cd2c7d52a1e21e42ed6c5057e0ba95ed459eb1231e2a166f9c59f2befc42"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_255/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_26/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_266/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_267/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_278/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_279/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_290/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_291/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_302/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_303/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_314/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_315/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_326/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_327/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_338/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_339/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_350/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_351/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_361/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_362/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_372/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_373/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_38/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_383/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_384/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_394/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_395/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_405/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_406/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_416/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_417/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_428/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_429/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_440/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_441/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_452/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_453/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_464/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_465/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_476/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_477/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_488/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_489/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_50/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_500/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_501/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_512/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_513/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_524/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_525/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_536/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_537/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_548/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_549/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_560/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_561/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_572/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_573/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_584/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_585/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_596/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_597/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_608/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_609/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_62/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_620/DoAction.as",
+      "sha256": "58bd96d8fa01e817be4b54f2f3173d2b07d4fd96a35898d34f128e20efed8de4"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_621/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_632/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_633/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_644/DoAction.as",
+      "sha256": "6236bc8ec7a8d25d25860656b591262021a08673c601649fee4fa8ee859ab224"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_656/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_668/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_680/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_692/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_727/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_728/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_74/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_748/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_86/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_87/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_98/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_310/frame_99/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_315/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_315/frame_10/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_315/frame_21/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_319/frame_126/DoAction.as",
+      "sha256": "681595fa9c36791bf1044b26bdee88b3c1aa58f8dceead628a19bcda4660952a"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_319/frame_327/DoAction.as",
+      "sha256": "6647d1caa7aba5d0f0d412ab15dfac897241b7328e8f4f288af6e63432861093"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_320/frame_150/DoAction.as",
+      "sha256": "c20dabeec3618de505b7b795550cc72b58446d1c4fe8ae059b7a7f9d08fe58e0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_321/frame_117/DoAction.as",
+      "sha256": "c20dabeec3618de505b7b795550cc72b58446d1c4fe8ae059b7a7f9d08fe58e0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_322/frame_52/DoAction.as",
+      "sha256": "c20dabeec3618de505b7b795550cc72b58446d1c4fe8ae059b7a7f9d08fe58e0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_323/frame_111/DoAction.as",
+      "sha256": "c20dabeec3618de505b7b795550cc72b58446d1c4fe8ae059b7a7f9d08fe58e0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_324/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_346/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_346/frame_121/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_346/frame_156/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_346/frame_188/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_346/frame_68/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_368/frame_1/DoAction.as",
+      "sha256": "416728e9a5a6a8c60839be4a53a16c18d70734d45f1638a8946cd461b534c772"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_372/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_372/frame_62/DoAction.as",
+      "sha256": "0360005ab1bab4d5e65db0615e11717e24df30767e2eb42695a1dc8eeffb57cc"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_383/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_388/frame_1/DoAction.as",
+      "sha256": "491f79b4f42e39e3ee8dcae1d685870972ff82536cf46dbf1ddcb8b950b36b17"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_405/frame_1/DoAction.as",
+      "sha256": "c799e57de614675affc8c04ea33fa4d4a8d5ded3d06b8c6e28819175713c141c"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_405/frame_11/DoAction.as",
+      "sha256": "afafc03a1b7f02e7ee17f3062169a332b64a81f87dafabf9ea1f04d4f975b609"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_417/frame_1/DoAction.as",
+      "sha256": "fc83d56fc9f90e4f7a82efda5817fcf12cf6980201607f5654bc278afbeeeed3"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_417/frame_11/DoAction.as",
+      "sha256": "8c8262416be2a56475ad81f2078a951986a4425b5070fdc50cb952d50f8f682e"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_456/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_456/frame_41/DoAction.as",
+      "sha256": "7e1b5714d1810265f312cd677af1055e4d5d494010ae462ef4839e77dea49e13"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_457/frame_1/DoAction.as",
+      "sha256": "f1d59951f30318020aa4f5a0ef2619a42e51726ddd617cf64c1ceb81b4acf021"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_48/frame_224/DoAction.as",
+      "sha256": "a3eee2b3e4702f12cae371c19c10d5cf705700613b4c7ae6a6bd551f1d59fa00"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_501/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_501/frame_41/DoAction.as",
+      "sha256": "7e1b5714d1810265f312cd677af1055e4d5d494010ae462ef4839e77dea49e13"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_506/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_506/frame_5/DoAction.as",
+      "sha256": "36286e5c2fefbf35bfea647b2f4d640dfa28e26fb0c03504a141d9c076b652f7"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_506/frame_6/DoAction.as",
+      "sha256": "86564cde3c445d8f01a02cc7c89ca7114487e8621396096ec0a27d5ec4e810c2"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_515/frame_1/DoAction.as",
+      "sha256": "22948d9d4a65c81eeb2e0c27adf621c9f006a10e2cf1e126ed70cd082471d2c1"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_523/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_547/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_553/frame_1/DoAction.as",
+      "sha256": "647e916ee4f266fe6c0a8988fbf6bcb25ec0c61624aeee6453866cea14831e6c"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_592/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_592/frame_55/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_592/frame_94/DoAction.as",
+      "sha256": "28801104ddb16375106a355bc3cd52ad8069c8d420a3110577bebc21a8d70213"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_597/frame_1/DoAction.as",
+      "sha256": "e2cd4ab0c66a1d7bea8321da2ab0c6457c861cf0e4e1e96415459b98beec8aa9"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_61/frame_1/DoAction.as",
+      "sha256": "5ccd39ba2864f12266415abc2957a4f729e1256098b1e8d95acc4e1801d98f27"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_619/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_628/frame_2/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_641/frame_2/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_674/frame_1/DoAction.as",
+      "sha256": "4599450df0df70a94eafbb6260c0e8be3e8f9d152b563bee4ecf90241aa342d5"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_690/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_703/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_709/frame_1/DoAction.as",
+      "sha256": "72f19f5cc71052a4ecfb8c1961240b92ae9271fe205fa035151aaf13741d5848"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_719/frame_1/DoAction.as",
+      "sha256": "b4bacb0fe89eadf6634c7db86896333e813c64ac8106ae9fc32c0878f1b094c5"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_720/frame_1/DoAction.as",
+      "sha256": "db43c03d4575d27ad8437aed9bf113b410e641cfa9f79e42c31fb3ec90548c1a"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_720/frame_11/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_720/frame_131/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_720/frame_140/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_720/frame_247/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_729/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_736/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_738/frame_1/DoAction.as",
+      "sha256": "b2cf289917a53d53c4ceca29e112f8d73537cada69ac68d429a021614ed41f56"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_748/frame_112/DoAction.as",
+      "sha256": "1a94d03446edcb896db3ea730797a0ea3ae9d3d9b5ac24a43962438a5feb6f65"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_748/frame_153/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_11/DoAction.as",
+      "sha256": "02107988cf435d23b15a3cba3a85a9363722d1cbce55e1a5482344a4f2627a4d"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_110/DoAction.as",
+      "sha256": "7ca5fedee9c0c27f3538400b618cc27ed8167448a95a7a3e84cf5e9ac84060be"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_122/DoAction.as",
+      "sha256": "1ac972d2830f222f8f4a5b889f616a20cca58a484f35a2a2f0206933e70033cb"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_132/DoAction.as",
+      "sha256": "8ddbaa0865a77ea519a072b7a2e6915e87fa18171ed0b2e776afed8e4a0eace2"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_142/DoAction.as",
+      "sha256": "a64f0768a7b426b23922cbdf6f40b4e5682ef1765a122a989d0edfe5bca6aeb0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_152/DoAction.as",
+      "sha256": "87ebf9a9176d3f7caef78037de27fb534c236f7ece3666749e4121ead7dad22f"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_162/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_183/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_215/DoAction.as",
+      "sha256": "6171d183c56ca65c4cd8c36daf9965804dc3762ec89488199176fafbe69f9856"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_41/DoAction.as",
+      "sha256": "11b0dbaa12f7ae82d9569da385590f51b519efd1b1946b16cc687a97279cc1a6"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_50/DoAction.as",
+      "sha256": "62aa7b90e4a09c9ce94aaab8a614bb69af8f4fcde4710bc38ef0c14c7227342d"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_70/DoAction.as",
+      "sha256": "696b63b332eacc9f132196d4f59c6be9e91a6b101781368c8b13c121a971e3ed"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_80/DoAction.as",
+      "sha256": "123033bd0af2d8388847d8e53d381285ed2c46a5a902f3869bcc367423e6bfcb"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_90/DoAction.as",
+      "sha256": "875f921a7b276251605e95fff2979ba072418bd42dab1eaf3cc685558268838e"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_753/frame_99/DoAction.as",
+      "sha256": "2dd772a4129e717a208034eb104869fc87e7685e7cdbb46bf2cdea773fdc6e38"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_757/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_757/frame_279/DoAction.as",
+      "sha256": "50e40ff98b08e917e4ae33c82cad41f30bcc6e2b51d038ffe7cbc8af596870d9"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_757/frame_28/DoAction.as",
+      "sha256": "19bc84bfa06d923b175f31a8ec3123010ddcb2d118db96d0dd19cd562674f2e1"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_757/frame_289/DoAction.as",
+      "sha256": "e8e7bd1affda3dbd5fcb220b63fedad36329342f410bfdd74fc2df74e8924741"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_782/frame_1/DoAction.as",
+      "sha256": "549a38b132523536e748d01b01cb919cc34d3e55870d3d243c2ed13c1f9ecab5"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_80/frame_365/DoAction.as",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_803/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_806/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_806/frame_187/DoAction.as",
+      "sha256": "477e71f31af0be4a797fec4dd8be18a4dbae85cc399d451114cab57dafe958d3"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_806/frame_197/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_806/frame_32/DoAction.as",
+      "sha256": "476b420d5fe01029e85784df5aa009d27a337ebae98100860f3eedfe712c0559"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_806/frame_89/DoAction.as",
+      "sha256": "a5ad28b12294214a934bc14c9ac65251837f27a331767c567b352db600a6e083"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_826/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_826/frame_113/DoAction.as",
+      "sha256": "5f2199eb70f98093be3725c1511eb5d374362cb354790da55654ebd23bdf2158"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_826/frame_124/DoAction.as",
+      "sha256": "e8e5882509fb602f711417ad00c5fbdc149f67a54632c83840d027e9d648a943"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_826/frame_181/DoAction.as",
+      "sha256": "e8e5882509fb602f711417ad00c5fbdc149f67a54632c83840d027e9d648a943"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_826/frame_183/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_826/frame_284/DoAction.as",
+      "sha256": "6474d720bfc159f78fa20503a4008b22930fa8ac1f868a1e0a8d5570d3c5aeb9"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_826/frame_63/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_850/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_855/frame_1/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_855/frame_103/DoAction.as",
+      "sha256": "55f7cd0f0f24b8956b0cc168639321cc1b32a6fa8364ce2a59baa15dbcfb6d53"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_855/frame_44/DoAction.as",
+      "sha256": "255874d9a32cc126d6f04e6a709d0f08175bd5f6938404100f72a1e227f9df25"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_855/frame_45/DoAction.as",
+      "sha256": "b5fc0489c9fb2151970d78c51a8025d44b013191b9c50dda1dbee9b75af29e38"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_855/frame_92/DoAction.as",
+      "sha256": "abbe3347edafb0bc3d369f2fb1a4b51fa973997d32af99959c8dcfaeca69b88d"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_870/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_885/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_885/frame_224/DoAction.as",
+      "sha256": "28801104ddb16375106a355bc3cd52ad8069c8d420a3110577bebc21a8d70213"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_886/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_886/frame_52/DoAction.as",
+      "sha256": "87c3483a1a65f44897eff1645b406cd1baf9872e8742df2d00f9085b5fbf6a2d"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_886/frame_74/DoAction.as",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_886/frame_95/DoAction.as",
+      "sha256": "477e71f31af0be4a797fec4dd8be18a4dbae85cc399d451114cab57dafe958d3"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_902/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_902/frame_109/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_902/frame_60/DoAction.as",
+      "sha256": "0becf06d044dfc428f7782791d338de03953f8342a7aa14bfde153cc4fe82ce0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_913/frame_1/DoAction.as",
+      "sha256": "3271a793e3f9600314c6b0facc05023c4f3ed09c116d452966200a5d04735655"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_1/DoAction.as",
+      "sha256": "ea3d71443f579f9b3f9367ce657762c1e9ed6ad28ee0cdc75d5cda4ea9dae387"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_1116/DoAction.as",
+      "sha256": "af86868b8c0547558c6d0e93be7eecd1cc00a4e47e7b36593a8843c4452338d7"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_1256/DoAction.as",
+      "sha256": "09222bb30d8822f519823cacf5e900fe861fd66a55f936afa5bfbf09281e8422"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_132/DoAction.as",
+      "sha256": "93ce02810d2439cd0feacf339f01e527c5886e2a4d07540af8966ca7a76f9497"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_1436/DoAction.as",
+      "sha256": "3af17cedde761190c95a61acad581fc9bd101b5c7b5d4bd57c1aaba840b41f54"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_1604/DoAction.as",
+      "sha256": "a8bdd4cb6d6e1e858f9b54b6d784409376dc2ce0d7f831d07d2cf27ea781a206"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_1750/DoAction.as",
+      "sha256": "1f9d92107b5eedc099e2cc868007c5d5b6d75ec61f348a15bba9a3dace6ef299"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_1752/DoAction.as",
+      "sha256": "61ee41b0c3690357af0795eee11270820bd573b29ba04767bb27613de50686dc"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_2536/DoAction.as",
+      "sha256": "8ebd531a8ee02ba75873b957229cc073791443a693a5fd471239a1b81a41161e"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_2538/DoAction.as",
+      "sha256": "aeda51bc39b800bf547dd38130be0147c03d00edb378f5a41f80d56ca18682ca"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_275/DoAction.as",
+      "sha256": "0364fc5f1bbfe66612b65b7d6194f3b95b601b8a47e3ab97b5db74f9a56e615a"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_400/DoAction.as",
+      "sha256": "2f6904759a58ecbf69219fda34457a24202eaac3c0ba5ca0fc3bae92ae568897"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_4446/DoAction.as",
+      "sha256": "c971edbc4c21a93a95976745fc74a826035cb1affadc6125845f49d4c611a85c"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_4527/DoAction.as",
+      "sha256": "2663ff416ba50eeb6ee4fb06a7929b34b0a5597efaa1381701024e3a6d7226f0"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_535/DoAction.as",
+      "sha256": "09222bb30d8822f519823cacf5e900fe861fd66a55f936afa5bfbf09281e8422"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_569/DoAction.as",
+      "sha256": "ea0d810c5bdbee4051723aa542e43bc89bfac95d5b4e1ee9989cf085c60e1fd6"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_570/DoAction.as",
+      "sha256": "def945151f8ef0b76625ef9e76fdb08c9ca249c12f1068d4090861a554bfa155"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_701/DoAction.as",
+      "sha256": "093528b3a9ff27d90d1324234b2d5cf862ded7b44873eb5d999dc1cd70f8548e"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_845/DoAction.as",
+      "sha256": "1edc056ca0a8b01b62e023f02df33db96fa20c50b4a70893b1978e37c75d992b"
+    },
+    {
+      "path": "docs/actionscript/DefineSprite_988/frame_970/DoAction.as",
+      "sha256": "a67f40747588ae4141faa33ecdc9ae9c7d0a0fb778851557ac56e05abb7d975d"
+    },
+    {
+      "path": "docs/actionscript/frame_1/DoAction.as",
+      "sha256": "de84adce96e69f23910445bf771a738e21907d0415ab9e27b4c5ef922095e3a0"
+    }
+  ],
+  "bindings": [
+    {
+      "id": "movement_queue",
+      "source": "docs/actionscript/DefineSprite_1037/frame_1/DoAction.as",
+      "source_line": 323,
+      "source_marker": "bg.youStop = function()",
+      "native": "source/game/lume/interaction_flow.h",
+      "native_symbol": "lume_interaction_finish",
+      "policy": "adapted",
+      "tests": "test_fence_flow"
+    },
+    {
+      "id": "roof_fence",
+      "source": "docs/actionscript/DefineSprite_988/frame_132/DoAction.as",
+      "source_line": 94,
+      "source_marker": "you.hotspot_fence.onRelease",
+      "native": "source/game/lume/interaction_flow.h",
+      "native_symbol": "lume_interaction_fence_line",
+      "policy": "adapted",
+      "tests": "test_fence_flow"
+    },
+    {
+      "id": "front_camera",
+      "source": "docs/actionscript/DefineSprite_988/frame_400/DoAction.as",
+      "source_line": 32,
+      "source_marker": "savedPopup = \"letter\"",
+      "native": "source/game/lume/exterior_motion.h",
+      "native_symbol": "OPEN_FRONT",
+      "policy": "adapted",
+      "tests": "test_fence_flow"
+    },
+    {
+      "id": "hall_camera",
+      "source": "docs/actionscript/DefineSprite_988/frame_701/DoAction.as",
+      "source_line": 44,
+      "source_marker": "savedPopup = \"keys\"",
+      "native": "source/game/lume/exterior_motion.h",
+      "native_symbol": "GO_STAIRS",
+      "policy": "adapted",
+      "tests": "test_fence_flow"
+    },
+    {
+      "id": "initial_power_room",
+      "source": "docs/actionscript/DefineSprite_1037/frame_1/DoAction.as",
+      "source_line": 43,
+      "source_marker": "powerRoomUnlocked = \"yes\"",
+      "native": "source/game/lume/game.c",
+      "native_symbol": "case GO_POWER:",
+      "policy": "rule",
+      "tests": "test_fence_flow"
+    },
+    {
+      "id": "reusable_keys",
+      "source": "docs/actionscript/DefineSprite_1037/frame_1/DoAction.as",
+      "source_line": 285,
+      "source_marker": "itemClicked == \"mouseKeys\"",
+      "native": "source/game/lume/game.c",
+      "native_symbol": "case OPEN_FUSE:",
+      "policy": "rule",
+      "tests": "test_fence_flow"
+    },
+    {
+      "id": "turbine_sequence",
+      "source": "docs/actionscript/DefineSprite_1037/frame_1/DoAction.as",
+      "source_line": 251,
+      "source_marker": "itemClicked == \"mousePoles\"",
+      "native": "source/game/lume/game.c",
+      "native_symbol": "lume_game_turbine_required_item",
+      "policy": "rule",
+      "tests": "test_game_rules"
+    },
+    {
+      "id": "power_update",
+      "source": "docs/actionscript/DefineSprite_1037/frame_1/DoAction.as",
+      "source_line": 347,
+      "source_marker": "updatePower = function()",
+      "native": "source/game/lume/game.c",
+      "native_symbol": "lume_game_power_level",
+      "policy": "adapted",
+      "tests": "test_game_rules"
+    },
+    {
+      "id": "power_meter",
+      "source": "docs/actionscript/DefineSprite_720/frame_1/DoAction.as",
+      "source_line": 1,
+      "source_marker": "gameWiresComplete",
+      "native": "source/game/lume/clue_views.h",
+      "native_symbol": "lume_game_power_level",
+      "policy": "partial",
+      "tests": "test_game_rules, test_meter_stereo"
+    },
+    {
+      "id": "wire_solution",
+      "source": "docs/actionscript/DefineSprite_515/frame_1/DoAction.as",
+      "source_line": 7,
+      "source_marker": "linkArrayCorrect =",
+      "native": "source/game/lume/puzzles.c",
+      "native_symbol": "lume_wire_solution",
+      "policy": "rule",
+      "tests": "test_actionscript_links"
+    },
+    {
+      "id": "piano_solution",
+      "source": "docs/actionscript/DefineSprite_738/frame_1/DoAction.as",
+      "source_line": 1,
+      "source_marker": "numberArray =",
+      "native": "source/game/lume/puzzles.c",
+      "native_symbol": "lume_piano_solution",
+      "policy": "rule",
+      "tests": "test_actionscript_links"
+    },
+    {
+      "id": "piano_reward",
+      "source": "docs/actionscript/DefineSprite_738/frame_1/DoAction.as",
+      "source_line": 42,
+      "source_marker": "broomcupboardUnlocked = \"yes\"",
+      "native": "source/game/lume/game.c",
+      "native_symbol": "case OPEN_PANTRY:",
+      "policy": "rule",
+      "tests": "test_actionscript_links"
+    },
+    {
+      "id": "solar_grid",
+      "source": "docs/actionscript/DefineSprite_388/frame_1/DoAction.as",
+      "source_line": 3,
+      "source_marker": "pieceWidth = 50",
+      "native": "source/game/lume/puzzles.c",
+      "native_symbol": "solar_check",
+      "policy": "rule",
+      "tests": "test_actionscript_links"
+    },
+    {
+      "id": "keys_count",
+      "source": "docs/actionscript/DefineSprite_457/frame_1/DoAction.as",
+      "source_line": 12,
+      "source_marker": "correctKeyTarget = 3",
+      "native": "source/game/lume/puzzles.c",
+      "native_symbol": "keys_check",
+      "policy": "rule",
+      "tests": "test_actionscript_links"
+    },
+    {
+      "id": "cupboard_codes",
+      "source": "docs/actionscript/DefineSprite_553/frame_1/DoAction.as",
+      "source_line": 5,
+      "source_marker": "setTargets = function()",
+      "native": "source/game/lume/puzzles.c",
+      "native_symbol": "lume_cupboard_codes",
+      "policy": "rule",
+      "tests": "test_actionscript_links"
+    },
+    {
+      "id": "door_code",
+      "source": "docs/actionscript/DefineSprite_709/frame_1/DoAction.as",
+      "source_line": 5,
+      "source_marker": "setTargets = function()",
+      "native": "source/game/lume/puzzles.c",
+      "native_symbol": "lume_door_code",
+      "policy": "rule",
+      "tests": "test_actionscript_links"
+    },
+    {
+      "id": "map_target",
+      "source": "docs/actionscript/DefineSprite_597/frame_1/DoAction.as",
+      "source_line": 7,
+      "source_marker": "xTarget = 4",
+      "native": "source/game/lume/puzzles.c",
+      "native_symbol": "map_submit",
+      "policy": "rule",
+      "tests": "test_actionscript_links"
+    },
+    {
+      "id": "ending_deviation",
+      "source": "docs/actionscript/DefineSprite_1037/frame_1/DoAction.as",
+      "source_line": 302,
+      "source_marker": "checkForWin = function()",
+      "native": "source/game/lume/game.c",
+      "native_symbol": "case PRESS_POWER:",
+      "policy": "different",
+      "tests": "test_game_rules (current C behavior; not equivalence)"
+    },
+    {
+      "id": "fence_walk_side_effect",
+      "source": "docs/actionscript/DefineSprite_806/frame_32/DoAction.as",
+      "source_line": 2,
+      "source_marker": "_parent.takeFenceBlades();",
+      "native": "source/game/lume/interaction_flow.h",
+      "native_symbol": "lume_interaction_floor",
+      "policy": "different",
+      "tests": "test_fence_flow"
+    },
+    {
+      "id": "fence_taken_feedback",
+      "source": "docs/actionscript/DefineSprite_806/frame_89/DoAction.as",
+      "source_line": 1,
+      "source_marker": "\"bladesTaken\"",
+      "native": "source/main.c",
+      "native_symbol": "\"bladesTaken\"",
+      "policy": "adapted",
+      "tests": "test_fence_flow"
+    }
+  ]
+}

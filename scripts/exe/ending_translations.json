@@ -1,0 +1,22 @@
+{
+  "en": {
+    "ui": {
+      "return_menu": "Return to Main Menu"
+    }
+  },
+  "tr": {
+    "ui": {
+      "return_menu": "Ana menüye dön"
+    },
+    "text": {
+      "ending_964": "Ahh Lumi! Seni görmek ne güzel!",
+      "ending_967": "Hayret doğrusu. Her şeyi bu kadar çabuk tamir etmişsin!",
+      "ending_968": "Burada olamadığım için üzgünüm, köyde neler olduğunu mutlaka öğrenmem gerekiyordu...",
+      "ending_969": "... sana anlatacak ne hikâyelerim var.",
+      "ending_970": "Ama ben de ne düşüncesizim! Sen çay içmeye geldin, oysa geldiğinden beri çalışıyorsun!",
+      "ending_971": "Hadi içeri girelim, çayı koyayım; sonra keşfettiğim bütün o inanılmaz şeyleri anlatırım.",
+      "ending_972": "Küçük kulakların duyduklarına inanamayacak, benden söylemesi.",
+      "page_ending": "Lume: Bölüm 1 burada sona eriyor.\n\nUmarız oynarken keyif almışsınızdır.\n\nHikâyeyi devam ettirmeyi çok istiyoruz; zaten şu anda bunun üzerinde çalışıyoruz. Gelişmelerden haberdar olmak ve oyunun yapım sürecini görmek için:\nhttp://lumegame.blogspot.com/\n\nDaha fazlası için:\nhttp://www.stateofplaygames.com"
+    }
+  }
+}

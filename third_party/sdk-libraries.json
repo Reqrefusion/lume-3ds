@@ -1,0 +1,16 @@
+{
+  "libraries": {
+    "libcitro2d.a": "18539f39f2025197b38dc123aec4f799deb2b6e3238a590a01d5c25eda747217",
+    "libcitro3d.a": "d2950898eb9f827ce96bd6a7fcc2b435f983c7e5749575146409b168baeb1791",
+    "libjpeg.a": "d36ad09e8a606fbc92690a52207fde85cd4ee658520d1fe4d1aa6c2dd070f546",
+    "liblz4.a": "813a3e906a8b575ac5d7e8b23983cf93b4c148040817feb33b509ecaa241dbcc",
+    "libmpg123.a": "e3e269f851492150c54abda9ea2a2cc2644125b727ed2ed2e60a648ab82b29f5",
+    "libz.a": "243b454e62380a2a8d3283cfc2ea7ea92c4d38be5c9950293b46f9a007cf154a",
+    "libctru.a": "5e72cd24512b57908545e928cf0a1c1affbb8535f97773d7007be8f10f0e02bc"
+  },
+  "mpg123_source": {
+    "version": "1.31.3",
+    "url": "https://www.mpg123.de/download/mpg123-1.31.3.tar.bz2",
+    "sha256": "1ca77d3a69a5ff845b7a0536f783fee554e1041139a6b978f6afe14f5814ad1a"
+  }
+}
