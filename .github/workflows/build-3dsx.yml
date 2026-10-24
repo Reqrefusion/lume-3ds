@@ -1,21 +1,6 @@
 name: Build 3DSX
 
-on:
-  workflow_dispatch:
-  push:
-    paths:
-      - 'source/**'
-      - 'build/**'
-      - 'resources/icon.png'
-      - 'release/build_release.py'
-      - '.github/workflows/build-3dsx.yml'
-  pull_request:
-    paths:
-      - 'source/**'
-      - 'build/**'
-      - 'resources/icon.png'
-      - 'release/build_release.py'
-      - '.github/workflows/build-3dsx.yml'
+on: [push, pull_request, workflow_dispatch]
 
 permissions:
   contents: read
@@ -33,26 +18,21 @@ jobs:
       - uses: actions/checkout@v7
         with:
           persist-credentials: false
+      - name: Check Python syntax
+        run: python3 -c "import ast,pathlib; [ast.parse(p.read_text(encoding='utf-8-sig')) for folder in ['build','release','scripts'] for p in pathlib.Path(folder).rglob('*.py')]"
       - name: Check complete translations
         run: python3 scripts/check_languages.py
       - name: Build the fixed application only
         run: python3 build/build_player_runtime.py --sdk /opt/devkitpro
       - name: Run lightweight regression checks
         run: python3 -m unittest discover -s release/tests -v
-      - name: Package application, corresponding sources and player tools
-        shell: bash
-        run: |
-          python3 release/build_release.py --dest "$RUNNER_TEMP/lume-release"
-          dkp-pacman -Q > "$RUNNER_TEMP/lume-release/toolchain-packages.txt"
-          cp player/runtime.json "$RUNNER_TEMP/lume-release/runtime.json"
-      - name: Upload downloads
+      - name: Prepare release file
+        run: python3 release/build_release.py --dest "$RUNNER_TEMP/lume-release"
+      - name: Upload application
         uses: actions/upload-artifact@v7
         with:
-          name: Lume3DS-Downloads
-          path: |
-            ${{ runner.temp }}/lume-release/*.zip
-            ${{ runner.temp }}/lume-release/SHA256SUMS.txt
-            ${{ runner.temp }}/lume-release/toolchain-packages.txt
-            ${{ runner.temp }}/lume-release/runtime.json
+          name: lume.3dsx
+          path: ${{ runner.temp }}/lume-release/lume.3dsx
+          archive: false
           if-no-files-found: error
           retention-days: 30

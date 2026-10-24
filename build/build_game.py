@@ -12,7 +12,7 @@ def sdk_tools(root):
  base=root/'tools/sdk/opt/devkitpro';arm=base/'devkitARM';ext='.exe' if os.name=='nt' else ''
  result={'base':base,'arm':arm,'gcc':arm/'bin'/('arm-none-eabi-gcc'+ext),'ctru':base/'libctru','port':base/'portlibs/3ds','pack':base/'tools/bin'/('3dsxtool'+ext),'smdh':base/'tools/bin'/('smdhtool'+ext)}
  for name in ['gcc','pack','smdh']:
-  if not result[name].is_file():raise ValueError('Missing SDK tool: '+str(result[name])+'. Configure an existing SDK with release/setup_sdk.py.')
+  if not result[name].is_file():raise ValueError('Missing SDK tool: '+str(result[name])+'. Pass your existing SDK directory with --sdk.')
  for name,path in [('libctru',result['ctru']/'lib/libctru.a'),*[(n,result['port']/'lib'/('lib'+n+'.a')) for n in ['mpg123','jpeg','lz4','z','citro2d','citro3d']]]:
   if not path.is_file():raise ValueError('Missing SDK library: '+str(path))
  return result

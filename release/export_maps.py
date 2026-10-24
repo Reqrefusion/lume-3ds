@@ -95,15 +95,5 @@ def prepared_files(root):
  if actual!=expected:raise ValueError('Unexpected or missing file in maps directory')
  return sorted(expected)
 
-def package_prepared(root,dest):
- root=Path(root).resolve();files=prepared_files(root);dest=Path(dest).resolve()
- if dest.exists():raise ValueError('Use a new output directory')
- dest.mkdir(parents=True)
- with zipfile.ZipFile(dest/'Lume3DS-Maps-Only.zip','x',zipfile.ZIP_DEFLATED,compresslevel=9) as archive:
-  for name in files:
-   target='README.md' if name=='maps/README.md' else 'maps-manifest.json' if name=='maps/manifest.json' else name
-   archive.write(root/name,target)
- print('Packaged committed geometry without original game or model:',len(files)-2)
-
 if __name__=='__main__':
  p=argparse.ArgumentParser();p.add_argument('--romfs',default=str(ROOT/'romfs'));p.add_argument('--dest',required=True);a=p.parse_args();export(a.romfs,a.dest)

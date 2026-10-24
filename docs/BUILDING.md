@@ -1,67 +1,91 @@
-# Development and production
+# Development
 
-This repository includes both the game/runtime source and its production tools. Developers can build private game copies from their own original files. Public prepared-content downloads are limited to geometry maps.
+## Commands
 
-## Requirements
+Run these commands from the repository folder:
 
-Use Python 3.12 and an existing devkitPro/devkitARM SDK with libctru, citro2d, citro3d, mpg123, libjpeg-turbo, LZ4 and zlib. The SDK is not bundled.
+| Task | Command |
+| --- | --- |
+| Prepare game files from your own EXE | `SETUP.cmd` |
+| Update languages after the first setup | `UPDATE_LANGUAGES.cmd` |
+| Compile the application only | `BUILD.cmd --sdk C:/devkitPro` |
+| Generate new 3D maps and game assets | `PRODUCE.cmd` |
 
-Configure an existing SDK:
+`SETUP.cmd` and `UPDATE_LANGUAGES.cmd` do not compile the application. `BUILD.cmd` does not convert game content. `PRODUCE.cmd` is the full developer pipeline; players use the prepared maps already in Git.
 
-    python release/setup_sdk.py --sdk C:/devkitPro
+## Required tools
 
-## Produce from the original EXE
+| Task | Requirements |
+| --- | --- |
+| Player setup | 64-bit Windows and your supported original `Lume.exe` |
+| Application build | Python 3.11+ and devkitPro with the 3DS libraries below |
+| Full content production | Python 3.12, Java/FFDec, FFmpeg and the depth/stereo dependencies in `scripts/exe/dependencies.py` and `scripts/iw3_profile/` |
 
-Place your own supported original Lume.exe in the project root, then run:
+Player setup reuses compatible installed tools and prepares missing conversion tools automatically. Its Python packages are NumPy 1.26.4, Pillow 11.0.0, OpenCV headless 4.10.0.84 and LZ4 4.3.3. Java 17 and FFmpeg handle the source artwork and media. Dependency versions and checksums are recorded in the setup scripts.
 
-    PRODUCE.cmd
+Supported EXE SHA256:
 
-or:
+```text
+ba7a947b9a501a1723508e388764113e27b85db7bc14f52b613473373cad0089
+```
 
-    powershell -File build/produce.ps1 -Stage all
+For a custom EXE or output folder:
 
-The computer-side pipeline extracts original SWF/media, exports artwork and timelines, converts audio/video, generates stereo/depth data and assembles the local RomFS. It may download verified dependencies; Java/FFDec, FFmpeg and optional depth models are development dependencies. Python wheels are pinned in scripts/exe/windows-wheels.json.
+```powershell
+powershell -File release/setup_player.ps1 -OriginalExe "D:/Games/Lume/Lume.exe" -OutputDirectory "D:/Lume-Output"
+```
 
-This full developer route still performs depth/stereo generation. For player setup, use SETUP.cmd or release/setup_player.py; it supplies --prepared-maps to the producer and blocks inference/matching modules.
+## Build the application locally
 
-## Build a local game
+Use an existing [devkitPro installation](https://github.com/devkitPro/installer/releases). In its pacman shell, install only missing packages:
 
-Once local assets exist:
+```sh
+pacman -S --needed 3ds-dev 3ds-mpg123 3ds-libjpeg-turbo 3ds-lz4 3ds-zlib
+```
 
-    python release/build_ready.py --sdk C:/devkitPro
+On Linux, use `dkp-pacman` instead of `pacman`.
 
-Output: out/3ds/lume.3dsx plus external content in out/3ds/lume/. BUILD.cmd builds only the fixed app and does not publish or convert media. The explicit release/build_ready.py entry also republishes existing validated local assets. Keep original font data and romfs out of Git. The code fallback font is public-domain font8x8; the original readable fonts are prepared locally as game assets.
+```bat
+BUILD.cmd --sdk C:/devkitPro
+```
 
-Developers who already have their own private game build and matching developer data can import them with:
+Linux equivalent:
 
-    python release/import_ready_assets.py --game PATH_TO_OWN_GAME --private PATH_TO_OWN_DEVELOPER_DATA
+```sh
+python3 build/build_player_runtime.py --sdk /opt/devkitpro
+```
 
-This is a private development convenience, not a public player download.
+The build updates `player/lume.3dsx`, its `runtime.json` and `out/3ds/lume.3dsx`. It needs no original EXE, game assets, Java or FFmpeg. Rebuild after changing native code so the application and source hashes stay aligned. To use a modified mpg123 library, point the builder at an SDK containing that replacement library and rebuild normally.
 
-## Reuse the engine
+## Build on GitHub
 
-    python scripts/exe/export_engine.py --dest ../media-engine
+There is one workflow: **Build 3DSX**. It runs on pushes and pull requests, or manually through **Actions > Build 3DSX > Run workflow**.
 
-Read scripts/exe/engine_template/USAGE.md for the standalone example, platform requirements and buffer lifetime contracts. The reusable engine does not execute ActionScript or implement another game's rules.
+It checks the sources and translations, builds the application in the devkitPro container, and uploads a single **lume.3dsx** artifact. Attach only this file to a GitHub Release. Players download the repository separately for `SETUP.cmd`, conversion tools, maps and corresponding source code.
 
-## Tests
+The workflow does not convert game content, commit files or publish a release automatically. Pin the container image digest if you need the same SDK on later rebuilds.
 
-    python scripts/quality_check.py
+To prepare the release file locally, without compiling or converting anything:
 
-Some regression tests require original assets, private ActionScript snapshots, Java exports and MSVC or a host C compiler. These private fixtures are not committed. Host tests and ARM compilation do not replace physical Old/New 3DS testing.
+```sh
+python release/build_release.py --dest ../lume-release
+```
 
-Run `python -m unittest discover -s release/tests -v` for geometry isolation, corrupt-input rejection and source export checks. These tests require no original game or SDK.
+Use a new output folder. Its only file will be `lume.3dsx`. Keep original EXE/SWF files, converted game media, SDK files and model weights out of Git and public downloads.
 
-## Prepare public downloads
+## Translation checks and engine reuse
 
-    python release/build_release.py --dest NEW_DIRECTORY
+```sh
+python scripts/check_languages.py
+python -m unittest discover -s release/tests -v
+```
 
-This validates the committed maps/ and packages the source repository with its geometry-only content. No original EXE or local RomFS is required for packaging. Use --source-only to package development sources without local RomFS. See docs/PUBLISHING.md. No generated video/audio/art or complete game is bundled.
+These checks do not convert content. The native locale test needs a host C compiler and is skipped when one is unavailable. English story text comes from the original EXE; the other language packs must cover every key in `languages/text-keys.txt`.
 
-## Fixed application
+Export the reusable engine with:
 
-Developers run `python build/build_player_runtime.py --sdk C:/devkitPro` after changing native source. This builds the fixed app with public-domain fallback glyphs. The temporary marker filesystem is discarded, and the released `player/lume.3dsx` has no embedded filesystem. Original Lume media and font glyphs are external files, prepared from the player's own original EXE.
+```sh
+python scripts/exe/export_engine.py --dest ../media-engine
+```
 
-`player/runtime.json` records application integrity and native source hashes. Player setup verifies them, then copies the application unchanged to `out/3ds/lume.3dsx` and publishes verified content to `out/3ds/lume/`. Only developers need the native SDK and Citro libraries. Player conversion may compile Java extraction helpers using the pinned Eclipse compiler; it never compiles or assembles a 3DSX.
-
-See [SYSTEM_SETUP.md](SYSTEM_SETUP.md) for the complete tool list, installation commands, language-only updates and GitHub Actions downloads.
+See `scripts/exe/engine_template/USAGE.md` for its API and requirements. Physical Old/New 3DS testing is still needed after runtime changes.

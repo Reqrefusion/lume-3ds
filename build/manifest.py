@@ -1,5 +1,5 @@
 """One exact RomFS inventory, independent of historical patch baselines."""
-from pathlib import Path,PurePosixPath
+from pathlib import Path
 import hashlib,json,os,shutil,datetime
 
 def sha(path):
@@ -19,41 +19,19 @@ def inventory(folder):return {p.relative_to(folder).as_posix():{'sha256':sha(p),
 def source_inventory(root):return inventory(root/'source')
 def save(root):
  rom=root/'romfs';data=inventory(rom)
- if not data:raise ValueError('RomFS is empty; import the ready assets first.')
+ if not data:raise ValueError('RomFS is empty; run SETUP.cmd first.')
  dump(root/'assets.sha256.json',{'files':data,'count':len(data)})
  dump(root/'source-manifest.json',{'files':source_inventory(root)})
  return data
 
 def verify(root):
  path=root/'assets.sha256.json'
- if not path.is_file():raise ValueError('Asset manifest missing; import the ready assets first.')
+ if not path.is_file():raise ValueError('Asset manifest missing; run SETUP.cmd first.')
  expected=json.loads(path.read_text(encoding='utf-8-sig'))['files'];actual=inventory(root/'romfs')
  if actual!=expected:
   wrong=[n for n in sorted(set(actual)|set(expected)) if actual.get(n)!=expected.get(n)]
-  raise ValueError('RomFS changed or missing: '+', '.join(wrong[:12])+'. Import the ready assets again or run the production pipeline.')
+  raise ValueError('RomFS changed or missing: '+', '.join(wrong[:12])+'. Run SETUP.cmd to prepare the assets again.')
  return actual
-
-def old_inventory(path):
- doc=json.loads(path.read_text(encoding='utf-8-sig'));entries=doc.get('files',doc) if isinstance(doc,dict) else doc
- raw={}
- if isinstance(entries,dict):
-  for n,v in entries.items():
-   h=v if isinstance(v,str) else v.get('sha256') if isinstance(v,dict) else None
-   if h:raw[n.replace('\\','/')]=h
- elif isinstance(entries,list):
-  for v in entries:
-   if isinstance(v,dict):raw[str(v.get('path',v.get('name',''))).replace('\\','/')]=v.get('sha256')
- else:raise ValueError('Unrecognized legacy asset manifest.')
- anchor=next((n for n in raw if n.endswith('solar_pattern.rgb')),None)
- if anchor is None:raise ValueError('Legacy manifest has no solar_pattern.rgb.')
- prefix=anchor[:-len('solar_pattern.rgb')];result={}
- for n,h in raw.items():
-  if not n.startswith(prefix):raise ValueError('Legacy asset path outside common root: '+n)
-  rel=PurePosixPath(n[len(prefix):])
-  if rel.is_absolute() or '..' in rel.parts or ':' in str(rel):raise ValueError('Invalid legacy asset path: '+n)
-  if not isinstance(h,str) or len(h)!=64:raise ValueError('Invalid legacy asset SHA256: '+n)
-  result[rel.as_posix()]=h.lower()
- return result
 
 def commit(root,generated):
  """Commit assets and their metadata together, with rollback on a locked file."""

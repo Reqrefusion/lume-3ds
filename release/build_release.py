@@ -1,18 +1,13 @@
-"""Package the development repository and optional geometry-only release assets."""
+"""Prepare the single application file for a GitHub release."""
 from pathlib import Path
-import argparse,hashlib,json,shutil,sys,zipfile
+import argparse,json,shutil,sys
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'release'))
-from export_maps import package_prepared,prepared_files,sha
+from export_maps import prepared_files,sha
 
 TEXT_EXTENSIONS={'.py','.java','.json','.h','.hpp','.cpp','.c','.inc','.ps1','.cmd','.md','.txt','.yml','.yaml','.cmake'}
 PRIVATE_PARTS={'__pycache__','obj','publish','metadata','dist','private'}
 PRIVATE_FILES={'original_font.h'}
-
-def zip_tree(folder,dest):
- with zipfile.ZipFile(dest,'x',zipfile.ZIP_DEFLATED,compresslevel=1) as archive:
-  for path in sorted(folder.rglob('*')):
-   if path.is_file():archive.write(path,path.relative_to(folder).as_posix())
 
 def export_source(source):
  source=Path(source);source.mkdir()
@@ -44,18 +39,18 @@ def export_source(source):
  (source/'PUBLIC_SOURCE_MANIFEST.json').write_text(json.dumps(manifest,indent=2),encoding='utf-8')
  return manifest
 
-def run(dest,source_only=False):
+def run(dest):
  dest=Path(dest).resolve()
  if dest==ROOT or dest.is_relative_to(ROOT):raise ValueError('Choose an output directory outside the source repository')
  if dest.exists():raise ValueError('Use a new output directory')
- if source_only:dest.mkdir(parents=True)
- else:package_prepared(ROOT,dest)
- source=dest/'Lume3DS-Source';export_source(source);zip_tree(source,dest/'Lume3DS-Source.zip')
- if not source_only:
-  shutil.copyfile(dest/'Lume3DS-Source.zip',dest/'Lume3DS-Player-Setup.zip')
-  app=dest/'App/3ds';app.mkdir(parents=True);shutil.copyfile(ROOT/'player/lume.3dsx',app/'lume.3dsx');zip_tree(dest/'App',dest/'Lume3DS-App.zip')
- (dest/'SHA256SUMS.txt').write_text(''.join(sha(path)+'  '+path.name+'\n' for path in sorted(dest.glob('*.zip'))),encoding='ascii')
- print('Source and development tools packaged:',source)
+ app=ROOT/'player/lume.3dsx';runtime=json.loads((ROOT/'player/runtime.json').read_text(encoding='utf-8'))
+ if runtime.get('storage')!='external_sd' or runtime.get('original_game_content_embedded') is not False or sha(app)!=runtime['sha256']:raise ValueError('Application integrity check failed')
+ for name,record in runtime['source'].items():
+  if sha(ROOT/'source'/name)!=record['sha256']:raise ValueError('Native source changed; rebuild the application first')
+ dest.mkdir(parents=True);target=dest/'lume.3dsx';shutil.copyfile(app,target)
+ if sha(target)!=runtime['sha256']:raise ValueError('Release copy differs from the application')
+ print('Release file ready:',target)
+ return target
 
 if __name__=='__main__':
- parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--dest',required=True);parser.add_argument('--source-only',action='store_true');args=parser.parse_args();run(args.dest,args.source_only)
+ parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--dest',required=True);args=parser.parse_args();run(args.dest)

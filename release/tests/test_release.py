@@ -23,10 +23,15 @@ class ReleaseTests(unittest.TestCase):
   with tempfile.TemporaryDirectory() as folder:
    source=Path(folder)/'source.lvs';source.write_bytes(struct.pack('<4sHHIII',b'LVM1',320,240,25,1,1)+struct.pack('<2I',28,100))
    with self.assertRaises(ValueError):export_maps.video(source,Path(folder)/'maps.ldp')
+ def test_release_contains_only_the_unchanged_application(self):
+  with tempfile.TemporaryDirectory() as folder:
+   dest=Path(folder)/'release';target=build_release.run(dest)
+   self.assertEqual([p.name for p in dest.iterdir()],['lume.3dsx'])
+   self.assertEqual(target.read_bytes(),(ROOT/'player/lume.3dsx').read_bytes())
  def test_source_export_contains_tools_but_no_private_assets(self):
   with tempfile.TemporaryDirectory() as folder:
    target=Path(folder)/'source';manifest=build_release.export_source(target)
-   for name in ['scripts/exe/pipeline.py','build/produce.ps1','source/main.c','release/export_maps.py','docs/BUILDING.md','.github/workflows/check.yml','SETUP.cmd','release/setup_player.ps1','player/lume.3dsx','player/runtime.json']:
+   for name in ['scripts/exe/pipeline.py','build/produce.ps1','source/main.c','release/export_maps.py','docs/BUILDING.md','.github/workflows/build-3dsx.yml','SETUP.cmd','release/setup_player.ps1','player/lume.3dsx','player/runtime.json']:
     self.assertIn(name,manifest)
    forbidden={'.exe','.swf','.3dsx','.l3dp','.rgb','.rgba','.lvs','.lan','.pcm','.mp3','.o','.a','.class'}
    self.assertFalse(any(Path(name).suffix in forbidden and name!='player/lume.3dsx' for name in manifest))
