@@ -4,10 +4,11 @@
 #define LUME_MEDIA_BOTTOM 226
 #endif
 #include "audio.h"
-#include "../../engine/core/log_io.h"
-#include "../../platform/3ds/audio_worker.h"
+#include "engine/core/log_io.h"
+#include "engine/platform/3ds/audio_worker.h"
+#include "engine/platform/3ds/audio_device.h"
 #include "title_animation.h"
-#include "../../platform/3ds/math.h"
+#include "engine/platform/3ds/math.h"
 #include <3ds.h>
 #include <mpg123.h>
 #include <stdarg.h>
@@ -167,18 +168,10 @@ static void channel(int i, int rate, int format) {
   ndspChnSetMix(i, mix);
 }
 bool lume_audio_init(void) {
-  Result rc = ndspInit();
-  lume_log("ndspInit=%08lx", (unsigned long)rc);
-  if (R_FAILED(rc)) {
-    s64 id = 0;
-    if (R_SUCCEEDED(svcGetSystemInfo(&id, 0x20000, 0)) &&
-        (id == 1 || id == 2)) {
-      static const unsigned char marker[] = "Lume: Azahar HLE audio interface";
-      ndspUseComponent(marker, sizeof(marker), 0xff, 0xff);
-      rc = ndspInit();
-      lume_log("Azahar HLE ndspInit=%08lx", (unsigned long)rc);
-    }
-  }
+  LumeAudioDeviceStatus device;
+  Result rc = lume_audio_device_init(&device);
+  lume_log("ndspInit=%08lx", (unsigned long)device.initial_result);
+  if (device.emulator_retry)lume_log("Azahar HLE ndspInit=%08lx", (unsigned long)rc);
   if (R_FAILED(rc))
     return false;
   ready = true;

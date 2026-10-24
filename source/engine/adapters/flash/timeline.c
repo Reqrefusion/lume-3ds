@@ -1,6 +1,6 @@
-#include "../../engine/codecs/pixel_predict.h"
-#include "timeline.h"
-#include "../../engine/render/blit.h"
+#include "engine/codecs/pixel_predict.h"
+#include "engine/adapters/flash/timeline.h"
+#include "engine/render/blit.h"
 #include <stdlib.h>
 #include <string.h>
 #include <zlib.h>

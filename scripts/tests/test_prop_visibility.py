@@ -26,7 +26,7 @@ static const char *asset_root;
 FILE *prop_test_fopen(const char *path,const char *mode){char real[1024];if(!strncmp(path,"romfs:/",7)){snprintf(real,sizeof real,"%s/%s",asset_root,path+7);path=real;}return fopen(path,mode);}
 unsigned lume_stereo_strength(void){return 256;}
 """
-  code+=block((native/'engine/render/blit.c').read_text(encoding='utf-8'),'void lume_blit_affine(')
+  code+=block((ROOT/'source/engine/render/blit.c').read_text(encoding='utf-8'),'void lume_blit_affine(')
   code+=r"""
 static uint8_t clean[230400],rgb[230400];
 int main(int argc,char **argv){

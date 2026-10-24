@@ -2,7 +2,7 @@
 #ifndef LUME_CLUE_READER_H
 #define LUME_CLUE_READER_H
 #include "clue_views.h"
-#include "../../engine/codecs/pixel_image.h"
+#include "engine/codecs/pixel_image.h"
 #include <stdlib.h>
 #include <string.h>
 #define LUME_READ_WIDTH 800

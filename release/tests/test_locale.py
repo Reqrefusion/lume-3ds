@@ -18,7 +18,7 @@ class LocaleTests(unittest.TestCase):
     (lang/'font.bin').write_bytes(b'LUF1'+struct.pack('<I',len(codes))+struct.pack('<'+'I'*len(codes),*codes)+bytes(len(codes)*240))
    (root/'lang/tr/bladesTaken.txt').write_text(tr['text']['bladesTaken'],encoding='utf-8')
    program=r'''
-#include "features/locale/locale.h"
+#include "engine/features/locale/locale.h"
 #include <assert.h>
 LumeLocale lume_locale;
 bool lume_ui_user_path(char *out,size_t cap,const char *relative){return snprintf(out,cap,"%s",relative)>0;}
@@ -34,7 +34,7 @@ int main(void){
 }
 '''
    source=root/'test.c';source.write_text(program);binary=root/('test.exe' if cc[2] else 'test')
-   command=[cc[0],'/nologo','/TC','/utf-8','/I'+str(ROOT/'source'),str(source),'/Fe:'+str(binary)] if cc[2] else [cc[0],'-std=c11','-I'+str(ROOT/'source'),str(source),'-o',str(binary)]
+   command=[cc[0],'/nologo','/TC','/utf-8','/I'+str(ROOT/'source'),'/I'+str(ROOT/'source'),str(source),'/Fe:'+str(binary)] if cc[2] else [cc[0],'-std=c11','-I'+str(ROOT/'source'),'-I'+str(ROOT/'source'),str(source),'-o',str(binary)]
    result=subprocess.run(command,cwd=root,env=cc[1],capture_output=True,text=True)
    self.assertEqual(result.returncode,0,result.stdout+result.stderr)
    result=subprocess.run([str(binary)],cwd=root,capture_output=True,text=True);self.assertEqual(result.returncode,0,result.stdout+result.stderr)

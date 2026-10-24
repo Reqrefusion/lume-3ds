@@ -1,7 +1,7 @@
 #ifndef LUME_ZOOM_HUD_H
 #define LUME_ZOOM_HUD_H
-#include "../../engine/render/colour.h"
-#include "../ui/menu_art.h"
+#include "engine/render/colour.h"
+#include "engine/features/ui/menu_art.h"
 /* A small paper badge uses source glyphs and a supersampled magnifying glass.
    Masks are built once; only the final physical bottom-screen pixels blend. */
 enum{LUME_ZOOM_X=222,LUME_ZOOM_Y=6,LUME_ZOOM_W=90,LUME_ZOOM_H=32};

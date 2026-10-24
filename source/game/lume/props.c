@@ -4,8 +4,8 @@
 #define LUME_MEDIA_BOTTOM 226
 #endif
 #include "props.h"
-#include "../../engine/render/stereo_video.h"
-#include "../../engine/render/blit.h"
+#include "engine/render/stereo_video.h"
+#include "engine/render/blit.h"
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>

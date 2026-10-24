@@ -1,4 +1,4 @@
-#include "log_io.h"
+#include "engine/core/log_io.h"
 #include <stdio.h>
 #include <string.h>
 #ifdef __3DS__

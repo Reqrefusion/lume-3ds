@@ -1,6 +1,6 @@
 #ifndef LUME_STEREO_FIELD_H
 #define LUME_STEREO_FIELD_H
-#include "../render/stereo_video.h"
+#include "engine/render/stereo_video.h"
 #include <stdlib.h>
 #include <stdbool.h>
 #include <stdio.h>

@@ -1,8 +1,8 @@
 #ifndef LUME_SKIP_BUTTON_H
 #define LUME_SKIP_BUTTON_H
-#include "../../engine/render/colour.h"
-#include "../../engine/render/blit.h"
-#include "menu_art.h"
+#include "engine/render/colour.h"
+#include "engine/render/blit.h"
+#include "engine/features/ui/menu_art.h"
 #include <string.h>
 /* UI stays in physical lower-screen coordinates, outside movie zoom/stereo.
    Source btnSkip=913 appears only in intro and ending, not walking clips. */

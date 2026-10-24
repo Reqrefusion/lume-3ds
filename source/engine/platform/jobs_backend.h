@@ -3,13 +3,13 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include "../engine/core/jobs_state.h"
+#include "engine/core/jobs_state.h"
 /* One persistent, bounded job slot. Codec reference pictures remain on the
    caller; only independent disparity/row work is submitted here. */
 #if defined(__3DS__) || defined(LUME_HOST_JOBS)
 #ifdef __3DS__
 #include <3ds.h>
-#include "3ds/math.h"
+#include "engine/platform/3ds/math.h"
 #else
 #include <pthread.h>
 #endif

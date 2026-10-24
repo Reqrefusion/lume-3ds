@@ -96,3 +96,9 @@ python scripts/exe/export_engine.py --dest ../media-engine
 ```
 
 See `scripts/exe/engine_template/USAGE.md` for its API and requirements. Physical Old/New 3DS testing is still needed after runtime changes.
+## Shared source layout
+
+Common code is now in `source/engine`, production helpers in `source/engine/tools`, and
+Lume integration in `source`. `source/engine/modules.json` supplies explicit compilation
+units. There are no forwarding source files. The engine snapshot matches
+the Samorost 1 repository; `source/engine/source-manifest.json` records its identity.

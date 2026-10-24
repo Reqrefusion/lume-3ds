@@ -2740,7 +2740,7 @@ static const plm_vlc_uint_t PLM_VIDEO_DCT_COEFF[] = {
 	{       0,   0x1c01}, {       0,   0x1b01},  // 111: 0000 0000 0001 111x
 };
 
-#include "mpeg_vlc_tables.h"
+#include "engine/codecs/mpeg_vlc_tables.h"
 #ifdef LUME_MPEG_VLC_STATS
 unsigned long lume_vlc_fast,lume_vlc_terminal,lume_vlc_continuation,lume_vlc_slow;
 #endif

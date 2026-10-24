@@ -46,7 +46,7 @@ def run(dest):
  app=ROOT/'player/lume.3dsx';runtime=json.loads((ROOT/'player/runtime.json').read_text(encoding='utf-8'))
  if runtime.get('storage')!='external_sd' or runtime.get('original_game_content_embedded') is not False or sha(app)!=runtime['sha256']:raise ValueError('Application integrity check failed')
  for name,record in runtime['source'].items():
-  if sha(ROOT/'source'/name)!=record['sha256']:raise ValueError('Native source changed; rebuild the application first')
+  if sha(ROOT/name)!=record['sha256']:raise ValueError('Native source changed; rebuild the application first')
  dest.mkdir(parents=True);target=dest/'lume.3dsx';shutil.copyfile(app,target)
  if sha(target)!=runtime['sha256']:raise ValueError('Release copy differs from the application')
  print('Release file ready:',target)

@@ -1,13 +1,13 @@
 #ifndef LUME_MPEG_READER_H
 #define LUME_MPEG_READER_H
-#include "movie.h"
-#include "../core/layout.h"
-#include "pixel_predict.h"
-#include "../render/disparity.h"
+#include "engine/codecs/movie.h"
+#include "engine/core/layout.h"
+#include "engine/codecs/pixel_predict.h"
+#include "engine/render/disparity.h"
 #include <lz4.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../core/jobs.h"
+#include "engine/core/jobs.h"
 #if defined(LUME_HOST_JOBS)
 #include <time.h>
 #endif
@@ -18,10 +18,10 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wsign-compare"
-#include "pl_mpeg.h"
+#include "engine/codecs/pl_mpeg.h"
 #pragma GCC diagnostic pop
 
-#include "mpeg_colour_tables.h"
+#include "engine/codecs/mpeg_colour_tables.h"
 /* Preserve PL_MPEG's integer BT.601 coefficients and rounding. Only the
    photographed rows need conversion; the padded rows are exact black. */
 #define LUME_MPEG_PUT_PIXEL(Y_OFFSET,DEST_OFFSET) \
@@ -47,8 +47,8 @@ static void lume_mpeg_rgb(plm_frame_t *frame,uint8_t *dest){
  }
 }
 #undef LUME_MPEG_PUT_PIXEL
-#include "../../platform/3ds/y2r.h"
-#include "../../platform/clock.h"
+#include "engine/platform/3ds/y2r.h"
+#include "engine/platform/clock.h"
 static uint64_t lume_mpeg_ticks(void){return lume_platform_ticks();}
 
 #define LUME_MPEG_RGB_BYTES (320u*240u*3u)

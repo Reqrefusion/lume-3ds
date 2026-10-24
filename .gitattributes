@@ -1,0 +1,9 @@
+* text=auto eol=lf
+*.cmd text eol=crlf
+*.3dsx -text
+*.png -text
+*.smd -text
+*.sdf -text
+*.depth -text
+*.ldp -text
+*.tsf -text

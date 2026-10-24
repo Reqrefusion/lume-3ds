@@ -1,6 +1,6 @@
 #ifndef LUME_MOVIE_H
 #define LUME_MOVIE_H
-#include "../assets/file_cache.h"
+#include "engine/assets/file_cache.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>

@@ -1,12 +1,12 @@
 #ifndef LUME_READING_BUBBLE_H
 #define LUME_READING_BUBBLE_H
-#include "../../engine/render/colour.h"
+#include "engine/render/colour.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-#include "../ui/backend.h"
-#include "../locale/locale.h"
+#include "engine/features/ui/backend.h"
+#include "engine/features/locale/locale.h"
 /* Original English comes from the SWF; translations are separate UTF-8 packs.
    Convert to glyph codes once, keeping fixed20px cells for readable wrapping. */
 #include <stdlib.h>

@@ -4,8 +4,8 @@
 #define LUME_MEDIA_BOTTOM 226
 #endif
 #include "actor_pose.h"
-#include "../../engine/render/blit.h"
-#include "../../engine/render/depth_anchor.h"
+#include "engine/render/blit.h"
+#include "engine/render/depth_anchor.h"
 #include <stdio.h>
 #include <string.h>
 const int lume_actor_feet[7][2] = {{120, 216}, {204, 158}, {211, 167},

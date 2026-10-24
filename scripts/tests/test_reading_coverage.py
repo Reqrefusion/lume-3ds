@@ -27,7 +27,7 @@ class ReadingCoverageTests(unittest.TestCase):
   cc=compiler()
   if not cc:self.skipTest('Native C compiler unavailable')
   code=r"""
-#include "features/reading/bubble.h"
+#include "engine/features/reading/bubble.h"
 LumeLocale lume_locale;
 static const char *root;
 unsigned lume_ui_fallback_alpha(unsigned ch,unsigned pixel){(void)ch;(void)pixel;return 0;}

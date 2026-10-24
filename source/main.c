@@ -1,8 +1,8 @@
 #include "game/lume/storage.h"
 #include "game/lume/close_controls.h"
-#include "platform/3ds/video_present.h"
+#include "engine/platform/3ds/video_present.h"
 #include "engine/assets/movie_pool.h"
-#include "features/settings/stereo_strength.h"
+#include "engine/features/settings/stereo_strength.h"
 #ifndef LUME_MEDIA_TOP
 #define LUME_MEDIA_TOP 13
 #define LUME_MEDIA_BOTTOM 226
@@ -10,7 +10,7 @@
 #include "game/lume/fallback_font.h"
 #include "engine/assets/raster.h"
 #include "game/lume/actor_pose.h"
-#include "adapters/flash/timeline.h"
+#include "engine/adapters/flash/timeline.h"
 #include "game/lume/audio.h"
 #include "game/lume/persistence.h"
 #include "engine/core/log_io.h"
@@ -25,14 +25,14 @@
 #include "engine/assets/stereo_field.h"
 #include "engine/assets/depth_stream.h"
 #include "engine/render/viewport.h"
-#include "features/zoom/hud.h"
+#include "engine/features/zoom/hud.h"
 #include "game/lume/hover_hints.h"
-#include "platform/3ds/frame_flush.h"
+#include "engine/platform/3ds/frame_flush.h"
 #include "game/lume/interaction_flow.h"
 #include "game/lume/game_render.h"
 #include "engine/codecs/movie.h"
 #include "game/lume/skip_policy.h"
-#include "platform/3ds/math.h"
+#include "engine/platform/3ds/math.h"
 #include "game/lume/profile.h"
 #include "game/lume/props.h"
 #include "game/lume/clip_compose.h"
@@ -42,7 +42,7 @@
 #include "game/lume/title_menu.h"
 #include "game/lume/logo_depth.h"
 #include "game/lume/title_touch.h"
-#include "features/reading/bubble.h"
+#include "engine/features/reading/bubble.h"
 #include "game/lume/native_menu.h"
 #include "game/lume/settings_ui.h"
 #include "game/lume/title_animation.h"
@@ -85,7 +85,7 @@ static LumeNativeMenu native_menu;
 static LumeMenuArt native_menu_art;
 static bool reading_replace,reading_touch_latch,reading_instruction;
 static bool cinema_reading,ending_card_open;
-#include "features/reading/timeline.h"
+#include "engine/features/reading/timeline.h"
 typedef LumeTimedReadingCue LumeEndingCue;
 static LumeEndingCue ending_cues[7];
 static unsigned ending_cue_count;

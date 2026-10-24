@@ -2,7 +2,7 @@
 #define LUME_NATIVE_MENU_H
 #include "game.h"
 #include "render.h"
-#include "../../features/ui/menu_art.h"
+#include "engine/features/ui/menu_art.h"
 #include <string.h>
 /* System buttons own these lower-screen overlays. Input never reaches world
    hotspots or puzzle controls while an overlay is opening, open, or closing. */

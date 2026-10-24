@@ -54,7 +54,7 @@ def run(args):
  runtime=ROOT/'player/lume.3dsx';metadata=json.loads((ROOT/'player/runtime.json').read_text(encoding='utf-8'))
  if digest(runtime)!=metadata['sha256'] or metadata.get('original_game_content_embedded') is not False or metadata.get('storage')!='external_sd':raise ValueError('Runtime integrity check failed.')
  for name,value in metadata['source'].items():
-  path=ROOT/'source'/name
+  path=ROOT/name
   if not path.is_file() or digest(path)!=value['sha256']:raise ValueError('Game source changed; a developer must rebuild the media-free runtime before player setup.')
  print('Original game verified:',original,flush=True)
  print('Prepared geometry verified:',len(files)-2,'files. No depth model or 3DS compiler will run.',flush=True)

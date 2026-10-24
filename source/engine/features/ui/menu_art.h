@@ -1,8 +1,8 @@
 #ifndef LUME_NATIVE_MENU_ART_H
 #define LUME_NATIVE_MENU_ART_H
-#include "../../engine/render/colour.h"
-#include "backend.h"
-#include "../locale/locale.h"
+#include "engine/render/colour.h"
+#include "engine/features/ui/backend.h"
+#include "engine/features/locale/locale.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdint.h>

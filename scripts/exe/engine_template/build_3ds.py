@@ -4,14 +4,16 @@ import argparse,os,subprocess,re,json,hashlib,sys
 ROOT=Path(__file__).resolve().parent
 sys.path.insert(0,str(ROOT))
 from romfs_compact import compact_3dsx
-UNITS=['engine/core/jobs_state.c','engine/assets/file_cache.c','engine/render/blit.c','engine/render/stereo_video.c','engine/codecs/blocks.c','engine/codecs/movie.c','platform/3ds/video_present.c']
+UNITS=['source/engine/animation/baked.c','source/engine/core/jobs_state.c','source/engine/assets/file_cache.c','source/engine/render/blit.c','source/engine/render/stereo_video.c','source/engine/codecs/blocks.c','source/engine/codecs/movie.c','source/engine/platform/3ds/video_present.c']
 def build(args):
  if not re.fullmatch(r'[a-zA-Z0-9_-]+',args.name):raise ValueError('Invalid output name')
  if not 0<=args.media_top<args.media_bottom<=240:raise ValueError('Invalid media rectangle')
  base=Path(args.sdk).resolve();arm=base/'devkitARM';port=base/'portlibs/3ds';ctru=base/'libctru';ext='.exe' if os.name=='nt' else ''
  gcc=arm/'bin'/('arm-none-eabi-gcc'+ext);pack=base/'tools/bin'/('3dsxtool'+ext);smdh=base/'tools/bin'/('smdhtool'+ext)
- for f in [gcc,pack,smdh,ctru/'default_icon.png',*[port/'lib'/('lib'+n+'.a') for n in ['citro2d','citro3d','jpeg','lz4','z']]]:
+ for f in [gcc,pack,smdh,ctru/'default_icon.png',*[port/'lib'/('lib'+n+'.a') for n in ['jpeg','lz4','z']]]:
   if not f.is_file():raise ValueError('Missing SDK dependency: '+str(f))
+ for name in ['citro2d','citro3d']:
+  if not any((folder/'lib'/('lib'+name+'.a')).is_file() for folder in [port,ctru]):raise ValueError('Missing SDK dependency: lib'+name+'.a')
  main=Path(args.main);main=main if main.is_absolute() else ROOT/main
  if not main.is_file():raise ValueError('Missing application entry: '+str(main))
  rom=Path(args.romfs).resolve() if args.romfs else None
@@ -22,7 +24,7 @@ def build(args):
  env['PATH']=os.pathsep.join([str(arm/'bin'),str(base/'tools/bin'),env.get('PATH','')])
  def run(cmd):subprocess.run([str(x) for x in cmd],cwd=ROOT,env=env,check=True)
  arch=['-march=armv6k','-mtune=mpcore','-mfloat-abi=hard','-mtp=soft']
- flags=arch+['-mword-relocations','-std=gnu11','-O2','-Wall','-Wextra','-Werror','-ffunction-sections','-fdata-sections','-D__3DS__','-DARM11','-DLUME_MEDIA_TOP='+str(args.media_top),'-DLUME_MEDIA_BOTTOM='+str(args.media_bottom),'-I'+str(ROOT),'-I'+str(ctru/'include'),'-I'+str(port/'include')]
+ flags=arch+['-mword-relocations','-std=gnu11','-O2','-Wall','-Wextra','-Werror','-ffunction-sections','-fdata-sections','-D__3DS__','-DARM11','-DLUME_MEDIA_TOP='+str(args.media_top),'-DLUME_MEDIA_BOTTOM='+str(args.media_bottom),'-I'+str(ROOT/'source'),'-I'+str(ctru/'include'),'-I'+str(port/'include')]
  objects=[]
  for i,f in enumerate([ROOT/u for u in UNITS]+[main]):
   obj=dest/(str(i)+'.o');run([gcc,*flags,'-c',f,'-o',obj]);objects.append(obj)

@@ -1,12 +1,12 @@
-#include "movie.h"
-#include "blocks.h"
-#include "../render/stereo_video.h"
+#include "engine/codecs/movie.h"
+#include "engine/codecs/blocks.h"
+#include "engine/render/stereo_video.h"
 #include <jpeglib.h>
 #include <lz4.h>
 #include <setjmp.h>
 #include <stdlib.h>
 #include <string.h>
-#include "mpeg_reader.h"
+#include "engine/codecs/mpeg_reader.h"
 static bool lume_movie_frame_now(LumeMovie *,unsigned,uint8_t *,uint8_t *);
 typedef struct {
  LumeMovieJobs *jobs;LumeMovie *movie;uint8_t *pixels;

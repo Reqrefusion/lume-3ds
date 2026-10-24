@@ -11,7 +11,7 @@ class VideoTextureTests(unittest.TestCase):
 #include <stdio.h>
 #include <string.h>
 #include <time.h>
-#include "platform/3ds/video_texture.h"
+#include "engine/platform/3ds/video_texture.h"
 static inline void lume_video_texture_pack_v5(uint32_t *out,const uint8_t *rgb,unsigned first,unsigned height) {
  unsigned columns[321];
  for(unsigned x=0;x<=320;x++)columns[x]=(x/8)*64+lume_video_morton(x&7,0);
@@ -25,7 +25,7 @@ static inline void lume_video_texture_pack_v5(uint32_t *out,const uint8_t *rgb,u
  }
 }
 
-#include "platform/3ds/video_cache.h"
+#include "engine/platform/3ds/video_cache.h"
 #define CHECK(x) do{if(!(x)){printf("FAIL %d\n",__LINE__);return 1;}}while(0)
 static uint32_t storage[512*256+2],expected[512*256];
 static uint8_t rgb[320*240*3],original[320*240*3];

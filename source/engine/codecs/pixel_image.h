@@ -1,12 +1,12 @@
 #ifndef LUME_PIXEL_IMAGE_H
 #define LUME_PIXEL_IMAGE_H
-#include "pixel_predict.h"
+#include "engine/codecs/pixel_predict.h"
 #include <stdio.h>
 #include <string.h>
 #include <zlib.h>
 #include <lz4.h>
 #include <stdlib.h>
-#include "../core/jobs_state.h"
+#include "engine/core/jobs_state.h"
 /* Page paths retain their original names. A tagged lossless payload replaces
    raw RGB only when smaller; generated raw pages remain valid inputs. */
 static inline bool lume_pixel_image_depth(FILE *f,uint8_t *out,unsigned w,unsigned h,unsigned depth) {

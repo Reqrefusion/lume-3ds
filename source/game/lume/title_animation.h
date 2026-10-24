@@ -1,7 +1,7 @@
 #ifndef LUME_TITLE_ANIMATION_H
 #define LUME_TITLE_ANIMATION_H
 #include <stdint.h>
-#include "../../engine/render/colour.h"
+#include "engine/render/colour.h"
 #include <string.h>
 #include <stdbool.h>
 /* Source menuAnim: frames 1..733, three remaining child ticks, then a

@@ -12,7 +12,7 @@ def object_path(work,relative_source):
         raise ValueError('Invalid source path: '+str(path))
     return Path(work)/path.with_suffix('.o')
 
-def compile_signature(version,flags,source):
+def compile_signature(version,flags,source,dependency_roots=()):
     source=Path(source)
     digest=hashlib.sha256()
     digest.update(json.dumps([version,flags],ensure_ascii=False).encode('utf-8'))
@@ -22,4 +22,10 @@ def compile_signature(version,flags,source):
         if path.is_file() and path.suffix.lower() in {'.h','.inc'}:
             digest.update(path.relative_to(source).as_posix().encode('utf-8')+b'\0')
             digest.update(hashlib.sha256(path.read_bytes()).digest())
+    for root in dependency_roots:
+        root=Path(root)
+        for path in sorted(root.rglob('*')):
+            if path.is_file() and path.suffix.lower() in {'.c','.h','.inc'}:
+                digest.update(path.relative_to(root).as_posix().encode('utf-8')+b'\0')
+                digest.update(hashlib.sha256(path.read_bytes()).digest())
     return digest.hexdigest()

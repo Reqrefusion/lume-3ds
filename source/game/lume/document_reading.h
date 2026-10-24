@@ -1,6 +1,6 @@
 #ifndef LUME_DOCUMENT_READING_H
 #define LUME_DOCUMENT_READING_H
-#include "../../features/reading/bubble.h"
+#include "engine/features/reading/bubble.h"
 #include "clue_views.h"
 typedef struct {bool active,top;int owner;} LumeDocumentReading;
 static inline const char *lume_document_label(const LumeGame *g,char *name,size_t size){

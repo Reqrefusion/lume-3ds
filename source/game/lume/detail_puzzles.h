@@ -1,6 +1,6 @@
 #ifndef LUME_DETAIL_PUZZLES_H
 #define LUME_DETAIL_PUZZLES_H
-#include "../../engine/assets/detail.h"
+#include "engine/assets/detail.h"
 #include "puzzles.h"
 #include <math.h>
 static inline unsigned lume_detail_hash(unsigned h,unsigned v){return (h^v)*16777619u;}

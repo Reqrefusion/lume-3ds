@@ -1,12 +1,20 @@
 #ifndef LUME_VIEWPORT_H
 #define LUME_VIEWPORT_H
 #include <stdint.h>
-#include "../core/layout.h"
-#include "../core/jobs.h"
+#include "engine/core/layout.h"
+#include "engine/core/jobs.h"
 #include <stdbool.h>
 #include <string.h>
 /* Independent bottom-screen camera. Coordinates and zoom use 10 fraction
    bits; authored scene rendering and the stereo eyes never receive this crop. */
+/* Defaults preserve Lume's authored stage; full-screen adapters override them. */
+#ifndef LUME_VIEWPORT_TOP
+#define LUME_VIEWPORT_TOP 13
+#endif
+#ifndef LUME_VIEWPORT_BOTTOM
+#define LUME_VIEWPORT_BOTTOM 227
+#endif
+
 typedef struct {
  int scale,target,cx,cy;uint64_t tick,repeat;unsigned serial;
  int zoom_from;unsigned zoom_elapsed;
@@ -31,12 +39,13 @@ static inline bool lume_view_reset(LumeViewport *v,uint64_t now) {
 }
 static inline void lume_view_clamp(LumeViewport *v) {
  int hx=160*1024*1024/v->scale,hy=120*1024*1024/v->scale;
- /* The full 240-row viewport must remain inside the 214-row source stage. */
- if(hy>107*1024)hy=107*1024;
+ /* Keep the camera inside the adapter's authored vertical stage. */
+ int half_height=(LUME_VIEWPORT_BOTTOM-LUME_VIEWPORT_TOP)*512;
+ if(hy>half_height)hy=half_height;
  if(v->cx<hx)v->cx=hx;
  if(v->cx>320*1024-hx)v->cx=320*1024-hx;
- if(v->cy<13*1024+hy)v->cy=13*1024+hy;
- if(v->cy>227*1024-hy)v->cy=227*1024-hy;
+ if(v->cy<LUME_VIEWPORT_TOP*1024+hy)v->cy=LUME_VIEWPORT_TOP*1024+hy;
+ if(v->cy>LUME_VIEWPORT_BOTTOM*1024-hy)v->cy=LUME_VIEWPORT_BOTTOM*1024-hy;
 }
 static inline bool lume_view_tick_mode(LumeViewport *v,uint64_t now,int direction,bool pressed,int dx,int dy,bool immediate) {
  unsigned ms=now>=v->tick?(unsigned)(now-v->tick>50?50:now-v->tick):0;

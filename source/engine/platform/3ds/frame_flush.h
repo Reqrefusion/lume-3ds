@@ -1,8 +1,8 @@
 #ifndef LUME_FRAME_FLUSH_H
 #define LUME_FRAME_FLUSH_H
-#include "dma_cache.h"
+#include "engine/platform/3ds/dma_cache.h"
 #include <stdint.h>
-#include "../../engine/render/blit.h"
+#include "engine/render/blit.h"
 static inline void lume_flush_region(const void *data,u32 bytes) {
  (void)lume_dma_flush(data,bytes);
 }

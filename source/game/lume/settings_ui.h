@@ -1,7 +1,7 @@
 #ifndef LUME_SETTINGS_UI_H
 #define LUME_SETTINGS_UI_H
-#include "../../engine/render/colour.h"
-#include "../../features/locale/locale.h"
+#include "engine/render/colour.h"
+#include "engine/features/locale/locale.h"
 #include "native_menu.h"
 #include "title_menu.h"
 static inline void lume_ui_center(const LumeMenuArt *art,uint8_t *rgb,int y,const char *s,uint32_t color,unsigned scale){

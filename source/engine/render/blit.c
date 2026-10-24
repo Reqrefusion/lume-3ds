@@ -1,6 +1,6 @@
-#include "blit.h"
-#include "../core/layout.h"
-#include "stereo_video.h"
+#include "engine/render/blit.h"
+#include "engine/core/layout.h"
+#include "engine/render/stereo_video.h"
 #include <string.h>
 #include <stdbool.h>
 /* @hotpath Integer-only, clipped once. Transparent pixels do no framebuffer
@@ -53,7 +53,7 @@ void lume_blit_rgba_clipped(uint8_t *rgb,const uint8_t *rgba,int w,int h,int x,i
   }
  }
 }
-#include "../../platform/3ds/present.inc"
+#include "engine/platform/3ds/present.inc"
 /* @hotpath One inverse transform per image, integer scanline stepping per
  * pixel. */
 void lume_blit_affine(uint8_t *rgb, const uint8_t *rgba, int w, int h,

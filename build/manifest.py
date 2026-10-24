@@ -16,7 +16,9 @@ def files(folder):
   if p.is_file():yield p
 
 def inventory(folder):return {p.relative_to(folder).as_posix():{'sha256':sha(p),'bytes':p.stat().st_size} for p in files(folder)}
-def source_inventory(root):return inventory(root/'source')
+def source_inventory(root):
+ return {'source/'+k:v for k,v in inventory(root/'source').items() if Path(k).suffix in {'.c','.cpp','.h','.inc'}}
+
 def save(root):
  rom=root/'romfs';data=inventory(rom)
  if not data:raise ValueError('RomFS is empty; run SETUP.cmd first.')

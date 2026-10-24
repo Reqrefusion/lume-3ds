@@ -1,7 +1,7 @@
 #include "storage.h"
 #ifndef LUME_HOVER_HINTS_H
 #define LUME_HOVER_HINTS_H
-#include "../../engine/render/colour.h"
+#include "engine/render/colour.h"
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>

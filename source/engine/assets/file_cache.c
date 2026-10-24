@@ -1,7 +1,7 @@
-#include "file_cache.h"
+#include "engine/assets/file_cache.h"
 #include <stdlib.h>
 #include <string.h>
-#include "../../platform/file_prefetch.h"
+#include "engine/platform/file_prefetch.h"
 bool lume_cache_init(LumeFileCache *c, FILE *f, uint32_t total) {
   memset(c, 0, sizeof(*c));
   c->file = f;

@@ -29,7 +29,7 @@ def settings(root):
 
 
 def neural_inputs(root,src,model,every):
- return {'source':sha(src),'model':sha(model),'algorithm':sha(Path(__file__).with_name('stereo_depth.py')),'fps':15,'sample_seconds':every}
+ return {'source':sha(src),'model':sha(model),'algorithm':sha(Path(__file__).with_name('stereo_depth.py'))+sha(Path(__file__).resolve().parents[2]/'source/engine/tools/depth_estimator.py'),'fps':15,'sample_seconds':every}
 
 
 def ready(folder,inputs):

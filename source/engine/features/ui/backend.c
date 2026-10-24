@@ -1,6 +1,6 @@
-#include "backend.h"
-#include "../../engine/core/jobs_state.h"
-#include "../locale/locale.h"
+#include "engine/features/ui/backend.h"
+#include "engine/core/jobs_state.h"
+#include "engine/features/locale/locale.h"
 #include <string.h>
 LumeLocale lume_locale={.music=100,.effects=100,.stereo_percent=100};
 static const uint8_t (*fallback_font)[60];

@@ -1,0 +1,21 @@
+{
+  "lume": [
+    "engine/adapters/flash/timeline.c",
+    "engine/assets/file_cache.c",
+    "engine/codecs/blocks.c",
+    "engine/codecs/movie.c",
+    "engine/core/jobs_state.c",
+    "engine/core/log_io.c",
+    "engine/render/blit.c",
+    "engine/render/stereo_video.c",
+    "engine/features/ui/backend.c",
+    "engine/platform/3ds/video_present.c",
+    "engine/animation/baked.c"
+  ],
+  "samorost1": [
+    "engine/core/jobs_state.c",
+    "engine/assets/file_cache.c",
+    "engine/adapters/sprite_timeline/timeline.c",
+    "engine/animation/baked.c"
+  ]
+}

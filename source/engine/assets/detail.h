@@ -1,14 +1,14 @@
 #ifndef LUME_DETAIL_H
 #define LUME_DETAIL_H
-#include "../render/blit.h"
-#include "../codecs/pixel_predict.h"
-#include "../codecs/lan.h"
-#include "../render/viewport.h"
+#include "engine/render/blit.h"
+#include "engine/codecs/pixel_predict.h"
+#include "engine/codecs/lan.h"
+#include "engine/render/viewport.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <zlib.h>
-#include "../core/jobs_state.h"
+#include "engine/core/jobs_state.h"
 /* The bottom camera reads original-sized assets on demand. One page and one
    reusable crop bound memory independently of the number of source frames. */
 #define LUME_DETAIL_W 800u

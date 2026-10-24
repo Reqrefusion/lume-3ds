@@ -1,6 +1,6 @@
 #ifndef LUME_ASSET_IO_H
 #define LUME_ASSET_IO_H
-#include "../codecs/pixel_predict.h"
+#include "engine/codecs/pixel_predict.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

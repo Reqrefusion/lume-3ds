@@ -5,8 +5,8 @@
 #include <string.h>
 #include "engine/core/jobs_state.h"
 #include "engine/render/blit.h"
-#include "platform/3ds/video_present.h"
-#include "platform/3ds/frame_flush.h"
+#include "engine/platform/3ds/video_present.h"
+#include "engine/platform/3ds/frame_flush.h"
 static uint8_t eyes[2][320*240*3],bottom[320*240*3];
 static void draw(unsigned frame,unsigned shift){
  for(unsigned eye=0;eye<2;eye++)for(unsigned y=0;y<240;y++)for(unsigned x=0;x<320;x++) {

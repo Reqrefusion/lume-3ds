@@ -8,7 +8,7 @@ class MeterStereoTests(unittest.TestCase):
   cc=compiler()
   if not cc:self.skipTest('Native C compiler unavailable')
   source=ROOT/'source'
-  text=(source/'engine/assets/stereo_field.h').read_text()
+  text=(ROOT/'source/engine/assets/stereo_field.h').read_text()
   function=block(text,'static inline void lume_field_dynamic(')
   loader=block(text,'static inline void lume_field_close(')+'\n'+block(text,'static inline bool lume_field_load(')
   program=r'''

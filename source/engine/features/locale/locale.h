@@ -1,8 +1,8 @@
 #ifndef LUME_LOCALIZATION_H
 #define LUME_LOCALIZATION_H
-#include "../../engine/render/colour.h"
+#include "engine/render/colour.h"
 #include <stdint.h>
-#include "../ui/backend.h"
+#include "engine/features/ui/backend.h"
 #include <stdio.h>
 #include <stdbool.h>
 #include <string.h>

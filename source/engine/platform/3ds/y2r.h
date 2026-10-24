@@ -1,7 +1,7 @@
 #ifndef LUME_MPEG_Y2R_H
 #define LUME_MPEG_Y2R_H
 #ifdef __3DS__
-#include "dma_cache.h"
+#include "engine/platform/3ds/dma_cache.h"
 #endif
 /* Use the platform's colour converter independently of MPEG decoding. RGB24
    is retained: RGB565 would discard gradients before stereo reprojection.

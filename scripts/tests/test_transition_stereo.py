@@ -9,7 +9,7 @@ class TransitionStereoTests(unittest.TestCase):
   if not cc:self.skipTest('Native C compiler unavailable')
   source=ROOT/'source'
   main=(source/'main.c').read_text(encoding='utf-8-sig')
-  blit=(source/'engine/render/blit.c').read_text(encoding='utf-8-sig')
+  blit=(ROOT/'source/engine/render/blit.c').read_text(encoding='utf-8-sig')
   program=r'''
 #include <stdio.h>
 #include <stdint.h>

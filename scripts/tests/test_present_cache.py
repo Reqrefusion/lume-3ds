@@ -17,7 +17,7 @@ class PresentCacheTests(unittest.TestCase):
 #define LUME_MEDIA_TOP 13
 #define LUME_MEDIA_BOTTOM 226
 #include "engine/render/blit.h"
-#include "platform/3ds/present.inc"
+#include "engine/platform/3ds/present.inc"
 #define CHECK(x) do {if(!(x)){printf("FAIL line %d\n",__LINE__);return 1;}}while(0)
 static uint8_t source_rgb[2][230400],expected[288000],physical[2][2][288000];
 static uint32_t random_state=17;

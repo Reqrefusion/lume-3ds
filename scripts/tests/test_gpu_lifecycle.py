@@ -6,15 +6,15 @@ class GpuLifecycleTests(unittest.TestCase):
  def test_failures_reopen_and_buffers(self):
   cc=compiler()
   if not cc:self.skipTest('Native C compiler unavailable')
-  source=ROOT/'source';text=(source/'platform/3ds/video_present.c').read_text(encoding='utf-8')
+  source=ROOT/'source';text=(ROOT/'source/engine/platform/3ds/video_present.c').read_text(encoding='utf-8')
   program=r"""
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "platform/3ds/video_present.h"
-#include "platform/3ds/video_cache.h"
+#include "engine/platform/3ds/video_present.h"
+#include "engine/platform/3ds/video_cache.h"
 #define LUME_MEDIA_TOP 13
 #define LUME_MEDIA_BOTTOM 226
 typedef uint64_t u64;typedef uint32_t u32;

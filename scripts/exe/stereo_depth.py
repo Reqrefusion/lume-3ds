@@ -6,31 +6,9 @@ import numpy as np
 from PIL import Image
 import cv2,onnxruntime as ort
 
-class Stereo:
-    def __init__(self,model,strength=5):
-        opts=ort.SessionOptions();opts.intra_op_num_threads=2;opts.inter_op_num_threads=1;opts.log_severity_level=3
-        self.model=ort.InferenceSession(str(model),opts,providers=['CPUExecutionProvider']);self.strength=strength;self.previous=None
-    def depth(self,rgb,temporal=False):
-        h,w=rgb.shape[:2];ih=224;iw=round((w/h)*ih/14)*14
-        x=cv2.resize(rgb,(iw,ih),interpolation=cv2.INTER_CUBIC).astype(np.float32)/255
-        x=(x-np.array([.485,.456,.406],np.float32))/np.array([.229,.224,.225],np.float32)
-        d=self.model.run(None,{'pixel_values':x.transpose(2,0,1)[None]})[0][0]
-        low,high=np.percentile(d,[2,98]);d=np.clip((d-low)/max(high-low,1e-6),0,1)
-        d=cv2.resize(d,(w,h),interpolation=cv2.INTER_CUBIC).astype(np.float32)
-        if temporal and self.previous is not None:d=.75*d+.25*self.previous
-        self.previous=d.copy() if temporal else None
-        return cv2.bilateralFilter(d,5,.08,3)
-    def pair(self,rgb,temporal=False):
-        d=self.depth(rgb,temporal);h,w=d.shape
-        shift=(d-.35)*self.strength*(w/320)
-        xx=np.arange(w)[None,:].repeat(h,0);yy=np.arange(h)[:,None].repeat(w,1)
-        target=np.rint(xx-shift).astype(np.int32);valid=(target>=0)&(target<w)
-        index=(yy*w+np.clip(target,0,w-1))[valid];z=d[valid]
-        zbuf=np.full(h*w,-1,np.float32);np.maximum.at(zbuf,index,z)
-        nearest=z>=zbuf[index]-1e-7;right=np.zeros((h*w,3),np.uint8);right[index[nearest]]=rgb[valid][nearest]
-        holes=(zbuf<0).reshape(h,w).astype(np.uint8)*255
-        right=cv2.inpaint(right.reshape(h,w,3),holes,3,cv2.INPAINT_TELEA)
-        return rgb,right,d
+import sys
+sys.path.insert(0,str(Path(__file__).resolve().parents[2]/'source/engine/tools'))
+from depth_estimator import Stereo
 
 def jpeg(image):
     buffer=io.BytesIO();Image.fromarray(image).save(buffer,format='JPEG',quality=72,subsampling=0);return buffer.getvalue()

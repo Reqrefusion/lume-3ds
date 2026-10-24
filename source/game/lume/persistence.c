@@ -1,7 +1,7 @@
 #include "storage.h"
 #include "persistence.h"
 #include "audio.h"
-#include "../../engine/core/log_io.h"
+#include "engine/core/log_io.h"
 #include <string.h>
 #ifdef __3DS__
 #include <3ds.h>

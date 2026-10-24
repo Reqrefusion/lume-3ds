@@ -1,6 +1,6 @@
-#include "stereo_video.h"
+#include "engine/render/stereo_video.h"
 #include <stdbool.h>
-#include "disparity.h"
+#include "engine/render/disparity.h"
 #include <string.h>
 /* Small colour tables fit the ARM11 cache, unlike a full 256 KiB table. */
 static uint32_t high_colour[256], low_colour[256], expanded[320];

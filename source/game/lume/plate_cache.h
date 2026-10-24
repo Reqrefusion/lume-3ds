@@ -2,7 +2,7 @@
 #ifndef LUME_PLATE_CACHE_H
 #define LUME_PLATE_CACHE_H
 #include <stdint.h>
-#include "../../engine/assets/stereo_field.h"
+#include "engine/assets/stereo_field.h"
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>

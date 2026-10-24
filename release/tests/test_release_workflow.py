@@ -7,6 +7,8 @@ class ReleaseWorkflowTests(unittest.TestCase):
  def simulate(self,name,exists=False):
   bash=shutil.which('bash') if os.name!='nt' else str(Path('C:/Program Files/Git/bin/bash.exe'))
   if not bash or not Path(bash).is_file():self.skipTest('Bash unavailable')
+  probe=subprocess.run([bash,'-c','true'],capture_output=True,text=True)
+  if probe.returncode and 'NtCreateDirectoryObject' in probe.stderr:self.skipTest('Git Bash cannot start in this restricted Windows session; CI executes these tests on Linux')
   text=(ROOT/'.github/workflows/build-3dsx.yml').read_text()
   body=text.split('        run: |\n',1)[1]
   shell='\n'.join(line[10:] if line.startswith('          ') else line for line in body.splitlines())

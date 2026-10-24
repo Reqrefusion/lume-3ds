@@ -1,7 +1,7 @@
 #ifndef LUME_LAN_READER_H
 #define LUME_LAN_READER_H
-#include "../assets/file_cache.h"
-#include "pixel_predict.h"
+#include "engine/assets/file_cache.h"
+#include "engine/codecs/pixel_predict.h"
 #include <lz4.h>
 #include <zlib.h>
 #include <stdlib.h>

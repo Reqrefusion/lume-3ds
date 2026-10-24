@@ -1,7 +1,7 @@
 #ifndef LUME_ANIMATION_H
 #define LUME_ANIMATION_H
-#include "../../engine/assets/file_cache.h"
-#include "../../engine/codecs/lan.h"
+#include "engine/assets/file_cache.h"
+#include "engine/codecs/lan.h"
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdio.h>
@@ -31,5 +31,5 @@ void lume_animation_close(LumeAnimation *a);
 bool lume_animation_camera_at(LumeAnimation *a,unsigned frame,unsigned *movie,unsigned *background);
 bool lume_animation_camera_range(LumeAnimation *a, unsigned *movie,
                                  unsigned *first, unsigned *last);
-#include "../../engine/core/timeline_clock.h"
+#include "engine/core/timeline_clock.h"
 #endif

@@ -1,6 +1,6 @@
 #ifndef LUME_MOVIE_POOL_H
 #define LUME_MOVIE_POOL_H
-#include "../codecs/movie.h"
+#include "engine/codecs/movie.h"
 /* Slots never move: lookahead jobs retain pointers to their owning movie.
    Only the caller changes the active slot, after joining its previous work. */
 typedef struct {struct {LumeMovie clip;int id;} slots[2];unsigned current,hits,misses;} LumeMoviePool;

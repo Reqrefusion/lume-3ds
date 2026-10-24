@@ -29,7 +29,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Check Python syntax
-        run: python3 -c "import ast,pathlib; [ast.parse(p.read_text(encoding='utf-8-sig')) for folder in ['build','release','scripts'] for p in pathlib.Path(folder).rglob('*.py')]"
+        run: python3 -c "import ast,pathlib; [ast.parse(p.read_text(encoding='utf-8-sig')) for folder in ['build','release','scripts','source'] for p in pathlib.Path(folder).rglob('*.py')]"
       - name: Check complete translations
         run: python3 scripts/check_languages.py
       - name: Build the fixed application only

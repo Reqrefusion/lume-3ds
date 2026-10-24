@@ -1,4 +1,17 @@
-#include "jobs_state.h"
+#include "engine/core/jobs_state.h"
+#ifdef _MSC_VER
+#include <intrin.h>
+static volatile long owner,submitted,busy;
+bool lume_worker_claim(void) {
+ if(_InterlockedCompareExchange(&owner,1,0)!=0){_InterlockedExchangeAdd(&busy,1);return false;}
+ _InterlockedExchangeAdd(&submitted,1);return true;
+}
+void lume_worker_release(void){_InterlockedExchange(&owner,0);}
+void lume_worker_counts(unsigned *out_submitted,unsigned *out_busy) {
+ *out_submitted=(unsigned)_InterlockedCompareExchange(&submitted,0,0);
+ *out_busy=(unsigned)_InterlockedCompareExchange(&busy,0,0);
+}
+#else
 static volatile unsigned owner,submitted,busy;
 bool lume_worker_claim(void) {
  if(!__sync_bool_compare_and_swap(&owner,0,1)){__sync_fetch_and_add(&busy,1);return false;}
@@ -8,6 +21,7 @@ void lume_worker_release(void){__sync_lock_release(&owner);}
 void lume_worker_counts(unsigned *out_submitted,unsigned *out_busy) {
  *out_submitted=__sync_fetch_and_add(&submitted,0);*out_busy=__sync_fetch_and_add(&busy,0);
 }
+#endif
 
 #include <stdio.h>
 #include <string.h>

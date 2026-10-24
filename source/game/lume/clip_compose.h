@@ -1,9 +1,9 @@
 #ifndef LUME_CLIP_COMPOSE_H
 #define LUME_CLIP_COMPOSE_H
-#include "../../adapters/flash/timeline.h"
-#include "../../engine/render/blit.h"
+#include "engine/adapters/flash/timeline.h"
+#include "engine/render/blit.h"
 #include "props.h"
-#include "../../engine/core/jobs.h"
+#include "engine/core/jobs.h"
 /* The LAN crop is decoded once before either eye starts. Each eye owns its
    output buffer and only reads the frozen crop/transform table. No work is
    left pending across frame boundaries or scene teardown. */

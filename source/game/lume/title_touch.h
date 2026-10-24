@@ -2,8 +2,8 @@
 #ifndef LUME_TITLE_TOUCH_H
 #define LUME_TITLE_TOUCH_H
 #include "title_menu.h"
-#include "../../engine/assets/detail.h"
-#include "../../adapters/flash/timeline.h"
+#include "engine/assets/detail.h"
+#include "engine/adapters/flash/timeline.h"
 #include <string.h>
 /* The bottom view owns interaction rectangles; changing the overview or its
    animation clock cannot move a touch target. Rects accompany the source art. */

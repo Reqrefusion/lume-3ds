@@ -76,7 +76,7 @@ int main(void){
  def test_sidecar_name_boundaries(self):
   cc=compiler()
   if not cc:self.skipTest('Native C compiler unavailable')
-  source=(ROOT/'source/adapters/flash/timeline.c').read_text()
+  source=(ROOT/'source/engine/adapters/flash/timeline.c').read_text()
   function=block(source,'static bool cue_path(')
   program=r'''
 #include <stdbool.h>

@@ -1,6 +1,6 @@
 /* Internal file-I/O backend; the shared asset cache owns its buffers. */
 #ifdef __3DS__
-#include "3ds/math.h"
+#include "engine/platform/3ds/math.h"
 #include <3ds.h>
 typedef struct {
   LumeFileCache *cache;

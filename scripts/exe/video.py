@@ -83,7 +83,7 @@ def produce(tasks,root,recovered,ffmpeg,force_model=None):
  plan_dir=tasks.run('video-cut-plan',{'swf':sha(Path(recovered)/'Lume.swf'),'recipe':sha(Path(__file__).with_name('recipe.py')),'planner':sha(Path(__file__).with_name('mpeg_video.py'))},cache/'video-cut-plan',plan)
  cuts=__import__('json').loads((plan_dir/'plan.json').read_text(encoding='utf-8'))['cuts']
  for cid in IDS:
-  src=Path(recovered)/'video'/(cid+'.flv');inputs={'source':sha(src),'model':MODEL_SHA,'stereo_code':sha(Path(__file__).with_name('stereo_depth.py')),'ffmpeg':sha(ffmpeg),'fps':15}
+  src=Path(recovered)/'video'/(cid+'.flv');inputs={'source':sha(src),'model':MODEL_SHA,'stereo_code':sha(Path(__file__).with_name('stereo_depth.py'))+sha(Path(__file__).resolve().parents[2]/'source/engine/tools/depth_estimator.py'),'ffmpeg':sha(ffmpeg),'fps':15}
   def make_pair(stage,src=src,cid=cid):
    video(Stereo(model),src,stage/(cid+'.ljv'),15)
   pairs=tasks.run('stereo-'+cid,inputs,cache/'stereo'/cid,make_pair)

@@ -1,4 +1,4 @@
-#include "blocks.h"
+#include "engine/codecs/blocks.h"
 /* @hotpath A block has two RGB565 endpoints and sixteen two-bit indices.
    Only fixed integer arithmetic is used; alpha/UI layers are separate. */
 void lume_decode_blocks(const uint8_t *src, uint8_t *rgb) {

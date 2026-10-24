@@ -1,12 +1,12 @@
 /* GPU 2D staging only: decoded eyes and all game/AVM1 decisions stay on CPU.
    Off-screen targets are NEVER linked to LCD outputs. The existing main loop
    owns swaps, bottom-screen UI and VBlank. RGB888 output is preserved. */
-#include "video_present.h"
-#include "video_texture.h"
-#include "../../engine/core/layout.h"
-#include "video_cache.h"
-#include "dma_cache.h"
-#include "../../engine/core/jobs_state.h"
+#include "engine/platform/3ds/video_present.h"
+#include "engine/platform/3ds/video_texture.h"
+#include "engine/core/layout.h"
+#include "engine/platform/3ds/video_cache.h"
+#include "engine/platform/3ds/dma_cache.h"
+#include "engine/core/jobs_state.h"
 #include <3ds.h>
 #include <citro2d.h>
 #include <string.h>

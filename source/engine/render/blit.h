@@ -2,8 +2,8 @@
 #define LUME_BLIT_H
 #include <stdint.h>
 #include <stdbool.h>
-#include "../core/jobs.h"
-#include "colour.h"
+#include "engine/core/jobs.h"
+#include "engine/render/colour.h"
 void lume_blit_rgba(uint8_t *rgb, const uint8_t *rgba, int w, int h, int x,
                     int y);
 /* Clip the destination without editing decoder-owned RGBA reference pixels. */

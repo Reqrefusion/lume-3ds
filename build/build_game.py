@@ -8,8 +8,8 @@ from package_cache import signature as package_signature,reusable
 from source_graph import source_units,object_path,compile_signature
 ARCH=['-march=armv6k','-mtune=mpcore','-mfloat-abi=hard','-mtp=soft']
 
-def sdk_tools(root):
- base=root/'tools/sdk/opt/devkitpro';arm=base/'devkitARM';ext='.exe' if os.name=='nt' else ''
+def sdk_tools(root,sdk_root=None):
+ base=Path(sdk_root).resolve() if sdk_root else root/'tools/sdk/opt/devkitpro';arm=base/'devkitARM';ext='.exe' if os.name=='nt' else ''
  result={'base':base,'arm':arm,'gcc':arm/'bin'/('arm-none-eabi-gcc'+ext),'ctru':base/'libctru','port':base/'portlibs/3ds','pack':base/'tools/bin'/('3dsxtool'+ext),'smdh':base/'tools/bin'/('smdhtool'+ext)}
  for name in ['gcc','pack','smdh']:
   if not result[name].is_file():raise ValueError('Missing SDK tool: '+str(result[name])+'. Pass your existing SDK directory with --sdk.')
@@ -35,8 +35,8 @@ def validate_3dsx(path):
  if magic!=b'SMDH':raise ValueError('Invalid embedded SMDH.')
  return {'bytes':end,'romfs_offset':rom,'smdh_bytes':size}
 
-def build(root,jobs=0,clean=False):
- assets=verify(root);sdk=sdk_tools(root);source=root/'source';work=root/'build/obj';work.mkdir(parents=True,exist_ok=True)
+def build(root,jobs=0,clean=False,sdk_root=None):
+ assets=verify(root);sdk=sdk_tools(root,sdk_root);source=root/'source';work=root/'build/obj';work.mkdir(parents=True,exist_ok=True)
  env=dict(os.environ,DEVKITPRO=sdk['base'].as_posix(),DEVKITARM=sdk['arm'].as_posix())
  for name in ['GCC_EXEC_PREFIX','COMPILER_PATH','LIBRARY_PATH','CPATH','C_INCLUDE_PATH','CPLUS_INCLUDE_PATH']:env.pop(name,None)
  env['PATH']=os.pathsep.join(str(p) for p in [sdk['arm']/'bin',sdk['base']/'tools/bin',root/'tools/sdk/usr/bin'])+os.pathsep+env.get('PATH','')
@@ -48,23 +48,23 @@ def build(root,jobs=0,clean=False):
   sdk_files.extend(p for p in folder.rglob('*') if p.is_file() and p.suffix in {'.h','.a','.specs'})
  sdk_files.extend(sdk['arm'].rglob('3dsx.specs'))
  sdk_identity={p.relative_to(sdk['base']).as_posix():sha(p) for p in sorted(set(sdk_files))}
- units=source_units(source);signature=compile_signature(version+json.dumps(sdk_identity,sort_keys=True),flags,source)
+ units=[p for p in source_units(source) if not p.is_relative_to(source/'engine')]+[root/'source'/p for p in json.loads((root/'source/engine/modules.json').read_text())['lume']];signature=compile_signature(version+json.dumps(sdk_identity,sort_keys=True),flags,source,[root/'source/engine'])
  state_path=root/'build/objects.json'
  try:state=json.loads(state_path.read_text(encoding="utf-8")) if state_path.is_file() else {}
  except (ValueError,OSError):state={}
  new={};objects=[];tasks=[]
  for p in units:
-  name=p.relative_to(source).as_posix()
+  name=p.relative_to(root).as_posix()
   key=hashlib.sha256((signature+sha(p)).encode()).hexdigest();obj=object_path(work,name);objects.append(obj);new[name]=key
   cached=state.get(name,{})
   if clean or not isinstance(cached,dict) or cached.get('key')!=key or not obj.is_file() or cached.get('sha256')!=sha(obj):tasks.append((p,obj))
  def compile_one(task):
-  p,obj=task;print('Compiling:',p.relative_to(source).as_posix(),flush=True);obj.parent.mkdir(parents=True,exist_ok=True);temp=obj.with_suffix('.o.part')
+  p,obj=task;print('Compiling:',p.relative_to(root).as_posix(),flush=True);obj.parent.mkdir(parents=True,exist_ok=True);temp=obj.with_suffix('.o.part')
   try:run([sdk['gcc'],*flags,'-c',p,'-o',temp],env,root);os.replace(temp,obj)
   finally:temp.unlink(missing_ok=True)
  if not objects:raise ValueError('No C source files found.')
  with ThreadPoolExecutor(max_workers=jobs or min(4,os.cpu_count() or 1)) as pool:list(pool.map(compile_one,tasks))
- dump(state_path,{p.relative_to(source).as_posix():{'key':new[p.relative_to(source).as_posix()],'sha256':sha(object_path(work,p.relative_to(source).as_posix()))} for p in units})
+ dump(state_path,{p.relative_to(root).as_posix():{'key':new[p.relative_to(root).as_posix()],'sha256':sha(object_path(work,p.relative_to(root).as_posix()))} for p in units})
  icon=root/'resources/icon.png'
  if not icon.is_file():icon=sdk['ctru']/'default_icon.png'
  recipe={'cache_policy':sha(root/'build/package_cache.py'),'builder':sha(Path(__file__)),'romfs_packer':sha(root/'build/romfs_compact.py')}

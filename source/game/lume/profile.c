@@ -4,7 +4,7 @@
 #endif
 #include "profile.h"
 #include "audio.h"
-#include "../../engine/core/jobs_state.h"
+#include "engine/core/jobs_state.h"
 #include <stdlib.h>
 static int tick_compare(const void *a,const void *b) {
   u64 x=*(const u64*)a,y=*(const u64*)b;return (x>y)-(x<y);
