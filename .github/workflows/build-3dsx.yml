@@ -1,6 +1,16 @@
 name: Build 3DSX
 
-on: [push, pull_request, workflow_dispatch]
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release version, e.g. v1.0.0 (leave empty to build only)'
+        required: false
+        type: string
+        default: ''
+
 
 permissions:
   contents: read
@@ -36,3 +46,33 @@ jobs:
           archive: false
           if-no-files-found: error
           retention-days: 30
+
+  release:
+    needs: build
+    if: (github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')) || (github.event_name == 'workflow_dispatch' && inputs.release_tag != '')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download application
+        uses: actions/download-artifact@v8
+        with:
+          name: lume.3dsx
+          path: release
+      - name: Publish GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event_name == 'push' && github.ref_name || inputs.release_tag }}
+        run: |
+          set -euo pipefail
+          case "$RELEASE_TAG" in
+            v[0-9]*) ;;
+            *) echo 'Use a version tag such as v1.0.0.' >&2; exit 1 ;;
+          esac
+          git check-ref-format "refs/tags/$RELEASE_TAG"
+          test -s release/lume.3dsx
+          gh release create "$RELEASE_TAG" release/lume.3dsx \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "$RELEASE_TAG" \
+            --notes 'Download lume.3dsx for the SD card. Download the repository separately and run SETUP.cmd to convert your own original Lume game files.'

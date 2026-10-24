@@ -63,7 +63,9 @@ There is one workflow: **Build 3DSX**. It runs on pushes and pull requests, or m
 
 It checks the sources and translations, builds the application in the devkitPro container, and uploads a single **lume.3dsx** artifact. Attach only this file to a GitHub Release. Players download the repository separately for `SETUP.cmd`, conversion tools, maps and corresponding source code.
 
-The workflow does not convert game content, commit files or publish a release automatically. Pin the container image digest if you need the same SDK on later rebuilds.
+To publish to Releases, open **Actions > Build 3DSX > Run workflow**, enter a new version such as **v1.0.0** in **Release version**, and start it. After a successful build, it creates that Release and attaches only `lume.3dsx`. Leaving the version empty produces an Actions artifact only. Pushing a `v` version tag also creates its Release.
+
+Use a new version for each release; existing releases are not overwritten. The workflow uses the built-in GitHub token and does not need a personal token. It does not convert game content or commit files. Pin the container image digest if you need the same SDK on later rebuilds.
 
 To prepare the release file locally, without compiling or converting anything:
 
